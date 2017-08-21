@@ -7,7 +7,7 @@ class Header extends Component {
     render() {
         return (
             <header className="bg-info col-md-12">
-                <h3 className="col-md-3">Open Arms NYC HEADER</h3>
+                <h3 className="col-md-3">Open Arms NYC</h3>
             </header>
         )
     }
