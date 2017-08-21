@@ -9,7 +9,7 @@
   "start": "node app.js",
   "dev": "nodemon app.js",
   "debugger": "DEBUG=*:* yarn dev"
-  }
+},
   "dependencies": {
     "axios": "^0.16.2",
     "bcryptjs": "^2.4.3",
