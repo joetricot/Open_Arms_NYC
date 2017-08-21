@@ -1,6 +1,11 @@
 # Open_Arms_NYC
+### Beta Version Mock-up
 
-Beta Version Mock-Up
+Open Arms NYC is a resource for people struggling with homelessness or poverty in New York City. Our clean & simple application provides the information of all food pantries and shelters in NYC, as well as other resources, such as public bathrooms, job opportunities and more.
+
+Open Arms NYC is a project started by students at General Assembly's Web Development Immersive course in NYC.
+
+This application is an educational and not-for-profit service.
 
 ### The Landing Page
 > This shows a short information about Open Arms in slideshow. Has the option to sign up using google account or locally.
