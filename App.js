@@ -25,11 +25,12 @@ app.get('/',(req,res) => {
 	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
+const dropInRoutes = require('./routes/dropin-routes');
+app.use('/dropins',dropInRoutes);
 
 //error handler
 app.use('*', (req,res) => {
 	res.status(400).json({
 		message: 'Not found',
 	})
-})
-
+});

@@ -6,9 +6,9 @@
   "author": "Julia Graves <jgraves@wesleyan.edu>",
   "license": "MIT",
   "scripts": {
-  "start": "node app.js",
-  "dev": "nodemon app.js",
-  "debugger": "DEBUG=*:* yarn dev"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "debugger": "DEBUG=*:* yarn dev"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -18,7 +18,9 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
+    "isomorphic-fetch": "^2.2.1",
     "morgan": "^1.8.2",
+    "node-geocoder": "^3.19.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg-promise": "^6.5.0"
