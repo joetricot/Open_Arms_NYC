@@ -1,5 +1,4 @@
 require('isomorphic-fetch');
-const dropInHelper = {};
 
 function getDropInCenters(req,res,next) {
 	fetch('https://data.cityofnewyork.us/resource/kjtk-8yxq.json')

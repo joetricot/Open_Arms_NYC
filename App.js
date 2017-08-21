@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 //initialize app
 const app = express();
 
+require('dotenv').config();
+
 //middlewares
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -30,6 +32,9 @@ app.use('/dropins',dropInRoutes);
 
 const jobRoutes = require('./routes/job-routes');
 app.use('/careers',jobRoutes);
+
+const addressRoutes = require('./routes/address-routes');
+app.use('/address', addressRoutes);
 
 //error handler
 app.use('*', (req,res) => {

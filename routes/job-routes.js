@@ -7,6 +7,13 @@ jobRoutes.get('/', apiHelper.getCareerPrograms, (req,res) => {
 	res.json({
 		message: 'ok',
 		data: res.locals.data,
+	});
+});
+
+jobRoutes.get('/:id', apiHelper.getCareerPrograms, (req,res) => {
+	res.json({
+		message: 'ok',
+		data: res.locals.data[req.params.id],
 	})
 })
 
