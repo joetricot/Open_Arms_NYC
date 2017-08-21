@@ -27,12 +27,15 @@ app.get('/',(req,res) => {
 	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
+//routes for drop in centers
 const dropInRoutes = require('./routes/dropin-routes');
 app.use('/dropins',dropInRoutes);
 
+//routes for job training programs
 const jobRoutes = require('./routes/job-routes');
 app.use('/careers',jobRoutes);
 
+//routes for addresses - get lat and long
 const addressRoutes = require('./routes/address-routes');
 app.use('/address', addressRoutes);
 
