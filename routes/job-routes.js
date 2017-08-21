@@ -1,14 +1,14 @@
 const express = require('express');
-const dropinRoutes = express.Router();
+const jobRoutes = express.Router();
 
 const apiHelper = require('../services/api-helpers');
 
-dropinRoutes.get('/', apiHelper.getDropInCenters, (req,res) => {
+jobRoutes.get('/', apiHelper.getCareerPrograms, (req,res) => {
 	res.json({
 		message: 'ok',
 		data: res.locals.data,
 	})
 })
 
-module.exports = dropinRoutes;
+module.exports = jobRoutes;
 
