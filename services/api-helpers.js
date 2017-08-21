@@ -26,7 +26,21 @@ function getCareerPrograms(req,res,next) {
 	});
 }
 
+function getHomebases(req,res,next) {
+	fetch('https://data.cityofnewyork.us/resource/5ud2-iqje.json')
+	.then(res => res.json())
+	.then(jsonRes => {
+		console.log(jsonRes);
+		res.locals.data = jsonRes;
+		next();
+	}).catch(err => {
+		console.log(err);
+		next();
+	});
+}
+
 module.exports = {
 	getDropInCenters : getDropInCenters,
-	getCareerPrograms: getCareerPrograms
+	getCareerPrograms: getCareerPrograms,
+	getHomebases: getHomebases,
 };
