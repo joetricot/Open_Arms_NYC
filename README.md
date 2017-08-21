@@ -7,7 +7,7 @@ Open Arms NYC is a project started by students at General Assembly's Web Develop
 
 This application is an educational and not-for-profit service.
 
-##User Stories
+## User Stories
 
 As someone who struggles with homelessness or poverty, I would like an easy to use application, like Open Arms NYC, to locate shelters, food pantries, public bathrooms, appropriate job opportunities and other resources that will enable me to sustain myself and receive compassionate and professional care.
 
