@@ -5,6 +5,11 @@
   "repository": "https://github.com/joetricot/Open_Arms_NYC.git",
   "author": "Julia Graves <jgraves@wesleyan.edu>",
   "license": "MIT",
+  "scripts": {
+  "start": "node app.js",
+  "dev": "nodemon app.js",
+  "debugger": "DEBUG=*:* npm run dev"
+  }
   "dependencies": {
     "axios": "^0.16.2",
     "bcryptjs": "^2.4.3",
