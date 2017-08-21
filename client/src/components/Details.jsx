@@ -6,9 +6,9 @@ class Details extends Component {
 
     render() {
         return (
-            <div className="details bg-warning col-md-8">
-                <img className="col-md-8 clearfix" src="http://lorempixel.com/800/400/people" />
-                <h3 className="col-md-8 clearfix">Open Arms NYC</h3>
+            <div className="details bg-warning col-sm-8">
+                <img className="detail_img col-sm-12 clearfix" src="http://lorempixel.com/600/400/people" />
+                <h3 className="col-sm-12 clearfix">Open Arms NYC</h3>
                 <p>Someday is not a fucking day of the week. Respect your fucking craft. 
                     Widows and orphans are terrible fucking tragedies, both in real life 
                     and definitely in typography. Make your work consistent but not fucking 
