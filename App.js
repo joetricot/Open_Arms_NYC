@@ -28,6 +28,9 @@ app.get('/',(req,res) => {
 const dropInRoutes = require('./routes/dropin-routes');
 app.use('/dropins',dropInRoutes);
 
+const jobRoutes = require('./routes/job-routes');
+app.use('/careers',jobRoutes);
+
 //error handler
 app.use('*', (req,res) => {
 	res.status(400).json({
