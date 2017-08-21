@@ -31,7 +31,7 @@ function getHomebases(req,res,next) {
 	.then(res => res.json())
 	.then(jsonRes => {
 		console.log(jsonRes);
-		res.locals.data = jsonRes;
+		res.locals.data = jsonRes.filter(result => result.borough === 'Manhattan');;
 		next();
 	}).catch(err => {
 		console.log(err);
