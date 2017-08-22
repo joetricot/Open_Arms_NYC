@@ -15,6 +15,7 @@ homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 	res.json({
 		message: 'ok',
 		data: {
+			id: req.params.id,
 			address: homebase.address,
 			zipcode: homebase.postcode,
 			neighborhood: homebase.neighborhood,
@@ -22,6 +23,9 @@ homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 			lng: homebase.longitude,
 			phone: homebase.phone_number,
 			office: homebase.homebase_office,
+			ratingSum: 0,
+			numRatings: 0,
+			avgRating: 0, 
 		}
 		
 

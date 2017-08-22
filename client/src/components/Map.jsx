@@ -8,7 +8,6 @@ import {
 
 import axios from 'axios';
 
-
 class MyMap extends Component {
 	constructor() {
 		super();
@@ -18,9 +17,11 @@ class MyMap extends Component {
 			homebaseDataLoaded: false,
 			dropinLocations: null,
 			dropinDataLoaded: false,
-			filter: 'homebase'
+			filter: 'homebase',
 		}
+
 		this.createHomebasePopup = this.createHomebasePopup.bind(this);
+		this.createDropinPopup = this.createDropinPopup.bind(this);
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
 		//this.selectFilter = this.selectFilter.bind(this);
@@ -77,11 +78,13 @@ class MyMap extends Component {
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.latitude,homebase.longitude]} key={homebase.bin} >
+			<Marker position={[homebase.latitude,homebase.longitude]} key={homebase.bin} 
+			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>
 					<h5>Homebase</h5>
-					<span>{homebase.address}</span>
+					<p>{homebase.address}</p>
+					<p>{homebase.avgRating}</p>
 					</div>
 				</Popup>
 			</Marker>
@@ -90,12 +93,14 @@ class MyMap extends Component {
 
 	createDropinPopup(dropin) {
 		return (
-			<Marker position={[dropin.lat,dropin.lng]}>
+			<Marker position={[dropin.lat,dropin.lng]} 
+			onClick={() => this.props.selectLocation(`/dropin/${dropin.id}`)}>
 				<Popup className='dropin'>
 					<div>
 					<h5>Drop-in Center</h5>
 					<p>{dropin.name}</p>
 					<p>{dropin.address}</p>
+					<p>{dropin.avgRating}</p>
 					</div>
 				</Popup>
 			</Marker>
