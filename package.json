@@ -25,6 +25,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg-promise": "^6.5.0",
-    "react-bootstrap": "^0.31.2"
+    "react-bootstrap": "^0.31.2",
+    "react-leaflet": "^1.6.3"
   }
 }
