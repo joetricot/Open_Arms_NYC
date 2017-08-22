@@ -7,7 +7,7 @@ class Details extends Component {
     render() {
         return (
             <div className="details bg-warning col-sm-8">
-                <img className="detail_img col-sm-12 clearfix" src="http://lorempixel.com/600/400/people" />
+                <img className="detail_img col-sm-12 clearfix" src="http://lorempixel.com/600/400/people" alt=''/>
                 <h3 className="col-sm-12 clearfix">Open Arms NYC</h3>
                 <p>Someday is not a fucking day of the week. Respect your fucking craft. 
                     Widows and orphans are terrible fucking tragedies, both in real life 
