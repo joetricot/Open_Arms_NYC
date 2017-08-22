@@ -18,10 +18,13 @@ class MyMap extends Component {
 			homebaseDataLoaded: false,
 			dropinLocations: null,
 			dropinDataLoaded: false,
+			filter: 'homebase'
 		}
 		this.createHomebasePopup = this.createHomebasePopup.bind(this);
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
+		//this.selectFilter = this.selectFilter.bind(this);
+		//this.renderFilter = this.,
 	}
 
 	componentDidMount() {
@@ -100,6 +103,16 @@ class MyMap extends Component {
 		)
 	} 
 
+/*
+					<span>Filter</span>
+
+					<select onChange={this.selectFilter} />
+						<option value='dropins'>drop in centers</option>
+						<option value='homebase'>homebase</option>
+						<option value='meals'>free meals</option>
+					</select>
+*/
+
 	render() {
 		return(
 			<div>
@@ -109,12 +122,15 @@ class MyMap extends Component {
 					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Homebases</button>
 					<button onClick={this.getDropInCenters}
 					className={this.state.dropinDataLoaded ? 'selected' : ''}>Dropin Centers</button>
+
+
 				</div>
 				<Map center={this.state.position} zoom={13} id='map'>
 					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' 
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
+
 				</Map>
 			</div>
 		)

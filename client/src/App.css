@@ -59,9 +59,22 @@
 
   #map-filters {
     position: absolute;
-    top: 100px;
+    top: 12vh;
     z-index: 1000;
     margin-left: 50px;
+  }
+
+  #filter {
+    background-color: #444444;
+    color: white;
+    border-radius: 3px;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+option {
+    padding: 10px;
+
   }
 
   .selected {
