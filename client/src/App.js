@@ -26,7 +26,6 @@ class App extends Component {
       <div className="App">
         <Header />
         <Map selectLocation={this.selectLocation} />
-        <h1>{this.state.currentLocation}</h1>
         <Details />
         {this.state.currentLocation ?  <Comments currentLocation={this.state.currentLocation} /> : <div></div>}
        

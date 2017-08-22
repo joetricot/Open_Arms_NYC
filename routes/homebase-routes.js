@@ -27,9 +27,12 @@ homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 			numRatings: 0,
 			avgRating: 0, 
 		}
-		
+	});
+});
 
-	})
+homebaseRoutes.put('/:id', (req,res) => {
+	console.log("UPDATE RATING")
+	console.log(req.body.rating);
 })
 
 module.exports = homebaseRoutes;
