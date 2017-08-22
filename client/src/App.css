@@ -79,6 +79,7 @@ option {
 
   .selected {
     background-color: gray;
+    color: white;
   }
 
   button {
@@ -89,3 +90,34 @@ option {
     border-radius: 4px;
     border: 2px solid rgba(0,0,0,.5);
   }
+
+  .leaflet-popup-content {
+    margin: 0;
+    padding: 10px;
+    width: 150px;
+  }
+
+ .leaflet-popup-content h5 {
+    font-size: 14px;
+    text-transform: uppercase;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    padding: 5px;
+  }
+
+  .leaflet-popup-content p {
+    color: black;
+    margin: 2px;
+  }
+
+  .dropin h5 {
+    color: blue;
+  }
+
+  .homebase h5 {
+    color: red;
+  }
+
+
+ 

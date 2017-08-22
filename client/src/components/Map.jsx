@@ -77,9 +77,8 @@ class MyMap extends Component {
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.latitude,homebase.longitude]} className='homebase' 
-			key={homebase.bin} >
-				<Popup>
+			<Marker position={[homebase.latitude,homebase.longitude]} key={homebase.bin} >
+				<Popup className='homebase'>
 					<div>
 					<h5>Homebase</h5>
 					<span>{homebase.address}</span>
@@ -90,13 +89,13 @@ class MyMap extends Component {
 	}
 
 	createDropinPopup(dropin) {
-		console.log(dropin);
 		return (
-			<Marker position={[dropin.lat,dropin.lng]} className='dropin'>
-				<Popup>
+			<Marker position={[dropin.lat,dropin.lng]}>
+				<Popup className='dropin'>
 					<div>
 					<h5>Drop-in Center</h5>
-					<span>{dropin.name}</span>
+					<p>{dropin.name}</p>
+					<p>{dropin.address}</p>
 					</div>
 				</Popup>
 			</Marker>
