@@ -30,10 +30,10 @@ dropinRoutes.get('/:id', apiHelper.getDropInCenters, (req,res) => {
 					address: address,
 					lat: coords.lat,
 					lng: coords.lng,
-					ratingSum: 0,
-					numRatings: 0,
-					avgRating: 0, 
 				},
+				ratingSum: 0,
+				numRatings: 0,
+				avgRating: 0, 
 		});
 	}).catch(err => console.log(err));
 });

@@ -35,7 +35,7 @@ homebaseRoutes.put('/:id', (req,res) => {
 	console.log(req.body.rating);
 	res.json({
 		message: 'ok',
-		data: {
+		/*data: {
 			id: req.params.id,
 			address: req.body.address,
 			neighborhood: req.body.neighborhood,
@@ -46,7 +46,10 @@ homebaseRoutes.put('/:id', (req,res) => {
 			ratingSum: req.body.ratingSum,
 			numRatings: req.body.numRatings,
 			avgRating: req.body.ratingSum/req.body.numRatings,
-		}
+		}, */
+		ratingSum: req.body.ratingSum,
+		numRatings: req.body.numRatings,
+		avgRating: req.body.avgRating, 
 	});
 })
 

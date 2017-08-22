@@ -6,7 +6,10 @@ class Comments extends Component {
     super();
     this.state = {
       updateRating: false,
-      rating: null,
+      avgRating: null,
+      numRatings: null,
+      ratingSum: null,
+      newRating: null,
       data: null,
     }
     this.submitRating = this.submitRating.bind(this);
@@ -26,20 +29,18 @@ class Comments extends Component {
     }).catch(err => console.log(err));
   }
 
-
-
   submitRating(e) {
     e.preventDefault();
     if (this.state.rating) {
       console.log(this.state);
       alert(this.state.rating);
       this.setState({
-          data: {
-            ratingSum: this.state.data.ratingSum + this.state.rating,
-            numRatings: this.state.data.numRatings + 1,
-          },
+          ratingSum: this.state.ratingSum + this.state.newRating,
+          numRatings: this.state.numRatings + 1,
           updateRating: true, 
+          newRating: null,
       })
+      this.updateRating();
       console.log('*****' , this.state)
       //axios.put(this.props.currentLocation)
     } 
@@ -49,7 +50,8 @@ class Comments extends Component {
     if (this.state.updateRating) {
       console.log('***** update rating')
       axios.put(this.props.currentLocation, {
-        data: this.state.data,
+        ratingSum: this.state.ratingSum,
+        numRatings: this.state.numRatings,
       });
       this.setState({
         updateRating: false,
