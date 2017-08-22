@@ -30,33 +30,46 @@ class MyMap extends Component {
 	}
 
 	getHomebaseCenters() {
-		axios.get('/homebase')
+		//toggle filter
+		if (this.state.homebaseDataLoaded) {
+			this.setState({
+					homebaseLocations: null,
+					homebaseDataLoaded: false,
+			});
+		} else {
+			axios.get('/homebase')
 			.then(res => {
 				console.log(res.data.data)
 				this.setState({
 					homebaseLocations: res.data.data,
 					homebaseDataLoaded: true,
 				})
-		}).catch(err => console.log(err));
+			}).catch(err => console.log(err));
+		}
 	}
 
 	getDropInCenters() {
-		console.log('getDropInCenters')
-		let dropins = []
-		for (let i=0; i< 2; i++) {
-			axios.get('/dropins/' + i)
-			.then(res => {
-				console.log(res.data.data)
-				dropins.push(res.data.data);
-			}).catch(err => console.log(err));
-		}
-
-		if (dropins.length) {
+		//toggle filter 
+		if (this.state.dropinDataLoaded) {
 			this.setState({
-				dropinLocations: dropins,
-				dropinDataLoaded: true,
-			})
+					dropinLocations: null,
+					dropinDataLoaded: false,
+			});
+		} else {
+			let dropins = []
+			for (let i=0; i< 2; i++) {
+				axios.get('/dropins/' + i)
+				.then(res => {
+					console.log(res.data.data)
+					dropins.push(res.data.data);
+					this.setState({
+						dropinLocations : dropins,
+						dropinDataLoaded: true,
+					})
+				}).catch(err => console.log(err));
+			}
 		}
+		
 	}
 
 	createHomebasePopup(homebase) {
@@ -92,8 +105,10 @@ class MyMap extends Component {
 			<div>
 				<div id='map-filters'>
 					<button>Free Meals</button>
-					<button onClick={this.getHomebaseCenters}>Homebases</button>
-					<button onClick={this.getDropInCenters}>Dropin Centers</button>
+					<button onClick={this.getHomebaseCenters} 
+					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Homebases</button>
+					<button onClick={this.getDropInCenters}
+					className={this.state.dropinDataLoaded ? 'selected' : ''}>Dropin Centers</button>
 				</div>
 				<Map center={this.state.position} zoom={13} id='map'>
 					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' 

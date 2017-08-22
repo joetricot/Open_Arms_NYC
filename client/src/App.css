@@ -64,7 +64,15 @@
     margin-left: 50px;
   }
 
+  .selected {
+    background-color: gray;
+  }
+
   button {
     font-size: 14px;
-
+    margin: 5px;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    border: 2px solid rgba(0,0,0,.5);
   }
