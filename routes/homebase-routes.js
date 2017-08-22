@@ -17,7 +17,7 @@ homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 		data: {
 			id: req.params.id,
 			address: homebase.address,
-			zipcode: homebase.postcode,
+			//zipcode: homebase.postcode,
 			neighborhood: homebase.neighborhood,
 			lat: homebase.latitude,
 			lng: homebase.longitude,
@@ -33,6 +33,21 @@ homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 homebaseRoutes.put('/:id', (req,res) => {
 	console.log("UPDATE RATING")
 	console.log(req.body.rating);
+	res.json({
+		message: 'ok',
+		data: {
+			id: req.params.id,
+			address: req.body.address,
+			neighborhood: req.body.neighborhood,
+			lat: req.body.lat,
+			lng: req.body.lng,
+			phone: req.body.phone_number,
+			office: req.body.homebase_office,
+			ratingSum: req.body.ratingSum,
+			numRatings: req.body.numRatings,
+			avgRating: req.body.ratingSum/req.body.numRatings,
+		}
+	});
 })
 
 module.exports = homebaseRoutes;

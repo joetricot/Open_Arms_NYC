@@ -45,7 +45,7 @@ class MyMap extends Component {
 			for (let i=0; i<2; i++) {
 				axios.get('/homebase/' + i)
 				.then(res => {
-					console.log(res.data.data);
+					//console.log(res.data.data);
 					homebases.push(res.data.data);
 					this.setState({
 						homebaseLocations: homebases,
@@ -68,7 +68,7 @@ class MyMap extends Component {
 			for (let i=0; i< 2; i++) {
 				axios.get('/dropins/' + i)
 				.then(res => {
-					console.log(res.data.data)
+					//console.log(res.data.data)
 					dropins.push(res.data.data);
 					this.setState({
 						dropinLocations : dropins,
@@ -88,7 +88,7 @@ class MyMap extends Component {
 					<div>
 					<h5>Homebase</h5>
 					<p>{homebase.address}</p>
-					<p>{homebase.avgRating}</p>
+					<p>rating: {homebase.avgRating}</p>
 					</div>
 				</Popup>
 			</Marker>
@@ -104,7 +104,7 @@ class MyMap extends Component {
 					<h5>Drop-in Center</h5>
 					<p>{dropin.name}</p>
 					<p>{dropin.address}</p>
-					<p>{dropin.avgRating}</p>
+					<p>rating: {dropin.avgRating}</p>
 					</div>
 				</Popup>
 			</Marker>
