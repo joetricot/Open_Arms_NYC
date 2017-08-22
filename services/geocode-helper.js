@@ -3,7 +3,6 @@ const API_KEY = process.env.API_KEY;
 
 //Assumes address is formatted with '+' to separate words (i.e. '3186+Ninth+Avenue+Manhattan+NY')
 function convertToCoords(req,res,next) {
-	console.log(req.params)
 	fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.params.address}&key=${API_KEY}`)
 	.then(res => res.json())
 	.then(jsonRes => {
