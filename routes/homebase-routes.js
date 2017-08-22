@@ -19,7 +19,7 @@ homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 			zipcode: homebase.postcode,
 			neighborhood: homebase.neighborhood,
 			lat: homebase.latitude,
-			lon: homebase.longitude,
+			lng: homebase.longitude,
 			phone: homebase.phone_number,
 			office: homebase.homebase_office,
 		}
