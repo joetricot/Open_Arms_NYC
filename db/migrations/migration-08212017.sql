@@ -14,3 +14,14 @@ CREATE TABLE IF NOT EXISTS free_meals (
 	neighborhood VARCHAR(255),
 	description TEXT
 );
+
+CREATE TABLE IF NOT EXISTS shelters (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255),
+	address VARCHAR(255),
+	neighborhood VARCHAR(255),
+	latitude DECIMAL(12,9),
+	longitude DECIMAL(12,9),
+	phone VARCHAR(255),
+	office VARCHAR(255)
+);
