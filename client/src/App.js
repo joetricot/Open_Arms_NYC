@@ -28,7 +28,8 @@ class App extends Component {
         <Map selectLocation={this.selectLocation} />
         <h1>{this.state.currentLocation}</h1>
         <Details />
-        <Comments />
+        {this.state.currentLocation ?  <Comments currentLocation={this.state.currentLocation} /> : <div></div>}
+       
         <Footer />
       </div>
     );

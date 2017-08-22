@@ -41,14 +41,18 @@ class MyMap extends Component {
 					homebaseDataLoaded: false,
 			});
 		} else {
-			axios.get('/homebase')
-			.then(res => {
-				console.log(res.data.data)
-				this.setState({
-					homebaseLocations: res.data.data,
-					homebaseDataLoaded: true,
-				})
-			}).catch(err => console.log(err));
+			let homebases = [];
+			for (let i=0; i<2; i++) {
+				axios.get('/homebase/' + i)
+				.then(res => {
+					console.log(res.data.data);
+					homebases.push(res.data.data);
+					this.setState({
+						homebaseLocations: homebases,
+						homebaseDataLoaded: true,
+					})
+				}).catch(err => console.log(err));
+			}
 		}
 	}
 
@@ -78,7 +82,7 @@ class MyMap extends Component {
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.latitude,homebase.longitude]} key={homebase.bin} 
+			<Marker position={[homebase.lat,homebase.lng]} key={homebase.bin} 
 			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>
@@ -94,7 +98,7 @@ class MyMap extends Component {
 	createDropinPopup(dropin) {
 		return (
 			<Marker position={[dropin.lat,dropin.lng]} 
-			onClick={() => this.props.selectLocation(`/dropin/${dropin.id}`)}>
+			onClick={() => this.props.selectLocation(`/dropins/${dropin.id}`)}>
 				<Popup className='dropin'>
 					<div>
 					<h5>Drop-in Center</h5>
@@ -106,16 +110,6 @@ class MyMap extends Component {
 			</Marker>
 		)
 	} 
-
-/*
-					<span>Filter</span>
-
-					<select onChange={this.selectFilter} />
-						<option value='dropins'>drop in centers</option>
-						<option value='homebase'>homebase</option>
-						<option value='meals'>free meals</option>
-					</select>
-*/
 
 	render() {
 		return(
