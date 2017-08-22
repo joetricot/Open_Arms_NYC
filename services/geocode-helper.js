@@ -17,5 +17,4 @@ function convertToCoords(req,res,next) {
 
 module.exports = {
 	convertToCoords : convertToCoords,
-	addrToCoords: addrToCoords,
 }
