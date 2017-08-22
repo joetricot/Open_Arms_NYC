@@ -5,7 +5,7 @@ class Comments extends Component{
     render() {
         return (
             <div className="comments bg-warning col-sm-4 col-sm-12">
-                <select class="bg-primary form-control">
+                <select className="bg-primary form-control">
                     <option>I would not reccomend this place.</option>
                     <option>This place was so-so.</option>
                     <option>This place was decent.</option>
