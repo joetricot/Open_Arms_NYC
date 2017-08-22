@@ -24,16 +24,13 @@
     "node-geocoder": "^3.19.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-<<<<<<< HEAD
     "pg-promise": "^6.5.0",
-    "react-bootstrap": "^0.31.2"
-=======
+    "react-bootstrap": "^0.31.2",
     "pg-promise": "^6.5.0"
   },
   "scripts": {
   "start": "node app.js",
   "dev": "nodemon app.js",
   "debugger": "DEBUG=*:* yarn dev"
->>>>>>> package.json
   }
 }
