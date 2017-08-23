@@ -4,12 +4,13 @@ const shelterRatings = require('../models/shelter-ratings');
 const shelterController = {};
 
 shelterController.getDropInRating = (req,res) => {
+	console.log('$$$$ GET DROP IN RATING $$$')
 	shelterRatings.getDropInRating(req.params.id)
 	.then(rating => {
-		console.log(rating);
+		console.log(rating[0].avg);
 		res.json({
 			message: 'ok',
-			data: rating.avg,
+			data: rating[0].avg,
 		});
 	}).catch(err => {
       console.log(err);
@@ -33,10 +34,10 @@ shelterController.getHomebaseRating = (req,res) => {
 	console.log('******** get homebase rating')
 	shelterRatings.getHomebaseRating(req.params.id)
 	.then(rating => {
-		console.log(rating);
+		console.log(rating[0].avg);
 		res.json({
 			message: 'ok',
-			data: rating.avg,
+			data: rating[0].avg,
 		});
 	}).catch(err => {
       console.log(err);

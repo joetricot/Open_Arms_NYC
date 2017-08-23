@@ -13,7 +13,9 @@ homebaseRoutes.get('/', apiHelper.getHomebases, (req,res) => {
 
 homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 	let homebase = res.locals.data[req.params.id];
-	const data = {
+	res.json({
+		message: 'ok',
+		data: {
 			id: req.params.id,
 			address: homebase.address,
 			hours: null,
@@ -22,12 +24,10 @@ homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 			lng: homebase.longitude,
 			phone: homebase.phone_number,
 			office: homebase.homebase_office,
-	};
-	res.json({
-		message: 'ok',
-		data: data
+		}
 	});
 });
+
 
 homebaseRoutes.get('/:id/rating', shelterController.getHomebaseRating);
 homebaseRoutes.post('/:id/rating', shelterController.addHomebaseRating);
