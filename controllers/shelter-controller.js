@@ -1,4 +1,3 @@
-const Shelter = require('../models/shelter');
 const shelterRatings = require('../models/shelter-ratings');
 
 const shelterController = {};
