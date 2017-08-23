@@ -5,12 +5,8 @@ class Comments extends Component {
   constructor() {
     super();
     this.state = {
-      updateRating: false,
-      avgRating: null,
-      numRatings: null,
-      ratingSum: null,
-      newRating: null,
-      data: null,
+      currentRating: null,
+      ratingInput: null,
     }
     this.submitRating = this.submitRating.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
@@ -19,11 +15,12 @@ class Comments extends Component {
 
   componentDidMount() {
     console.log('comment did mount')
-    axios.get(this.props.currentLocation)
+    console.log(this.props.currentLocation)
+    axios.get(`${this.props.currentLocation}/rating`)
     .then(res => {
       console.log(res.data);
       this.setState({
-        data: res.data.data,
+        currentRating: res.data.data,
       })
       console.log(this.state);
     }).catch(err => console.log(err));
@@ -35,10 +32,7 @@ class Comments extends Component {
       console.log(this.state);
       alert(this.state.rating);
       this.setState({
-          ratingSum: this.state.ratingSum + this.state.newRating,
-          numRatings: this.state.numRatings + 1,
-          updateRating: true, 
-          newRating: null,
+       
       })
       this.updateRating();
       console.log('*****' , this.state)
@@ -63,7 +57,7 @@ class Comments extends Component {
     console.log(e.target.value);
     this.setState({
       rating: e.target.value,
-    })
+    });
   }
 
   render() {
@@ -71,6 +65,7 @@ class Comments extends Component {
       <div className="comments bg-warning col-sm-4 col-sm-12">
         <h3>Rate this place</h3>
         <h4>{this.props.currentLocation}</h4>
+        <h4>{this.props.rating}</h4>
 
         <form onSubmit={this.submitRating}>
         <select name='rating' onChange={this.handleRatingChange}>
