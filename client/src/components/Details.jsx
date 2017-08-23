@@ -8,7 +8,7 @@ class Details extends Component {
     render() {
         return (
             <div className="details bg-warning col-sm-8">
-                <img className="detail_img col-sm-12 clearfix" src="http://lorempixel.com/400/300/people" />
+                <img className="detail_img col-sm-12 clearfix" src="http://lorempixel.com/400/300/people" alt="placeholder"/>
                 <h3 className="col-sm-8 pull-left">Specific Location: NYC</h3><button type="button" class="btn col-sm-4 btn-primary pull-right">Leave Your Opinion</button>
             
                
