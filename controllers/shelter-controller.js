@@ -28,7 +28,7 @@ shelterController.show = (req,res) => {
       res.status(500).json({ err });
 	});
 }
-
+/*
 shelterController.createDropIn = (req,res) => {
 	Shelter.create({
 		name: req.body.name,
@@ -63,7 +63,30 @@ shelterController.createHomebase = (req,res) => {
 		phone: req.body.phone,
 		office: req.body.office,
 	})
+}*/
+
+shelterController.create = (req,res) => {
+	Shelter.create({
+		name: req.body.name,
+		category: req.body.category,
+		address: req.body.address,
+		hours: req.body.hours,
+		neighborhood: req.body.neighborhood,
+		latitude: req.body.lat,
+		longitude: req.body.lng,
+		phone: req.body.phone,
+		office: req.body.office,
+	}).then(shelter => {
+			res.json({
+				message: 'ok',
+				data: shelter,
+			});  
+   }).catch(err => {
+      console.log(err);
+      res.status(500).json({ err });
+	});
 }
+
 
 shelterController.addRating = (req,res) => {
 	shelterReview.create(req.params.id,req.body.rating)
