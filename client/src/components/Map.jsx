@@ -32,23 +32,11 @@ class MyMap extends Component {
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
 		this.getMeals = this.getMeals.bind(this);
-		this.selectLocation = this.selectLocation.bind(this);
 	}
 
 	componentDidMount() {
 		console.log('did mount');
 	}
-
-	selectLocation(location) {
-		axios.get(`${location}/rating`)
-		.then(res => {
-			console.log('**************',res.data);
-			this.setState({
-      currentLocation: location,
-      rating: res.data.data,
-    	});
-		}).catch(err => console.log(err));;
-  }
 
 	getHomebaseCenters() {
 		//toggle filter
@@ -105,7 +93,6 @@ class MyMap extends Component {
 			for (let i=0;i<112;i++) {
 				axios.get('/meals/' + i)
 				.then(res => {
-					console.log(res.data.data);
 					meals.push(res.data.data);
 					this.setState({
 						mealLocations: meals,
@@ -119,7 +106,7 @@ class MyMap extends Component {
 	createHomebasePopup(homebase) {
 		return (
 			<Marker position={[homebase.lat,homebase.lng]} key={homebase.bin} 
-			onClick={() => this.selectLocation(`/homebase/${homebase.id}`)}>
+			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>
 					<h5>Homebase</h5>
@@ -133,7 +120,7 @@ class MyMap extends Component {
 	createDropinPopup(dropin) {
 		return (
 			<Marker position={[dropin.lat,dropin.lng]} key={dropin.id}
-			onClick={() => this.selectLocation(`/dropins/${dropin.id}`)}>
+			onClick={() => this.props.selectLocation(`/dropins/${dropin.id}`)}>
 				<Popup className='dropin'>
 					<div>
 					<h5>Drop-in Center</h5>
@@ -148,7 +135,7 @@ class MyMap extends Component {
 	createMealPopup(meal) {
 		return (
 			<Marker position={[meal.lat,meal.lng]} key={meal.id}
-			onClick={() => this.selectLocation(`/meals/${meal.id}`)}>
+			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
 				<Popup className='dropin'>
 					<div>
 					<h5>Free Meal</h5>
@@ -164,7 +151,8 @@ class MyMap extends Component {
 		return(
 			<div>
 				<div id='map-filters'>
-					<button onClick={this.getMeals}>Free Meals</button>
+					<button onClick={this.getMeals} 
+					className={this.state.mealDataLoaded ? 'selected' : ''}>Free Meals</button>
 					<button onClick={this.getHomebaseCenters} 
 					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Homebases</button>
 					<button onClick={this.getDropInCenters}
@@ -177,8 +165,6 @@ class MyMap extends Component {
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
 					{this.state.mealDataLoaded ? this.state.mealLocations.map(this.createMealPopup) : ''}
 				</Map>
-				<Details currentLocation={this.state.currentLocation}/>
-				<Comments currentLocation={this.state.currentLocation} rating={this.state.rating}/>
 			</div>
 		)
 	}
