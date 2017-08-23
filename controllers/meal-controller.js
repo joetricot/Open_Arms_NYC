@@ -14,13 +14,15 @@ mealController.index = (req,res) => {
 	});
 }
 
-mealController.show = (req,res) => {
+mealController.show = (req,res,next) => {
 	Meal.findById(req.params.id)
 	.then(meal => {
-		res.json({
+		res.locals.data = meal;
+		next();
+		/*res.json({
 			message: 'ok',
 			data: meal,
-		});
+		});*/
 	}).catch(err => {
       console.log(err);
       res.status(500).json({ err });

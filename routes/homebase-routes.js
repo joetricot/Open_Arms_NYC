@@ -1,6 +1,7 @@
 const express = require('express');
 const homebaseRoutes = express.Router();
 const shelterController = require('../controllers/shelter-controller');
+const API_KEY = process.env.API_KEY;
 
 const apiHelper = require('../services/api-helpers');
 
