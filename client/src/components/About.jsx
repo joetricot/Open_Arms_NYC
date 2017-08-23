@@ -7,7 +7,7 @@ import {
 class About extends Component {
     render() {
         return(
-            <div className="about">
+            <div className="about m-top-three">
                 <div Col xs={6} md={4}>
                 <img src="./public/lib1.jpg" />
                 </div>

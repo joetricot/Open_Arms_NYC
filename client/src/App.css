@@ -124,5 +124,19 @@ option {
     color: red;
   }
 
-
+.mainLeft {
+  background-color: Tomato;
+}
  
+.mainRight {
+  background-color: gold;;
+}
+
+.m-top-three {
+  margin-top: 3.5em;
+}
+
+.footer {
+  margin-top: 1em;
+  padding: 2em;
+}
