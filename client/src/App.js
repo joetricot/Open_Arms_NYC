@@ -36,10 +36,10 @@ class App extends Component {
               </Navbar.Collapse>
             </Navbar>
             <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} /> 
-            <Route exact path="/contact" component={Contact}/>     
+            <Route exact path="/about" component={About} />
+            <Route exact path="/contact" component={Contact}/>
           </div>
-        </nav>
+        </main>
       </Router>
     );
   }
