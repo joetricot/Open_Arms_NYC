@@ -11,7 +11,7 @@ class About extends Component {
             <div className="about">
             <h1 className="display-4 blue">About Open Arms NYC <hr/></h1>
 
-            <img className="circle pull-left img-responsive" src="/lib1.jpg"  />
+            <img className="circle pull-left img-responsive" src="/lib1.jpg" alt="liberty"  />
 
                 <blockquote>
                 "Give me your tired, your poor,<br/>
@@ -23,7 +23,7 @@ class About extends Component {
                 
                 </blockquote>
 
-                <img className="circle pull-right img-responsive" src="/ter1.jpg"  />
+                <img className="circle pull-right img-responsive" src="/ter1.jpg" alt="teresa" />
 
                 <blockquote className="blockquote blockquote-reverse clearfix">
                 I alone cannot change the world. But I can cast a stone <br/>across the waters to create many
