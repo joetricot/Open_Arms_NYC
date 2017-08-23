@@ -3,6 +3,8 @@ const express = require('express');
 const dropinRoutes = express.Router();
 const apiHelper = require('../services/api-helpers');
 const API_KEY = process.env.API_KEY;
+const shelterController = require('../controllers/shelter-controller');
+
 
 dropinRoutes.get('/', apiHelper.getDropInCenters, (req,res) => {
 	res.json({
@@ -24,6 +26,7 @@ dropinRoutes.get('/:id', apiHelper.getDropInCenters, (req,res) => {
 		res.json({
 				message: 'ok',
 				data: {
+					id: req.params.id,
 					name: dropin.center_name,
 					hours: dropin.comments,
 					address: address,
@@ -33,6 +36,9 @@ dropinRoutes.get('/:id', apiHelper.getDropInCenters, (req,res) => {
 		});
 	}).catch(err => console.log(err));
 });
+
+dropinRoutes.get('/:id/rating', shelterController.getDropInRating);
+dropinRoutes.post('/:id/rating', shelterController.addDropInRating);
 
 module.exports = dropinRoutes;
 

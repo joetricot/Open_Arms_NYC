@@ -12,6 +12,20 @@ import {
 } from 'react-router-dom';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentLocation: null,
+    }
+    this.selectLocation = this.selectLocation.bind(this);
+  }
+
+  selectLocation(location) {
+    this.setState({
+      currentLocation: location,
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -32,6 +46,10 @@ class App extends Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
+  
+              <Map selectLocation={this.selectLocation} />
+              <Details />
+              {this.state.currentLocation ?  <Comments currentLocation={this.state.currentLocation} /> : <div></div>}
             
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} /> 
