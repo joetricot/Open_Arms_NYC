@@ -8,7 +8,7 @@ Shelter.findAll = () => {
 Shelter.findById = id => {
 	return db.oneOrNone(`
 		SELECT * FROM shelters
-		WHERE id = $1
+		WHERE location_id = $1
 	`,[id])
 }
 
