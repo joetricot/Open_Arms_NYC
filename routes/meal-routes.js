@@ -14,10 +14,11 @@ mealRoutes.get('/:id',mealController.show,(req,res) => {
 	.then(res => res.json())
 	.then(jsonRes => {
 		let coords = jsonRes.results[0].geometry.location;
+		let data = meal;
+		data.lat = coords.lat;
+		data.lng = coords.lng;
 		res.json({
-			data: meal,
-			lat: coords.lat,
-			lng: coords.lng,
+			data: data,
 		});
 	}).catch(err => console.log(err));	
 });
