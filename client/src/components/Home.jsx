@@ -18,23 +18,26 @@ class Home extends Component {
   }
 
   selectLocation(location) {
+    this.setState({
+      locationUrl: location,
+      rating: null,
+    });
     axios.get(`${location}/rating`)
     .then(res => {
       this.setState({
-        locationUrl: location,
-        rating: res.data.data,
+        rating: Math.round(res.data.data),
       });
-    }).catch(err => console.log(err));;
+    }).catch(err => console.log(err));
   }
 
   render() {
     return (
         <div className="Home">
             <Navigation />
-            <Main />
             <MapHolder selectLocation={this.selectLocation} />
+            <Main />
             <Details locationUrl={this.state.locationUrl} />
-            <Comments currentLocation={this.props.currentLocation} />
+            <Comments locationUrl={this.state.locationUrl} rating={this.state.rating}/>
         </div>
     );
   }

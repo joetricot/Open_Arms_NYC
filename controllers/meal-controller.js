@@ -19,10 +19,6 @@ mealController.show = (req,res,next) => {
 	.then(meal => {
 		res.locals.data = meal;
 		next();
-		/*res.json({
-			message: 'ok',
-			data: meal,
-		});*/
 	}).catch(err => {
       console.log(err);
       res.status(500).json({ err });

@@ -10,28 +10,11 @@ class Comments extends Component {
   componentDidMount() {
     console.log('comment did mount')
   }
-    /*
-    console.log(this.props.currentLocation)
-    if (this.props.currentLocation) {
-      axios.get(`${this.props.currentLocation}/rating`)
-      .then(res => {
-        console.log(res.data);
-        this.setState({
-          currentRating: res.data.data,
-        })
-        console.log(this.state);
-      }).catch(err => console.log(err));
-    }
-  } */
 
   submitRating(e) {
     e.preventDefault();
     axios.post(`${this.props.locationUrl}/rating`, {
       rating: e.target.rating.value
-    }).then((res) => {  
-        res.json({
-          message: 'added rating successfully',
-        });
     }).catch(err => console.log(err));
   }
 
@@ -40,7 +23,7 @@ class Comments extends Component {
       <div className="comments bg-warning col-sm-4 col-sm-12">
         <h3>Rate this place</h3>
         <h4>{this.props.locationUrl}</h4>
-        <h4>{this.props.rating}</h4>
+        <h4>{this.props.rating ? "★".repeat(this.props.rating) : 'no ratings yet'}</h4>
 
         <form onSubmit={this.submitRating}>
         <select name='rating' onChange={this.handleRatingChange}>

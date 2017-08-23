@@ -136,7 +136,7 @@ class MyMap extends Component {
 		return (
 			<Marker position={[meal.lat,meal.lng]} key={meal.id}
 			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
-				<Popup className='dropin'>
+				<Popup className='meal'>
 					<div>
 					<h5>Free Meal</h5>
 					<p>{meal.name}</p>
