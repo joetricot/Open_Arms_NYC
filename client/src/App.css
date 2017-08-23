@@ -140,6 +140,7 @@
 .footer {
   margin-top: 1em;
   padding: 2em;
+}
 
 .circle {
   height: 30vh;
@@ -166,13 +167,6 @@
   color: rgba(0, 191, 255, 1)
 }
 
-.nav {
-  height: 8vh;
-  width: 100vw;
-<<<<<<< HEAD
-  background-color: black;
-  color: white;
-}
 
 .linky{
   background-color: blue;
@@ -184,7 +178,19 @@
   width: 100vw;
   margin: 0;
   padding: 10vh;
-=======
   background-color: white;
->>>>>>> e7af8657e418718ca2483dd2c7e732ece8924c7d
+}
+
+.highlight::selection {
+  background-color: purple;
+  color: white;
+}
+.contactPage {
+  height: 100vh;
+  width: 100vw;
+  color: blue;
+}
+
+textarea {
+  resize: none;
 }

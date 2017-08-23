@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -17,7 +15,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <main>
           <div>
             <Navbar fixedTop>
               <Navbar.Header>
@@ -31,15 +28,15 @@ class App extends Component {
                 <Nav pullRight>
                   <NavItem eventKey={1}><Link to="/">Home</Link></NavItem>
                   <NavItem eventKey={2}><Link to="/About">About</Link></NavItem>
-                  <NavItem eventKey={3}><Link to="/About">Contact Us</Link></NavItem>
+                  <NavItem eventKey={3}><Link to="/Contact">Contact Us</Link></NavItem>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
+            
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} /> 
             <Route exact path="/contact" component={Contact}/>     
           </div>
-          </main>
       </Router>
     );
   }

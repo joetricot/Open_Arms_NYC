@@ -10,8 +10,9 @@ class Contact extends Component {
                 <br/>
                 Please send us your thoughts!</h5>
                 </div>
-                <div class="input-group input-group-lg">
-            <textarea class="form-control" rows="8"  placeholder="Ideas, Comments, Questions, or Suggestions Welcomed!"></textarea>
+                <div className="inputBox">
+            <p>E-Mail:<input type="email" placeholder="email"></input></p>
+            <textarea className="form-control commentsBox" rows="10"  placeholder="Ideas, Comments, Questions, or Suggestions Welcomed!"></textarea>
             <button type="submit" class="btn btn-default">Submit</button>
                 </div>
             </div>
