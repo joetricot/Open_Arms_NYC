@@ -5,20 +5,29 @@ import Comments from './Comments';
 import Details from './Details';
 import Navigation from './Navigation';
 import MapHolder from './MapHolder';
+import axios from 'axios';
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
-      currentLocation: null,
+      locationUrl: null,
+      rating: null,
     }
     this.selectLocation = this.selectLocation.bind(this);
   }
 
   selectLocation(location) {
-    this.setState({
-      currentLocation: location,
-    });
+    if (location) {
+      axios.get(`${location}/rating`)
+      .then(res => {
+        console.log('**************',res.data);
+        this.setState({
+          locationUrl: location,
+          rating: res.data.data,
+        });
+      }).catch(err => console.log(err));;
+    }
   }
 
   render() {
@@ -27,9 +36,8 @@ class Home extends Component {
             <Navigation />
             <MapHolder selectLocation={this.selectLocation} />
             <Main />
-            <Details currentLocation={this.props.currentLocation} />
-            <Comments currentLocation={this.props.currentLocation} />
-            <Footer />
+            <Details currentLocation={this.state.currentLocation} />
+            <Comments locationUrl={this.state.locationUrl} rating={this.state.rating}/>
         </div>
     );
   }
