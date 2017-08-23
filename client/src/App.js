@@ -4,6 +4,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+import MapHolder from './components/MapHolder';
 
 import {
   BrowserRouter as Router,
@@ -47,9 +48,7 @@ class App extends Component {
               </Navbar.Collapse>
             </Navbar>
   
-              <Map selectLocation={this.selectLocation} />
-              <Details />
-              {this.state.currentLocation ?  <Comments currentLocation={this.state.currentLocation} /> : <div></div>}
+              <MapHolder selectLocation={this.selectLocation} />
             
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} /> 

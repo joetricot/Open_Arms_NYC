@@ -12,7 +12,6 @@ class Home extends Component {
     return (
         <div className="Home">
             <Navigation />
-            <MapHolder />
             <Main />
             <Details />
             <Comments />
