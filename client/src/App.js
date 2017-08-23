@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
@@ -17,7 +15,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <main>
           <div>
             <Navbar fixedTop>
               <Navbar.Header>
@@ -35,11 +32,15 @@ class App extends Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
+            
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact}/>
           </div>
+<<<<<<< HEAD
         </main>
+=======
+>>>>>>> e6cb6165e249df0bce1237188dd66f9d9a99684f
       </Router>
     );
   }

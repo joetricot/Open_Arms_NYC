@@ -141,6 +141,7 @@
   margin-top: 1em;
   padding: 2em;
 }
+
 .circle {
   height: 30vh;
   width: 30vw;
@@ -164,10 +165,4 @@
 
 .blue{
   color: rgba(0, 191, 255, 1)
-}
-
-.nav {
-  height: 8vh;
-  width: 100vw;
-  background-color: white;
 }
