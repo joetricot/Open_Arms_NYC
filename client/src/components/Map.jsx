@@ -30,7 +30,6 @@ class MyMap extends Component {
 
 	componentDidMount() {
 		console.log('did mount');
-		//this.getDropInCenters();
 	}
 
 	getHomebaseCenters() {
@@ -120,15 +119,12 @@ class MyMap extends Component {
 					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Homebases</button>
 					<button onClick={this.getDropInCenters}
 					className={this.state.dropinDataLoaded ? 'selected' : ''}>Dropin Centers</button>
-
-
 				</div>
 				<Map center={this.state.position} zoom={13} id='map'>
 					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' 
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
-
 				</Map>
 			</div>
 		)
