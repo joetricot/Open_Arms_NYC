@@ -4,7 +4,6 @@ const shelterRatings = require('../models/shelter-ratings');
 const shelterController = {};
 
 shelterController.getDropInRating = (req,res) => {
-	console.log('$$$$ GET DROP IN RATING $$$')
 	shelterRatings.getDropInRating(req.params.id)
 	.then(rating => {
 		console.log(rating[0].avg);

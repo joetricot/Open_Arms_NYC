@@ -15,24 +15,6 @@ CREATE TABLE free_meals (
     Description VARCHAR(1585)
 );
 
-CREATE TABLE IF NOT EXISTS shelters (
-	id SERIAL PRIMARY KEY,
-	name VARCHAR(255),
-	category VARCHAR(255),
-	address VARCHAR(255),
-	hours VARCHAR(255),
-	neighborhood VARCHAR(255),
-	latitude DECIMAL(12,9),
-	longitude DECIMAL(12,9),
-	phone VARCHAR(255),
-	office VARCHAR(255)
-);
-
-CREATE TABLE IF NOT EXISTS shelter_ratings (
-	location_id INT REFERENCES shelters(id),
-	rating INT
-);
-
 CREATE TABLE IF NOT EXISTS dropin_ratings (
 	location_id INT,
 	rating INT
