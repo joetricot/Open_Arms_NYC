@@ -124,6 +124,23 @@
     color: red;
   }
 
+
+.mainLeft {
+  background-color: Tomato;
+}
+
+.mainRight {
+  background-color: gold;;
+}
+
+.m-top-three {
+  margin-top: 3.5em;
+}
+
+.footer {
+  margin-top: 1em;
+  padding: 2em;
+
 .circle {
   height: 30vh;
   width: 30vw;
@@ -153,5 +170,4 @@
   height: 8vh;
   width: 100vw;
   background-color: white;
-
 }

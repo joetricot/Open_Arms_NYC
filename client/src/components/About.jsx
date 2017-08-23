@@ -8,11 +8,10 @@ import {
 class About extends Component {
     render() {
         return(
-            <div className="about">
-            <h1 className="display-4 blue">About Open Arms NYC <hr/></h1>
-
-            <img className="circle pull-left img-responsive" src="/lib1.jpg" alt="liberty"  />
-
+            <div className="about m-top-three">
+                <div Col xs={6} md={4}>
+                <img src="./public/lib1.jpg" />
+                </div>
                 <blockquote>
                 "Give me your tired, your poor,<br/>
                 Your huddled masses yearning to breathe free,<br/>
