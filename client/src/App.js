@@ -12,10 +12,25 @@ import {
 } from 'react-router-dom';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentLocation: null,
+    }
+    this.selectLocation = this.selectLocation.bind(this);
+  }
+
+  selectLocation(location) {
+    this.setState({
+      currentLocation: location,
+    });
+  }
+
   render() {
     return (
       <Router>
           <div>
+
             <Navbar fixedTop>
               <Navbar.Header>
                 <Navbar.Brand>
@@ -23,7 +38,6 @@ class App extends Component {
                 </Navbar.Brand>
                 <Navbar.Toggle />
               </Navbar.Header>
-
               <Navbar.Collapse>
                 <Nav pullRight>
                   <NavItem eventKey={1}><Link to="/">Home</Link></NavItem>
@@ -31,11 +45,12 @@ class App extends Component {
                   <NavItem eventKey={3}><Link to="/Contact">Contact Us</Link></NavItem>
                 </Nav>
               </Navbar.Collapse>
-            </Navbar>
-            
+              </Navbar>
+
+
             <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} /> 
-            <Route exact path="/contact" component={Contact}/>     
+            <Route exact path="/about" component={About} />
+            <Route exact path="/contact" component={Contact}/>
           </div>
       </Router>
     );

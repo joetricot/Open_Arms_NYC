@@ -25,7 +25,6 @@
 
 .details {
   overflow: hidden;
-  overflow-y: scroll;
   height: 60vh;
 }
 
@@ -96,6 +95,18 @@
     border: 2px solid rgba(0,0,0,.5);
   }
 
+  #rating-form {
+    text-align: left;
+
+  }
+  label {
+    font-weight: normal;
+  }
+
+  #rating-form input {
+    margin-right: 10px;
+
+  }
   .leaflet-popup-content {
     margin: 0;
     padding: 10px;
@@ -128,7 +139,7 @@
 .mainLeft {
   background-color: Tomato;
 }
- 
+
 .mainRight {
   background-color: gold;;
 }
