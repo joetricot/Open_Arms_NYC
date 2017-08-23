@@ -24,6 +24,7 @@ class App extends Component {
     return (
       <Router>
           <div>
+
             <Navbar fixedTop>
               <Navbar.Header>
                 <Navbar.Brand>
@@ -31,19 +32,17 @@ class App extends Component {
                 </Navbar.Brand>
                 <Navbar.Toggle />
               </Navbar.Header>
-
               <Navbar.Collapse>
                 <Nav pullRight>
                   <NavItem eventKey={1}><Link to="/">Home</Link></NavItem>
                   <NavItem eventKey={2}><Link to="/About">About</Link></NavItem>
-                  <NavItem eventKey={3}><Link to="/About">Contact Us</Link></NavItem>
+                  <NavItem eventKey={3}><Link to="/Contact">Contact Us</Link></NavItem>
                 </Nav>
               </Navbar.Collapse>
-            </Navbar>
-            
+              </Navbar>
             <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} /> 
-            <Route exact path="/contact" component={Contact}/>     
+            <Route exact path="/about" component={About} />
+            <Route exact path="/contact" component={Contact}/>
           </div>
       </Router>
     );
