@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Main from './Main'
-import Footer from './Footer';
+//import Footer from './Footer';
 import Comments from './Comments';
 import Details from './Details';
 import Navigation from './Navigation';
@@ -24,7 +24,7 @@ class Home extends Component {
         console.log('**************',res.data);
         this.setState({
           locationUrl: location,
-          rating: res.data.data,
+          rating: Math.round(res.data.data),
         });
       }).catch(err => console.log(err));;
     }
@@ -36,7 +36,7 @@ class Home extends Component {
             <Navigation />
             <MapHolder selectLocation={this.selectLocation} />
             <Main />
-            <Details currentLocation={this.state.currentLocation} />
+            <Details locationUrl={this.state.locationUrl}  />
             <Comments locationUrl={this.state.locationUrl} rating={this.state.rating}/>
         </div>
     );

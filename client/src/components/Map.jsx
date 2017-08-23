@@ -7,8 +7,6 @@ import {
 } from 'react-leaflet';
 
 import axios from 'axios';
-//import Comments from './Comments';
-//import Details from './Details';
 
 class MyMap extends Component {
 	constructor() {
@@ -20,33 +18,18 @@ class MyMap extends Component {
 			dropinLocations: null,
 			dropinDataLoaded: false,
 			filter: 'homebase',
-			currentLocation: null,
-			currentRating: null,
 		}
 
 		this.createHomebasePopup = this.createHomebasePopup.bind(this);
 		this.createDropinPopup = this.createDropinPopup.bind(this);
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
-		this.selectLocation = this.selectLocation.bind(this);
+		//this.selectLocation = this.selectLocation.bind(this);
 	}
 
 	componentDidMount() {
 		console.log('did mount');
 	}
-
-	selectLocation(location) {
-		if (location) {
-			axios.get(`${location}/rating`)
-			.then(res => {
-				console.log('**************',res.data);
-				this.setState({
-	      currentLocation: location,
-	      rating: res.data.data,
-	    	});
-			}).catch(err => console.log(err));;
-		}
-  }
 
 	getHomebaseCenters() {
 		//toggle filter
@@ -97,7 +80,7 @@ class MyMap extends Component {
 	createHomebasePopup(homebase) {
 		return (
 			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id} 
-			onClick={() => this.selectLocation(`/homebase/${homebase.id}`)}>
+			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>
 					<h5>Homebase</h5>
@@ -111,7 +94,7 @@ class MyMap extends Component {
 	createDropinPopup(dropin) {
 		return (
 			<Marker position={[dropin.lat,dropin.lng]} key={dropin.id}
-			onClick={() => this.selectLocation(`/dropins/${dropin.id}`)}>
+			onClick={() => this.props.selectLocation(`/dropins/${dropin.id}`)}>
 				<Popup className='dropin'>
 					<div>
 					<h5>Drop-in Center</h5>
