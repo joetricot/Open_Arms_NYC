@@ -40,9 +40,9 @@ class App extends Component {
               </Navbar.Header>
               <Navbar.Collapse>
                 <Nav pullRight>
-                  <NavItem eventKey={1}><Link to="/">Home</Link></NavItem>
-                  <NavItem eventKey={2}><Link to="/About">About</Link></NavItem>
-                  <NavItem eventKey={3}><Link to="/Contact">Contact Us</Link></NavItem>
+                  <NavItem className="navBar" eventKey={1}><Link to="/" className="navBar">Home</Link></NavItem>
+                  <NavItem className="navBar" eventKey={2}><Link to="/About" className="navBar">About</Link></NavItem>
+                  <NavItem className="navBar" eventKey={3}><Link to="/Contact" className="navBar">Contact Us</Link></NavItem>
                 </Nav>
               </Navbar.Collapse>
               </Navbar>

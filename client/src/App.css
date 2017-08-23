@@ -25,6 +25,7 @@
 
 .details {
   overflow: hidden;
+  overflow-y: scroll;
   height: 60vh;
 }
 
@@ -36,8 +37,8 @@
 
 .details_img {
   object-fit: contain;
-  width: 100vw;
-  height: 20vh;
+  width: 20px;
+  height: 20px;
   clear: both;
 }
 
@@ -204,4 +205,16 @@
 
 textarea {
   resize: none;
+}
+
+.navBar:hover {
+  background-color: RGB(30, 144, 255);
+  color: white;
+  text-decoration: underline overline;
+  -webkit-transition: background-color 1s ease-out;
+}
+
+.navbar {
+  background-color: black;
+  color: white;
 }
