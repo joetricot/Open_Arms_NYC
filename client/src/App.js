@@ -32,15 +32,11 @@ class App extends Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
-            
+
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact}/>
           </div>
-<<<<<<< HEAD
-        </main>
-=======
->>>>>>> e6cb6165e249df0bce1237188dd66f9d9a99684f
       </Router>
     );
   }
