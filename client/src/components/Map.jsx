@@ -7,8 +7,8 @@ import {
 } from 'react-leaflet';
 
 import axios from 'axios';
-import Comments from './Comments';
-import Details from './Details';
+//import Comments from './Comments';
+//import Details from './Details';
 
 class MyMap extends Component {
 	constructor() {
@@ -36,14 +36,16 @@ class MyMap extends Component {
 	}
 
 	selectLocation(location) {
-		axios.get(`${location}/rating`)
-		.then(res => {
-			console.log('**************',res.data);
-			this.setState({
-      currentLocation: location,
-      rating: res.data.data,
-    	});
-		}).catch(err => console.log(err));;
+		if (location) {
+			axios.get(`${location}/rating`)
+			.then(res => {
+				console.log('**************',res.data);
+				this.setState({
+	      currentLocation: location,
+	      rating: res.data.data,
+	    	});
+			}).catch(err => console.log(err));;
+		}
   }
 
 	getHomebaseCenters() {
@@ -90,7 +92,6 @@ class MyMap extends Component {
 				}).catch(err => console.log(err));
 			}
 		}
-		
 	}
 
 	createHomebasePopup(homebase) {
@@ -140,8 +141,6 @@ class MyMap extends Component {
 					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
 				</Map>
-				<Details currentLocation={this.state.currentLocation}/>
-				<Comments currentLocation={this.state.currentLocation} rating={this.state.rating}/>
 			</div>
 		)
 	}

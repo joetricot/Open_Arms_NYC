@@ -6,7 +6,7 @@ class Comments extends Component {
     super();
     this.state = {
       currentRating: null,
-      ratingInput: null,
+      input: null,
     }
     this.submitRating = this.submitRating.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
@@ -28,6 +28,7 @@ class Comments extends Component {
 
   submitRating(e) {
     e.preventDefault();
+    console.log(e.target.value)
     if (this.state.rating) {
       console.log(this.state);
       alert(this.state.rating);
@@ -67,7 +68,7 @@ class Comments extends Component {
         <h4>{this.props.currentLocation}</h4>
         <h4>{this.props.rating}</h4>
 
-        <form onSubmit={this.submitRating}>
+        <form method='POST' action={`${this.props.currentLocation}/rating`}>
         <select name='rating' onChange={this.handleRatingChange}>
           <option value='1' ref={(input) => this.input = input}>1</option>
           <option value='2' ref={(input) => this.input = input}>2</option>
