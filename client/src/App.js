@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Comments from './components/Comments';
-import Details from './components/Details';
-import Map from './components/Map';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -23,14 +28,34 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Map selectLocation={this.selectLocation} />
-        <Details />
-        {this.state.currentLocation ?  <Comments currentLocation={this.state.currentLocation} /> : <div></div>}
-       
-        <Footer />
-      </div>
+      <Router>
+          <div>
+            <Navbar fixedTop>
+              <Navbar.Header>
+                <Navbar.Brand>
+                  <Link to="/">Open Arms - NYC</Link>
+                </Navbar.Brand>
+                <Navbar.Toggle />
+              </Navbar.Header>
+
+              <Navbar.Collapse>
+                <Nav pullRight>
+                  <NavItem eventKey={1}><Link to="/">Home</Link></NavItem>
+                  <NavItem eventKey={2}><Link to="/About">About</Link></NavItem>
+                  <NavItem eventKey={3}><Link to="/About">Contact Us</Link></NavItem>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+  
+              <Map selectLocation={this.selectLocation} />
+              <Details />
+              {this.state.currentLocation ?  <Comments currentLocation={this.state.currentLocation} /> : <div></div>}
+            
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} /> 
+            <Route exact path="/contact" component={Contact}/>     
+          </div>
+      </Router>
     );
   }
 }

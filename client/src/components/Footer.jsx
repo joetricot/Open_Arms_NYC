@@ -6,17 +6,17 @@ class Footer extends Component {
 
     render() {
         return (
-            <footer className="footer container-fluid bg-success row col-sm-12">
-                {/* element should be floated left */}
-                <h4 className="col-xs-8 col-md-3">© Open Arms -New York Footer</h4>
-                {/* float right and links to specific info */}
-                <ul className="list-unstyled list-inline col-xs-4 col-md-offset-5">
-                    <li>ABOUT</li>
-                    <li>|</li>
-                    <li>MEET THE TEAM</li>
-                    <li>|</li>
-                    <li>DONATE</li>
-                </ul>    
+            <footer>
+                <div className="container">
+                <nav className="navbar text-white">
+                        <div className="copyright">
+                            &copy; 2017 Open Arms - NYC
+                        </div>
+                        <div>
+                            <a className="btn btn-outline-warning btn-sm" href="#">DONATE</a>
+                        </div>
+                </nav>      
+                </div>
             </footer>
         )
     }

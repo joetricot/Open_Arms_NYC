@@ -41,6 +41,11 @@
   clear: both;
 }
 
+.btn{
+  height: 5vh;
+  position: absolute;
+}
+
 .backdrop {
   position: absolute;
   top: 0px;
@@ -71,7 +76,7 @@
     padding: 10px;
   }
 
-option {
+  option {
     padding: 10px;
 
   }
@@ -131,4 +136,44 @@ option {
   }
 
 
+.mainLeft {
+  background-color: Tomato;
+}
  
+.mainRight {
+  background-color: gold;;
+}
+
+.m-top-three {
+  margin-top: 3.5em;
+}
+
+.footer {
+  margin-top: 1em;
+  padding: 2em;
+}
+
+.circle {
+  height: 30vh;
+  width: 30vw;
+  border-radius: 5px 20px 5px;
+  border: 2px solid black;
+  object-fit: cover;
+  display: block;
+}
+
+.about{
+  height:100vh;
+  width:100vw;
+}
+
+.aboutInfo {
+  background-color: black;
+  color: white;
+  height: 30vh;
+  text-align: center;
+}
+
+.blue{
+  color: rgba(0, 191, 255, 1)
+}
