@@ -8,4 +8,13 @@ shelterReview.create = (shelter_id,rating) => {
 	`,[shelter_id,rating]);
 }
 
+shelterReview.getAvgRating = (shelter_id) => {
+	return db.query(`
+		SELECT AVG (rating) from shelter_ratings
+		WHERE location_id = $1
+		GROUP BY shelter_id
+		ORDER BY shelter_id
+	`,[shelter_id])
+}
+
 module.exports = shelterReview;
