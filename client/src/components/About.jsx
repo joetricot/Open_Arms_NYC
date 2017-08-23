@@ -19,7 +19,7 @@ class About extends Component {
                 Send these, the homeless, tempest-tost to me,<br/>
                 I lift my lamp beside the golden door!"<br/>
                 <footer> <cite title="Source Title">Emma Lazarus</cite></footer>
-                
+
                 </blockquote>
 
                 <img className="circle pull-right img-responsive" src="/ter1.jpg" alt="teresa" />
@@ -31,19 +31,19 @@ class About extends Component {
                 </blockquote>
 
                 <div className="aboutInfo">
-                <h4> <span className="blue">Open Arms NYC</span> is a resource for people struggling with homelessness or poverty in New York City.<br/><br/> 
-                    Our clean & simple application provides the information of all food pantries and shelters in NYC,<br/> 
+                <h4> <span className="blue">Open Arms NYC</span> is a resource for people struggling with homelessness or poverty in New York City.<br/><br/>
+                    Our clean & simple application provides the information of all food pantries and shelters in NYC,<br/>
                     as well as other resources, such as public bathrooms, job opportunities and more.<br/>
                         <br/>
-                    <span className="blue">Open Arms NYC</span> is a project started by students at General Assembly's Web Development Immersive<br/> 
+                    <span className="blue">Open Arms NYC</span> is a project started by students at General Assembly's Web Development Immersive<br/>
                     course in NYC.<br/><br/>
 
                     This application is an educational and not-for-profit service.
-                
+
                 </h4>
                 </div>
             </div>
         );
-    };    
+    };
 }
 export default About;

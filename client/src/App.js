@@ -4,13 +4,6 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
-<<<<<<< HEAD
-import Map from './components/Map';
-import Details from './components/Details';
-import Comments from './components/Comments';
-=======
->>>>>>> 863a6c3574b1f529bdca7430c79b663c8e9d2246
-import MapHolder from './components/MapHolder';
 
 import {
   BrowserRouter as Router,
@@ -49,20 +42,12 @@ class App extends Component {
                 <Nav pullRight>
                   <NavItem eventKey={1}><Link to="/">Home</Link></NavItem>
                   <NavItem eventKey={2}><Link to="/About">About</Link></NavItem>
-                  <NavItem eventKey={3}><Link to="/About">Contact Us</Link></NavItem>
+                  <NavItem eventKey={3}><Link to="/Contact">Contact Us</Link></NavItem>
                 </Nav>
               </Navbar.Collapse>
-<<<<<<< HEAD
-              <MapHolder selectLocation={this.selectLocation} />
-              <Details />
-              {this.state.currentLocation ?  <Comments currentLocation={this.state.currentLocation} /> : <div></div>}
-            </Navbar>
-=======
-            </Navbar>
-  
-              <MapHolder selectLocation={this.selectLocation} />
-            
->>>>>>> 863a6c3574b1f529bdca7430c79b663c8e9d2246
+              </Navbar>
+
+
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact}/>

@@ -13,6 +13,7 @@ class Home extends Component {
         <div className="Home">
             <Navigation />
             <Main />
+            <MapHolder />
             <Details />
             <Comments />
             <Footer />
