@@ -16,14 +16,17 @@ class Comments extends Component {
   componentDidMount() {
     console.log('comment did mount')
     console.log(this.props.currentLocation)
-    axios.get(`${this.props.currentLocation}/rating`)
-    .then(res => {
-      console.log(res.data);
-      this.setState({
-        currentRating: res.data.data,
-      })
-      console.log(this.state);
-    }).catch(err => console.log(err));
+    if (this.props.currentLocation) {
+       axios.get(`${this.props.currentLocation}/rating`)
+        .then(res => {
+          console.log(res.data);
+          this.setState({
+            currentRating: res.data.data,
+          });
+          console.log(this.state);
+      }).catch(err => console.log(err));
+    }
+   
   }
 
   submitRating(e) {

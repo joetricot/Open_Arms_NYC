@@ -25,8 +25,8 @@ class Home extends Component {
     return (
         <div className="Home">
             <Navigation />
-            <Main />
             <MapHolder selectLocation={this.selectLocation} />
+            <Main />
             <Details currentLocation={this.props.currentLocation} />
             <Comments currentLocation={this.props.currentLocation} />
             <Footer />

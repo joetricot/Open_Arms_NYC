@@ -95,14 +95,16 @@ class MyMap extends Component {
 	}
 
 	createHomebasePopup(homebase) {
+		console.log(homebase)
+		console.log(homebase.lat,homebase.lng);
 		return (
-			<Marker position={[homebase.lat,homebase.lng]} key={homebase.bin} 
+			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id} 
 			onClick={() => this.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>
 					<h5>Homebase</h5>
 					<p>{homebase.address}</p>
-					<p>rating: {homebase}</p>
+					<p>rating: </p>
 					</div>
 				</Popup>
 			</Marker>
@@ -127,7 +129,7 @@ class MyMap extends Component {
 
 	render() {
 		return(
-			<div>
+			<div id='map-div'>
 				<div id='map-filters'>
 					<button>Free Meals</button>
 					<button onClick={this.getHomebaseCenters} 
