@@ -10,7 +10,7 @@ import About from './About';
 class Home extends Component {
   render() {
     return (
-        <div className="Home">>
+        <div className="Home">
             <Header />
             <Map />
             <Details />
