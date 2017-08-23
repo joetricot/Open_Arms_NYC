@@ -4,7 +4,6 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
-import MapHolder from './components/MapHolder';
 
 import {
   BrowserRouter as Router,
@@ -17,14 +16,8 @@ class App extends Component {
     super();
     this.state = {
       currentLocation: null,
+      currentRating: null,
     }
-    this.selectLocation = this.selectLocation.bind(this);
-  }
-
-  selectLocation(location) {
-    this.setState({
-      currentLocation: location,
-    });
   }
 
   render() {
@@ -47,8 +40,6 @@ class App extends Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
-  
-              <MapHolder selectLocation={this.selectLocation} />
             
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} /> 
