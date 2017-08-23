@@ -16,14 +16,8 @@ class App extends Component {
     super();
     this.state = {
       currentLocation: null,
+      currentRating: null,
     }
-    this.selectLocation = this.selectLocation.bind(this);
-  }
-
-  selectLocation(location) {
-    this.setState({
-      currentLocation: location,
-    });
   }
 
   render() {
@@ -46,8 +40,6 @@ class App extends Component {
                 </Nav>
               </Navbar.Collapse>
               </Navbar>
-
-
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact}/>

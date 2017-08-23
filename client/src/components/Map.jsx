@@ -24,8 +24,7 @@ class MyMap extends Component {
 		this.createDropinPopup = this.createDropinPopup.bind(this);
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
-		//this.selectFilter = this.selectFilter.bind(this);
-		//this.renderFilter = this.,
+		//this.selectLocation = this.selectLocation.bind(this);
 	}
 
 	componentDidMount() {
@@ -76,18 +75,16 @@ class MyMap extends Component {
 				}).catch(err => console.log(err));
 			}
 		}
-		
 	}
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.lat,homebase.lng]} key={homebase.bin} 
+			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id} 
 			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>
 					<h5>Homebase</h5>
 					<p>{homebase.address}</p>
-					<p>rating: {homebase.avgRating}</p>
 					</div>
 				</Popup>
 			</Marker>
@@ -96,14 +93,13 @@ class MyMap extends Component {
 
 	createDropinPopup(dropin) {
 		return (
-			<Marker position={[dropin.lat,dropin.lng]} 
+			<Marker position={[dropin.lat,dropin.lng]} key={dropin.id}
 			onClick={() => this.props.selectLocation(`/dropins/${dropin.id}`)}>
 				<Popup className='dropin'>
 					<div>
 					<h5>Drop-in Center</h5>
 					<p>{dropin.name}</p>
 					<p>{dropin.address}</p>
-					<p>rating: {dropin.avgRating}</p>
 					</div>
 				</Popup>
 			</Marker>
@@ -112,7 +108,7 @@ class MyMap extends Component {
 
 	render() {
 		return(
-			<div>
+			<div id='map-div'>
 				<div id='map-filters'>
 					<button>Free Meals</button>
 					<button onClick={this.getHomebaseCenters} 
