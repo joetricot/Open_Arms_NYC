@@ -7,8 +7,6 @@ import {
 } from 'react-leaflet';
 
 import axios from 'axios';
-import Comments from './Comments';
-import Details from './Details';
 
 class MyMap extends Component {
 	constructor() {
@@ -106,7 +104,7 @@ class MyMap extends Component {
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.lat,homebase.lng]} key={homebase.bin} 
+			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id} 
 			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>

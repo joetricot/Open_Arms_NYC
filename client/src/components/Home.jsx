@@ -35,17 +35,17 @@ class Home extends Component {
     .then(res => {
       console.log("**** GET LOCATION DATA ****",res.data)
       let category;
-      //set category
+      /*set category
       if (location.includes('meals')) {
         category = 'meal';
       } else if (location.includes('dropins')) {
         category = 'dropin';
       } else {
         category = 'homebase';
-      }
+      }*/
       this.setState({
         data: res.data.data,
-        category: category,
+        //category: category,
         locationDataLoaded: true,
       });
     })
@@ -63,8 +63,9 @@ class Home extends Component {
     if (this.state.locationDataLoaded) {
       return (
         <div>
-        <Details data={this.state.data} category={this.state.category} />
-        <Comments data={this.state.data} rating={this.state.rating} />
+        <Details data={this.state.data} />
+        <Comments data={this.state.data} rating={this.state.rating} 
+        locationUrl={this.state.locationUrl} />
         </div>
       );
     }
