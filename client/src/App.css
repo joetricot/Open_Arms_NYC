@@ -64,17 +64,29 @@
 
   #map-filters {
     position: absolute;
-    top: 12vh;
+    top: 20px;
     z-index: 1000;
     margin-left: 50px;
   }
 
-  #filter {
-    background-color: #444444;
+  #map-filters span {
+    position: absolute;
+    left: 30px;
+    height: 32px;
+    background-color: #3B3B3B;
     color: white;
-    border-radius: 3px;
-    font-size: 14px;
-    padding: 10px;
+    font-size: 14;
+    padding: 6px 10px;
+    z-index: 3000;
+  }
+
+  #map-filters select {
+    position: absolute;
+    left: 100px;
+    width: 150px;
+    height: 32px;
+    background-color: white;
+    border-radius: 0;
   }
 
   option {
@@ -82,19 +94,6 @@
 
   }
 
-  .selected {
-    background-color: gray;
-    color: white;
-  }
-
-  button {
-    font-size: 14px;
-    margin: 5px;
-    background-color: white;
-    color: black;
-    border-radius: 4px;
-    border: 2px solid rgba(0,0,0,.5);
-  }
 
   #rating-form {
     text-align: left;
@@ -142,7 +141,7 @@
 }
 
 .mainRight {
-  background-color: gold;;
+  background-color: gold;
 }
 
 .m-top-three {
@@ -180,6 +179,7 @@
 }
 
 
+
 .linky{
   background-color: blue;
   height: 6vh;
@@ -215,4 +215,23 @@ textarea {
   width: 100vw;
   padding: 10vh;
   background-color: RGB(30, 144, 255);
+
+#rating-form input[type='submit'] {
+  margin: 10px;
+  float: center;
+}
+
+#loading {
+  position: absolute;
+  z-index: 2000;
+  left: 50%;
+  top: 200px;
+}
+
+#loading h1 {
+  font-size: 36px;
+}
+#loading h5 {
+  font-size: 18px;
+
 }

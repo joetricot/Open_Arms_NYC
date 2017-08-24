@@ -20,7 +20,7 @@ mealRoutes.get('/:id',mealController.show,(req,res) => {
 		res.json({
 			data: data,
 		});
-	}).catch(err => console.log(err));	
+	}).catch(err => console.log(err));
 });
 
 mealRoutes.get('/:id/rating',mealController.getRating);

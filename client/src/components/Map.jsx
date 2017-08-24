@@ -3,12 +3,21 @@ import {
 	Map, 
 	Marker, 
 	Popup, 
-	TileLayer 
+	TileLayer,
 } from 'react-leaflet';
 
 import axios from 'axios';
-import Comments from './Comments';
-import Details from './Details';
+import { Icon } from 'leaflet';
+
+import foodPin from '../food-pin.svg';
+
+const foodIcon = new Icon({
+	iconUrl: foodPin,
+	iconSize: [35,95],
+	iconAnchor: [22,94],
+	popupAnchor: [-3,-76],
+});
+
 
 class MyMap extends Component {
 	constructor() {
@@ -21,7 +30,6 @@ class MyMap extends Component {
 			dropinDataLoaded: false,
 			mealLocations: null,
 			mealDataLoaded: false,
-			filter: 'homebase',
 			currentLocation: null,
 			currentRating: null,
 		}
@@ -32,80 +40,74 @@ class MyMap extends Component {
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
 		this.getMeals = this.getMeals.bind(this);
+		this.getShelter = this.getShelter.bind(this);
+		this.handleFilterChange = this.handleFilterChange.bind(this);
+		this.renderLoading = this.renderLoading.bind(this);
+		this.renderMeals = this.renderMeals.bind(this);
 	}
 
 	componentDidMount() {
-		console.log('did mount');
+		console.log('map did mount');
+		this.getMeals();
 	}
 
 	getHomebaseCenters() {
-		//toggle filter
-		if (this.state.homebaseDataLoaded) {
-			this.setState({
-					homebaseLocations: null,
-					homebaseDataLoaded: false,
-			});
-		} else {
-			let homebases = [];
-			for (let i=0; i<2; i++) {
-				axios.get('/homebase/' + i)
-				.then(res => {
-					homebases.push(res.data.data);
-					this.setState({
-						homebaseLocations: homebases,
-						homebaseDataLoaded: true,
-					})
-				}).catch(err => console.log(err));
-			}
+		let homebases = [];
+		for (let i=0; i<2; i++) {
+			axios.get('/homebase/' + i)
+			.then(res => {
+				homebases.push(res.data.data);
+				this.setState({
+					homebaseLocations: homebases,
+					homebaseDataLoaded: true,
+				})
+			}).catch(err => console.log(err));
 		}
 	}
 
 	getDropInCenters() {
-		//toggle filter 
-		if (this.state.dropinDataLoaded) {
-			this.setState({
-					dropinLocations: null,
-					dropinDataLoaded: false,
-			});
-		} else {
-			let dropins = []
-			for (let i=0; i< 2; i++) {
-				axios.get('/dropins/' + i)
-				.then(res => {
-					dropins.push(res.data.data);
-					this.setState({
-						dropinLocations: dropins,
-						dropinDataLoaded: true,
-					});
-				}).catch(err => console.log(err));
-			}
+		let dropins = []
+		for (let i=0; i< 2; i++) {
+			axios.get('/dropins/' + i)
+			.then(res => {
+				dropins.push(res.data.data);
+				this.setState({
+					dropinLocations: dropins,
+					dropinDataLoaded: true,
+				});
+			}).catch(err => console.log(err));
 		}
 	}
 
+	getShelter() {
+		this.setState({
+			mealDataLoaded: false,
+		});
+		this.getDropInCenters();
+		this.getHomebaseCenters();
+	}
+
 	getMeals() {
-		if (this.state.mealDataLoaded) {
-			this.setState({
-				mealLocations: null,
-				mealDataLoaded: false,
+		this.setState({
+				homebaseDataLoaded: false,
+				dropinDataLoaded: false,
 			});
-		} else {
-			let meals = [];
-			for (let i=0;i<112;i++) {
-				axios.get('/meals/' + i)
-				.then(res => {
-					meals.push(res.data.data);
-					this.setState({
-						mealLocations: meals,
-						mealDataLoaded: true,
-					});
-				}).catch(err => console.log(err));
-			}
+		let meals = [];
+		for (let i=1;i<112;i++) {
+			axios.get('/meals/' + i)
+			.then(res => {
+				meals.push(res.data.data);
+				this.setState({
+					mealLocations: meals,
+					mealDataLoaded: true,
+				});
+			}).catch(err => console.log(err));
 		}
 	}
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.lat,homebase.lng]} key={homebase.bin} 
+			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id} 
 			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>
@@ -134,7 +136,7 @@ class MyMap extends Component {
 
 	createMealPopup(meal) {
 		return (
-			<Marker position={[meal.lat,meal.lng]} key={meal.id}
+			<Marker position={[meal.lat,meal.lng]} icon={foodIcon} key={meal.id}
 			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
 				<Popup className='meal'>
 					<div>
@@ -147,23 +149,49 @@ class MyMap extends Component {
 		)
 	}
 
+	handleFilterChange(e) {
+		if (e.target.value === 'shelter') {
+			this.getShelter();
+		} else if (e.target.value === 'meals') {
+			this.getMeals();
+		}
+	}
+
+	renderLoading() {
+		return(
+			<div id='loading'>
+				<h1><i className="fa fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i></h1>
+				<h5>loading data</h5>
+			</div>
+		)
+	}
+
+	renderMeals() {
+		if (this.state.mealLocations.length < 100) {
+			console.log('loading')
+			return this.renderLoading();
+		} else {
+			return this.state.mealLocations.map(this.createMealPopup);
+		}		
+	}
+
 	render() {
 		return(
 			<div>
 				<div id='map-filters'>
-					<button onClick={this.getMeals} 
-					className={this.state.mealDataLoaded ? 'selected' : ''}>Free Meals</button>
-					<button onClick={this.getHomebaseCenters} 
-					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Homebases</button>
-					<button onClick={this.getDropInCenters}
-					className={this.state.dropinDataLoaded ? 'selected' : ''}>Dropin Centers</button>
+					<span>Services</span>
+					<select name="filter" onChange={this.handleFilterChange}>
+						<option value="meals">Free Meals</option>
+						<option value="shelter">Shelters</option>
+					</select>
+					
 				</div>
-				<Map center={this.state.position} zoom={13} id='map'>
+				<Map center={this.state.position} zoom={14} id='map'>
 					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' 
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
-					{this.state.mealDataLoaded ? this.state.mealLocations.map(this.createMealPopup) : ''}
+					{this.state.mealDataLoaded ? this.renderMeals() : ''}
 				</Map>
 			</div>
 		)

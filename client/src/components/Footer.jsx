@@ -15,7 +15,7 @@ class Footer extends Component {
                         <div>
                             <a className="btn btn-outline-warning btn-sm" href="#">DONATE</a>
                         </div>
-                </nav>      
+                </nav>
                 </div>
             </footer>
         )
