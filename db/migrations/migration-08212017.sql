@@ -24,3 +24,8 @@ CREATE TABLE IF NOT EXISTS homebase_ratings (
 	location_id INT,
 	rating INT
 );
+
+CREATE TABLE IF NOT EXISTS meal_ratings (
+    location_id INT,
+    rating INT
+);

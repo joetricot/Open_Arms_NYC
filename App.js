@@ -34,6 +34,9 @@ app.use('/dropins',dropInRoutes);
 const homebaseRoutes = require('./routes/homebase-routes');
 app.use('/homebase',homebaseRoutes);
 
+const mealRoutes = require('./routes/meal-routes');
+app.use('/meals',mealRoutes);
+
 //error handler
 app.use('*', (req,res) => {
 	res.status(400).json({
