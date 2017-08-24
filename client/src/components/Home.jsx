@@ -77,7 +77,7 @@ class Home extends Component {
             {/* <Main /> 
             <Details />
             <Comments /> */}
-            <Navigation />
+            {/* <Navigation /> */}
             <MapHolder selectLocation={this.selectLocation} />
             {this.renderBody()}
         </div>
