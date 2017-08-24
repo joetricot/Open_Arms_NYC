@@ -37,7 +37,6 @@ class About extends Component {
                         <br/>
                     <span className="blue">Open Arms NYC</span> is a project started by students at General Assembly's Web Development Immersive<br/>
                     course in NYC.<br/><br/>
-
                     This application is an educational and not-for-profit service.
 
                 </h4>
