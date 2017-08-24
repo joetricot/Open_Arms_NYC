@@ -13,11 +13,11 @@ class Jobs extends Component {
                 <div className="media">
                 <div className="media-left">
                 <a href="#">
-                <img className="media-object" src="..." alt="..."/>
+                <img className="media-object " src="favicon.ico" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
-                <h4 className="media-heading">Media heading</h4>
+                <h4 className="media-heading">Media heading 1</h4>
                 ...
                 </div>
                 </div>
@@ -30,11 +30,11 @@ class Jobs extends Component {
                 <div className="media">
                 <div className="media-right">
                 <a href="#">
-                <img className="media-object" src="..." alt="..."/>
+                <img className="media-object" src="favicon.ico" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
-                <h4 className="media-heading">Media heading</h4>
+                <h4 className="media-heading">Media heading 2</h4>
                 ...
                 </div>
                 </div>
@@ -47,11 +47,11 @@ class Jobs extends Component {
                 <div className="media">
                 <div className="media-left">
                 <a href="#">
-                <img className="media-object" src="..." alt="..."/>
+                <img className="media-object" src="favicon.ico" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
-                <h4 className="media-heading">Media heading</h4>
+                <h4 className="media-heading">Media heading 3</h4>
                 ...
                 </div>
                 </div>
@@ -64,11 +64,11 @@ class Jobs extends Component {
                 <div className="media">
                 <div className="media-right">
                 <a href="#">
-                <img className="media-object" src="..." alt="..."/>
+                <img className="media-object" src="favicon.ico" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
-                <h4 className="media-heading">Media heading</h4>
+                <h4 className="media-heading">Media heading 4</h4>
                 ...
                 </div>
                 </div>
