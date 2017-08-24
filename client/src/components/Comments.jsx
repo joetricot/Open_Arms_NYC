@@ -1,24 +1,84 @@
 import React, { Component} from 'react';
+import axios from 'axios';
 
-class Comments extends Component{
+class Comments extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userRating: null,
+      ratingSubmitted: false,
+    }
+    this.submitRating = this.submitRating.bind(this);
+    this.hasRatedMessage = this.hasRatedMessage.bind(this);
+  }
 
-    render() {
-        return (
-            <div className="comments bg-warning col-sm-4 col-sm-12">
-                <select className="bg-primary form-control">
-                    <option>I would not reccomend this place.</option>
-                    <option>This place was so-so.</option>
-                    <option>This place was decent.</option>
-                    <option>This place was better than most.</option>
-                    <option>This was the best place I've been to.</option>
-                </select>
-                <ol>
-                    <li>1 THIS IS THE COMMENT AREA</li>  
-                    <li>2 THIS IS THE COMMENT AREA</li>       
-                    <li>3 THIS IS THE COMMENT AREA</li> 
-                    <li>4 THIS IS THE COMMENT AREA</li> 
-                </ol>
-            </div>
+  componentDidMount() {
+    console.log('comment did mount')
+  }
+
+  submitRating(e) {
+    e.preventDefault();
+    let userRating = e.target.rating.value;
+    this.setState({
+      userRating: userRating,
+      ratingSubmitted: true,
+        });
+    axios.post(`${this.props.locationUrl}/rating`, {
+      rating: userRating,
+    }).then(() => {
+       
+    }).catch(err => console.log(err));
+  }
+
+  hasRatedMessage() {
+    if (this.state.ratingSubmitted) {
+      document.getElementById('rating-form').remove();
+      return (
+        <div>
+          <h4>Thank you for rating</h4>
+          <p>your rating: {"★".repeat(this.state.userRating)}</p>
+        </div>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <div className="comments bg-warning col-sm-4 col-sm-12">
+        <h3>Rate this place</h3>
+        <h4>{this.props.locationUrl}</h4>
+        <h4>{this.props.rating ? "★".repeat(this.props.rating) : 'no ratings yet'}</h4>
+
+        <form id='rating-form' onSubmit={this.submitRating}>
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='1' value={1} />
+          <label for='1'>I would not reccomend this place.</label>
+          </div>
+
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='2' value={2} />
+          <label for='2'>This place was so-so.</label>
+          </div>
+
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='3' value={3} />
+          <label for='3'>This place was decent.</label>
+          </div>
+
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='4' value={4} />
+          <label for='4'>This place was better than most.</label>
+          </div>
+
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='5' value={5} />
+          <label for='5'>This was the best place Ive been to.</label>
+          </div>
+
+          <input type='submit' value='submit' disabled={this.state.ratingSubmitted}/>
+        </form>
+          {this.hasRatedMessage()}
+        </div>
         )
     }
 }

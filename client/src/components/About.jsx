@@ -67,6 +67,6 @@ class About extends Component {
                 </Grid>
             </div>
         );
-    };    
+    };
 }
 export default About;
