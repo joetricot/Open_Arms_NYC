@@ -2,17 +2,17 @@
 
 CREATE TABLE free_meals (
     Id INT,
-    Name VARCHAR(49), 
-    Address VARCHAR(67),
-    Zip_Code VARCHAR(20),
-    Website VARCHAR(118),
-    Phone_Number VARCHAR(15),
-    Senior_Citizens_Only_60 VARCHAR(5),
-    Breakfast VARCHAR(31),
-    Lunch VARCHAR(28),
-    Dinner VARCHAR(29),
-    Neighborhood VARCHAR(26),
-    Description VARCHAR(1585)
+    Name VARCHAR(255),
+    Address VARCHAR(255),
+    Zip_Code VARCHAR(255),
+    Website VARCHAR(255),
+    Phone_Number VARCHAR(255),
+    Senior_Citizens_Only_60 VARCHAR(255),
+    Breakfast VARCHAR(255),
+    Lunch VARCHAR(255),
+    Dinner VARCHAR(255),
+    Neighborhood VARCHAR(255),
+    Description VARCHAR(5000)
 );
 
 CREATE TABLE IF NOT EXISTS dropin_ratings (
