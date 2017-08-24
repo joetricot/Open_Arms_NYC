@@ -13,8 +13,11 @@ class Home extends Component {
     this.state = {
       locationUrl: null,
       rating: null,
+      locationData: null,
+      locationDataLoaded: null,
     }
     this.selectLocation = this.selectLocation.bind(this);
+    //this.getLocationData = this.getLocationData.bind(this);
   }
 
   selectLocation(location) {
@@ -22,6 +25,7 @@ class Home extends Component {
       locationUrl: location,
       rating: null,
     });
+    //get rating
     axios.get(`${location}/rating`)
     .then(res => {
       this.setState({
@@ -35,7 +39,7 @@ class Home extends Component {
         <div className="Home">
             <Navigation />
             <MapHolder selectLocation={this.selectLocation} />
-            <Main />
+            <Main locationUrl={this.state.locationUrl}/>
             <Details locationUrl={this.state.locationUrl} />
             <Comments locationUrl={this.state.locationUrl} rating={this.state.rating}/>
         </div>
