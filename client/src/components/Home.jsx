@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Main from './Main'
-// import Footer from './Footer';
+import Footer from './Footer';
 import Comments from './Comments';
 import Details from './Details';
 import Navigation from './Navigation';
@@ -63,10 +63,10 @@ class Home extends Component {
   render() {
     return (
         <div className="Home">
-            {/* <Main /> 
+            {/* <Main />
             <Details />
             <Comments /> */}
-            <Navigation />
+            // <Navigation />
             <MapHolder selectLocation={this.selectLocation} />
             {this.renderBody()}
         </div>
