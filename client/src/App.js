@@ -12,14 +12,6 @@ import {
 } from 'react-router-dom';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      currentLocation: null,
-      currentRating: null,
-    }
-  }
-
   render() {
     return (
       <Router>

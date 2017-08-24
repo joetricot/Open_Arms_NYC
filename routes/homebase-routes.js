@@ -23,7 +23,7 @@ homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 			neighborhood: homebase.neighborhood,
 			lat: homebase.latitude,
 			lng: homebase.longitude,
-			phone: homebase.phone_number,
+			phone_number: homebase.phone_number,
 			office: homebase.homebase_office,
 		}
 	});

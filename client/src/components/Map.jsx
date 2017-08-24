@@ -90,7 +90,7 @@ class MyMap extends Component {
 			});
 		} else {
 			let meals = [];
-			for (let i=0;i<112;i++) {
+			for (let i=1;i<112;i++) {
 				axios.get('/meals/' + i)
 				.then(res => {
 					meals.push(res.data.data);
@@ -100,6 +100,7 @@ class MyMap extends Component {
 					});
 				}).catch(err => console.log(err));
 			}
+			
 		}
 	}
 

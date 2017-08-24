@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Main from './Main'
-import Footer from './Footer';
+//import Main from './Main'
+//import Footer from './Footer';
 import Comments from './Comments';
 import Details from './Details';
 import Navigation from './Navigation';
@@ -13,8 +13,15 @@ class Home extends Component {
     this.state = {
       locationUrl: null,
       rating: null,
+      data: null,
+      locationDataLoaded: null
     }
     this.selectLocation = this.selectLocation.bind(this);
+    this.renderBody = this.renderBody.bind(this);
+  }
+
+  componentDidMount() {
+    console.log('home did mount')
   }
 
   selectLocation(location) {
@@ -22,6 +29,28 @@ class Home extends Component {
       locationUrl: location,
       rating: null,
     });
+
+    //get location data
+    axios.get(location)
+    .then(res => {
+      console.log("**** GET LOCATION DATA ****",res.data)
+      let category;
+      //set category
+      if (location.includes('meals')) {
+        category = 'meal';
+      } else if (location.includes('dropins')) {
+        category = 'dropin';
+      } else {
+        category = 'homebase';
+      }
+      this.setState({
+        data: res.data.data,
+        category: category,
+        locationDataLoaded: true,
+      });
+    })
+
+    //get rating
     axios.get(`${location}/rating`)
     .then(res => {
       this.setState({
@@ -30,14 +59,23 @@ class Home extends Component {
     }).catch(err => console.log(err));
   }
 
+  renderBody() {
+    if (this.state.locationDataLoaded) {
+      return (
+        <div>
+        <Details data={this.state.data} category={this.state.category} />
+        <Comments data={this.state.data} rating={this.state.rating} />
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
         <div className="Home">
             <Navigation />
             <MapHolder selectLocation={this.selectLocation} />
-            <Main />
-            <Details locationUrl={this.state.locationUrl} />
-            <Comments locationUrl={this.state.locationUrl} rating={this.state.rating}/>
+            {this.renderBody()}
         </div>
     );
   }
