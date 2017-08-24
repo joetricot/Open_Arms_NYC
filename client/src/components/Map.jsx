@@ -42,6 +42,8 @@ class MyMap extends Component {
 		this.getMeals = this.getMeals.bind(this);
 		this.getShelter = this.getShelter.bind(this);
 		this.handleFilterChange = this.handleFilterChange.bind(this);
+		this.renderLoading = this.renderLoading.bind(this);
+		this.renderMeals = this.renderMeals.bind(this);
 	}
 
 	componentDidMount() {
@@ -155,6 +157,24 @@ class MyMap extends Component {
 		}
 	}
 
+	renderLoading() {
+		return(
+			<div id='loading'>
+				<h1><i className="fa fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i></h1>
+				<h5>loading data</h5>
+			</div>
+		)
+	}
+
+	renderMeals() {
+		if (this.state.mealLocations.length < 100) {
+			console.log('loading')
+			return this.renderLoading();
+		} else {
+			return this.state.mealLocations.map(this.createMealPopup);
+		}		
+	}
+
 	render() {
 		return(
 			<div>
@@ -166,12 +186,12 @@ class MyMap extends Component {
 					</select>
 					
 				</div>
-				<Map center={this.state.position} zoom={13} id='map'>
+				<Map center={this.state.position} zoom={14} id='map'>
 					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' 
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
-					{this.state.mealDataLoaded ? this.state.mealLocations.map(this.createMealPopup) : ''}
+					{this.state.mealDataLoaded ? this.renderMeals() : ''}
 				</Map>
 			</div>
 		)
