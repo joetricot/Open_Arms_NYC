@@ -45,77 +45,61 @@ class MyMap extends Component {
 	}
 
 	componentDidMount() {
-		console.log('did mount');
+		console.log('map did mount');
+		this.getMeals();
 	}
 
 	getHomebaseCenters() {
-		//toggle filter
-		if (this.state.homebaseDataLoaded) {
-			this.setState({
-					homebaseLocations: null,
-					homebaseDataLoaded: false,
-			});
-		} else {
-			let homebases = [];
-			for (let i=0; i<2; i++) {
-				axios.get('/homebase/' + i)
-				.then(res => {
-					homebases.push(res.data.data);
-					this.setState({
-						homebaseLocations: homebases,
-						homebaseDataLoaded: true,
-					})
-				}).catch(err => console.log(err));
-			}
+		let homebases = [];
+		for (let i=0; i<2; i++) {
+			axios.get('/homebase/' + i)
+			.then(res => {
+				homebases.push(res.data.data);
+				this.setState({
+					homebaseLocations: homebases,
+					homebaseDataLoaded: true,
+				})
+			}).catch(err => console.log(err));
 		}
 	}
 
 	getDropInCenters() {
-		//toggle filter 
-		if (this.state.dropinDataLoaded) {
-			this.setState({
-					dropinLocations: null,
-					dropinDataLoaded: false,
-			});
-		} else {
-			let dropins = []
-			for (let i=0; i< 2; i++) {
-				axios.get('/dropins/' + i)
-				.then(res => {
-					dropins.push(res.data.data);
-					this.setState({
-						dropinLocations: dropins,
-						dropinDataLoaded: true,
-					});
-				}).catch(err => console.log(err));
-			}
+		let dropins = []
+		for (let i=0; i< 2; i++) {
+			axios.get('/dropins/' + i)
+			.then(res => {
+				dropins.push(res.data.data);
+				this.setState({
+					dropinLocations: dropins,
+					dropinDataLoaded: true,
+				});
+			}).catch(err => console.log(err));
 		}
 	}
 
 	getShelter() {
+		this.setState({
+			mealDataLoaded: false,
+		});
 		this.getDropInCenters();
 		this.getHomebaseCenters();
 	}
 
 	getMeals() {
-		if (this.state.mealDataLoaded) {
-			this.setState({
-				mealLocations: null,
-				mealDataLoaded: false,
+		this.setState({
+				homebaseDataLoaded: false,
+				dropinDataLoaded: false,
 			});
-		} else {
-			let meals = [];
-			for (let i=1;i<112;i++) {
-				axios.get('/meals/' + i)
-				.then(res => {
-					meals.push(res.data.data);
-					this.setState({
-						mealLocations: meals,
-						mealDataLoaded: true,
-					});
-				}).catch(err => console.log(err));
-			}
-			
+		let meals = [];
+		for (let i=1;i<112;i++) {
+			axios.get('/meals/' + i)
+			.then(res => {
+				meals.push(res.data.data);
+				this.setState({
+					mealLocations: meals,
+					mealDataLoaded: true,
+				});
+			}).catch(err => console.log(err));
 		}
 	}
 
@@ -193,12 +177,5 @@ class MyMap extends Component {
 		)
 	}
 }
-
-/* 
-<button onClick={this.getMeals} 
-					className={this.state.mealDataLoaded ? 'selected' : ''}>Free Meals</button>
-					<button onClick={this.getShelter} 
-					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Shelter</button>
-*/
 
 export default MyMap;
