@@ -8,7 +8,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    console.log('main did mount') 
+    console.log('main did mount')
   }
 
   render() { 
