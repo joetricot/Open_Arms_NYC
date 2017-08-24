@@ -6,7 +6,6 @@ body {
 
 .details {
   overflow: hidden;
-  overflow-y: scroll;
   height: 60vh;
 }
 
@@ -236,3 +235,4 @@ button {
   padding: 1.5em 0;
   color: rgb(255, 255, 255);
 }
+

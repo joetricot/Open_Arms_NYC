@@ -1,5 +1,7 @@
 const express = require('express');
 const homebaseRoutes = express.Router();
+const shelterController = require('../controllers/shelter-controller');
+const API_KEY = process.env.API_KEY;
 
 const apiHelper = require('../services/api-helpers');
 
@@ -15,18 +17,21 @@ homebaseRoutes.get('/:id', apiHelper.getHomebases, (req,res) => {
 	res.json({
 		message: 'ok',
 		data: {
+			id: req.params.id,
 			address: homebase.address,
-			zipcode: homebase.postcode,
+			hours: null,
 			neighborhood: homebase.neighborhood,
 			lat: homebase.latitude,
 			lng: homebase.longitude,
-			phone: homebase.phone_number,
+			phone_number: homebase.phone_number,
 			office: homebase.homebase_office,
 		}
-		
+	});
+});
 
-	})
-})
+
+homebaseRoutes.get('/:id/rating', shelterController.getHomebaseRating);
+homebaseRoutes.post('/:id/rating', shelterController.addHomebaseRating);
 
 module.exports = homebaseRoutes;
 
