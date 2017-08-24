@@ -310,3 +310,8 @@ textarea {
   padding: 1.5em 0;
   color: rgb(255, 255, 255);
 }
+
+.media-object {
+height: 20vh;
+width: 20vw;  
+}

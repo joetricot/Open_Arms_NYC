@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {
-	Map, 
-	Marker, 
-	Popup, 
+	Map,
+	Marker,
+	Popup,
 	TileLayer,
 } from 'react-leaflet';
 
@@ -107,7 +107,7 @@ class MyMap extends Component {
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id} 
+			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id}
 			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>
@@ -132,7 +132,7 @@ class MyMap extends Component {
 				</Popup>
 			</Marker>
 		)
-	} 
+	}
 
 	createMealPopup(meal) {
 		return (
@@ -172,7 +172,7 @@ class MyMap extends Component {
 			return this.renderLoading();
 		} else {
 			return this.state.mealLocations.map(this.createMealPopup);
-		}		
+		}
 	}
 
 	render() {
@@ -184,10 +184,10 @@ class MyMap extends Component {
 						<option value="meals">Free Meals</option>
 						<option value="shelter">Shelters</option>
 					</select>
-					
+
 				</div>
 				<Map center={this.state.position} zoom={14} id='map'>
-					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' 
+					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
