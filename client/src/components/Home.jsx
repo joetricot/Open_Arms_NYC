@@ -13,11 +13,10 @@ class Home extends Component {
     this.state = {
       locationUrl: null,
       rating: null,
-      locationData: null,
-      locationDataLoaded: null,
+      data: null,
+      locationDataLoaded: null
     }
     this.selectLocation = this.selectLocation.bind(this);
-    //this.getLocationData = this.getLocationData.bind(this);
   }
 
   selectLocation(location) {
@@ -25,6 +24,27 @@ class Home extends Component {
       locationUrl: location,
       rating: null,
     });
+
+    //get location data
+    axios.get(location)
+    .then(res => {
+      console.log("**** GET LOCATION DATA ****",res.data)
+      let category;
+      //set category
+      if (location.includes('meals')) {
+        category = 'meal';
+      } else if (location.includes('dropins')) {
+        category = 'dropin';
+      } else {
+        category = 'homebase';
+      }
+      this.setState({
+        data: res.data.data,
+        category: category,
+        locationDataLoaded: true,
+      });
+    })
+
     //get rating
     axios.get(`${location}/rating`)
     .then(res => {

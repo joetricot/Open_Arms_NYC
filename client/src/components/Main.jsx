@@ -9,14 +9,9 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    console.log('main did mount') {
-    axios.get(this.props.locationUrl)
-    .then(res => {
-      console.log(res.data);
-      
-    })
-    }
+    console.log('main did mount') 
   }
+
 
   render() { 
     return (
