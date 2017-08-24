@@ -141,7 +141,7 @@
 }
 
 .mainRight {
-  background-color: gold;;
+  background-color: gold;
 }
 
 .m-top-three {
@@ -177,3 +177,9 @@
 .blue{
   color: rgba(0, 191, 255, 1)
 }
+
+#rating-form input[type='submit'] {
+  margin: 10px;
+  float: center;
+}
+

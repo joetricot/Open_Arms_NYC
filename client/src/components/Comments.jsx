@@ -4,7 +4,12 @@ import axios from 'axios';
 class Comments extends Component {
   constructor() {
     super();
+    this.state = {
+      userRating: null,
+      ratingSubmitted: false,
+    }
     this.submitRating = this.submitRating.bind(this);
+    this.hasRatedMessage = this.hasRatedMessage.bind(this);
   }
 
   componentDidMount() {
@@ -13,9 +18,28 @@ class Comments extends Component {
 
   submitRating(e) {
     e.preventDefault();
+    let userRating = e.target.rating.value;
+    this.setState({
+      userRating: userRating,
+      ratingSubmitted: true,
+        });
     axios.post(`${this.props.locationUrl}/rating`, {
-      rating: e.target.rating.value
+      rating: userRating,
+    }).then(() => {
+       
     }).catch(err => console.log(err));
+  }
+
+  hasRatedMessage() {
+    if (this.state.ratingSubmitted) {
+      document.getElementById('rating-form').remove();
+      return (
+        <div>
+          <h4>Thank you for rating</h4>
+          <p>your rating: {"★".repeat(this.state.userRating)}</p>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -25,51 +49,38 @@ class Comments extends Component {
         <h4>{this.props.locationUrl}</h4>
         <h4>{this.props.rating ? "★".repeat(this.props.rating) : 'no ratings yet'}</h4>
 
-        <form onSubmit={this.submitRating}>
-        <select name='rating' onChange={this.handleRatingChange}>
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
-          <option value='4'>4</option>
-          <option value='5'>5</option>
+        <form id='rating-form' onSubmit={this.submitRating}>
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='1' value={1} />
+          <label for='1'>I would not reccomend this place.</label>
+          </div>
 
-        </select>
-        <button type='submit'>Submit</button>
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='2' value={2} />
+          <label for='2'>This place was so-so.</label>
+          </div>
+
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='3' value={3} />
+          <label for='3'>This place was decent.</label>
+          </div>
+
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='4' value={4} />
+          <label for='4'>This place was better than most.</label>
+          </div>
+
+          <div className='rating-input'>
+          <input name='rating' type='radio' id='5' value={5} />
+          <label for='5'>This was the best place Ive been to.</label>
+          </div>
+
+          <input type='submit' value='submit' disabled={this.state.ratingSubmitted}/>
         </form>
-        
+          {this.hasRatedMessage()}
         </div>
         )
     }
 }
-/*
-<form id='rating-form' onClick={this.submitRating} >
-          <label>
-          <input type='checkbox' value="1"/>
-          I would not reccomend this place.
-          </label>
-
-          <label>
-          <input type='checkbox' value="2" />
-          this place was so-so.
-          </label>
-
-          <label>
-          <input type='checkbox' value="3" />
-          This place was decent.
-          </label>
-
-          <label>
-          <input type='checkbox' value="4" />
-          This place was better than most.
-          </label>
-
-          <label>
-          <input type='checkbox' value="5"/>
-          This was the best place Ive been to.
-          </label>
-
-          <input type='submit' value='submit' />
-        </form>
-*/
 
 export default Comments;
