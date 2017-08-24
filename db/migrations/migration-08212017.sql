@@ -16,13 +16,13 @@ CREATE TABLE free_meals (
 );
 
 CREATE TABLE IF NOT EXISTS dropin_ratings (
-	location_id INT,
-	rating INT
+    location_id INT,
+    rating INT
 );
 
 CREATE TABLE IF NOT EXISTS homebase_ratings (
-	location_id INT,
-	rating INT
+    location_id INT,
+    rating INT
 );
 
 CREATE TABLE IF NOT EXISTS meal_ratings (
