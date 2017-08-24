@@ -68,23 +68,40 @@
     margin-left: 50px;
   }
 
-  #map-filters button{
+  #map-filters span {
+    background-color: #3B3B3B;
+    color: white;
+    font-size: 14;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: -5px;
+    z-index: -1;
+  }
+
+  #map-filters select {
+    width: 150px;
+    height: 32px;
+    background-color: white;
+    border-radius: 0;
+    z-index: 1001;
+  }
+
+  #map-filters button {
     background-color: black;
+    width: 120px;
     color: white;
     border: none;
     padding: 5px;
+    margin: 5px;
+    font-size: 14px;
+  }
+
+  #map-filters button:hover {
+    background-color: gray;
   }
 
   #map-filters .selected {
     color: rgba(0, 191, 255, 1);
-  }
-
-  #filter {
-    background-color: black;
-    color: white;
-    border-radius: 3px;
-    font-size: 14px;
-    padding: 10px;
   }
 
   option {
@@ -92,15 +109,6 @@
 
   }
 
-  
-
-  button {
-    font-size: 14px;
-    margin: 5px;
-    background-color: white;
-    color: black;
-    border-radius: 4px;
-  }
 
   #rating-form {
     text-align: left;

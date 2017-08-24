@@ -30,7 +30,6 @@ class MyMap extends Component {
 			dropinDataLoaded: false,
 			mealLocations: null,
 			mealDataLoaded: false,
-			filter: 'homebase',
 			currentLocation: null,
 			currentRating: null,
 		}
@@ -42,6 +41,7 @@ class MyMap extends Component {
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
 		this.getMeals = this.getMeals.bind(this);
 		this.getShelter = this.getShelter.bind(this);
+		this.handleFilterChange = this.handleFilterChange.bind(this);
 	}
 
 	componentDidMount() {
@@ -163,14 +163,24 @@ class MyMap extends Component {
 		)
 	}
 
+	handleFilterChange(e) {
+		if (e.target.value === 'shelter') {
+			this.getShelter();
+		} else if (e.target.value === 'meals') {
+			this.getMeals();
+		}
+	}
+
 	render() {
 		return(
 			<div>
 				<div id='map-filters'>
-					<button onClick={this.getMeals} 
-					className={this.state.mealDataLoaded ? 'selected' : ''}>Free Meals</button>
-					<button onClick={this.getShelter} 
-					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Shelter</button>
+					<span>Services</span>
+					<select name="filter" onChange={this.handleFilterChange}>
+						<option value="meals">Free Meals</option>
+						<option value="shelter">Shelters</option>
+					</select>
+					
 				</div>
 				<Map center={this.state.position} zoom={13} id='map'>
 					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' 
@@ -183,5 +193,12 @@ class MyMap extends Component {
 		)
 	}
 }
+
+/* 
+<button onClick={this.getMeals} 
+					className={this.state.mealDataLoaded ? 'selected' : ''}>Free Meals</button>
+					<button onClick={this.getShelter} 
+					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Shelter</button>
+*/
 
 export default MyMap;
