@@ -178,7 +178,21 @@
   color: rgba(0, 191, 255, 1)
 }
 
-#rating-form input[type='submit'] {
-  margin: 10px;
-  float: center;
+.nav {
+  height: 8vh;
+  width: 100vw;
+  background-color: black;
+  color: white;
+}
+
+.linky{
+  background-color: blue;
+  height: 6vh;
+}
+
+.contactPage {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 10vh;
 }
