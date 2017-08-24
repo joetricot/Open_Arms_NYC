@@ -15,8 +15,8 @@ class Details extends Component {
         <p className="col-sm-12">{this.props.data.description || ""}</p>
         {this.props.data.phone_number ? <h5>phone: {this.props.data.phone_number}</h5> : ''}
         {this.props.data.website ? <a href={this.props.data.website}>website</a> : ''}
-
       </div>
+
         )
     }
 }

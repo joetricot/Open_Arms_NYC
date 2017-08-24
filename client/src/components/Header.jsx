@@ -9,7 +9,7 @@
 //             <div>
 //                 <Link to="/">Home</Link>
 //                 <Link to="/About">About</Link>
-//             </div>    
+//             </div>
 //             </header>
 //         )
 //     }
