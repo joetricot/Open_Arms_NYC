@@ -4,6 +4,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+import Jobs from './components/Jobs';
 
 import {
   BrowserRouter as Router,
@@ -34,7 +35,7 @@ class App extends Component {
             <Navbar fixedTop>
               <Navbar.Header>
                 <Navbar.Brand>
-                  <Link to="/">Open Arms - NYC</Link>
+                  <Link to="/" className="navBar">Open Arms - NYC</Link>
                 </Navbar.Brand>
                 <Navbar.Toggle />
               </Navbar.Header>
@@ -43,6 +44,7 @@ class App extends Component {
                   <NavItem className="navBar" eventKey={1}><Link to="/" className="navBar">Home</Link></NavItem>
                   <NavItem className="navBar" eventKey={2}><Link to="/About" className="navBar">About</Link></NavItem>
                   <NavItem className="navBar" eventKey={3}><Link to="/Contact" className="navBar">Contact Us</Link></NavItem>
+                  <NavItem className="navBar" eventKey={4}><Link to="/Jobs" className="navBar">Job Opportunities</Link></NavItem>
                 </Nav>
               </Navbar.Collapse>
               </Navbar>
@@ -51,6 +53,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact}/>
+            <Route exact path="/jobs" component={Jobs}/>
           </div>
       </Router>
     );

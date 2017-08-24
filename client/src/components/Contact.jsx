@@ -15,6 +15,28 @@ class Contact extends Component {
             <textarea className="form-control commentsBox" rows="10"  placeholder="Ideas, Comments, Questions, or Suggestions Welcomed!"></textarea>
             <button type="submit" class="btn btn-default">Submit</button>
                 </div>
+                <div>
+                <h3>Additional Resources</h3>
+                
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div className="panel-body">
+                        Panel content
+                    </div>
+                    </div>
+  
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        <h3 className="panel-title">Panel title</h3>
+                    </div>
+                    <div className="panel-body">
+                        Panel content
+                    </div>
+                    </div>
+            
+                </div>
             </div>
         )
     }
