@@ -164,7 +164,7 @@ class MyMap extends Component {
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
-					{this.state.mealDataLoaded && this.state.mealLocations.length > 100 ? this.state.mealLocations.map(this.createMealPopup) : ''}
+					{this.state.mealDataLoaded ? this.state.mealLocations.map(this.createMealPopup) : ''}
 				</Map>
 			</div>
 		)
