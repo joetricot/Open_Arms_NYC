@@ -26,6 +26,6 @@ CREATE TABLE IF NOT EXISTS homebase_ratings (
 );
 
 CREATE TABLE IF NOT EXISTS meal_ratings (
-    location_id INT REFERENCES free_meals(id),
+    location_id INT,
     rating INT
 );

@@ -9,15 +9,16 @@ mealRoutes.get('/',mealController.index);
 mealRoutes.get('/:id',mealController.show,(req,res) => {
 	const meal = res.locals.data;
 	const address = meal.address;
-	const parsedAddress = address.split(' ').join('+');
+	const parsedAddress = address.split(' ').join('+') + "+Manhattan+NY";
 	fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${parsedAddress}&key=${API_KEY}`)
 	.then(res => res.json())
 	.then(jsonRes => {
 		let coords = jsonRes.results[0].geometry.location;
+		let data = meal;
+		data.lat = coords.lat;
+		data.lng = coords.lng;
 		res.json({
-			data: meal,
-			lat: coords.lat,
-			lng: coords.lng,
+			data: data,
 		});
 	}).catch(err => console.log(err));	
 });

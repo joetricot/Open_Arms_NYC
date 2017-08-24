@@ -19,6 +19,8 @@ class MyMap extends Component {
 			homebaseDataLoaded: false,
 			dropinLocations: null,
 			dropinDataLoaded: false,
+			mealLocations: null,
+			mealDataLoaded: false,
 			filter: 'homebase',
 			currentLocation: null,
 			currentRating: null,
@@ -26,25 +28,15 @@ class MyMap extends Component {
 
 		this.createHomebasePopup = this.createHomebasePopup.bind(this);
 		this.createDropinPopup = this.createDropinPopup.bind(this);
+		this.createMealPopup = this.createMealPopup.bind(this);
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
-		this.selectLocation = this.selectLocation.bind(this);
+		this.getMeals = this.getMeals.bind(this);
 	}
 
 	componentDidMount() {
 		console.log('did mount');
 	}
-
-	selectLocation(location) {
-		axios.get(`${location}/rating`)
-		.then(res => {
-			console.log('**************',res.data);
-			this.setState({
-      currentLocation: location,
-      rating: res.data.data,
-    	});
-		}).catch(err => console.log(err));;
-  }
 
 	getHomebaseCenters() {
 		//toggle filter
@@ -58,7 +50,6 @@ class MyMap extends Component {
 			for (let i=0; i<2; i++) {
 				axios.get('/homebase/' + i)
 				.then(res => {
-					//console.log(res.data.data);
 					homebases.push(res.data.data);
 					this.setState({
 						homebaseLocations: homebases,
@@ -81,27 +72,45 @@ class MyMap extends Component {
 			for (let i=0; i< 2; i++) {
 				axios.get('/dropins/' + i)
 				.then(res => {
-					//console.log(res.data.data)
 					dropins.push(res.data.data);
 					this.setState({
-						dropinLocations : dropins,
+						dropinLocations: dropins,
 						dropinDataLoaded: true,
-					})
+					});
 				}).catch(err => console.log(err));
 			}
 		}
-		
+	}
+
+	getMeals() {
+		if (this.state.mealDataLoaded) {
+			this.setState({
+				mealLocations: null,
+				mealDataLoaded: false,
+			});
+		} else {
+			let meals = [];
+			for (let i=0;i<112;i++) {
+				axios.get('/meals/' + i)
+				.then(res => {
+					meals.push(res.data.data);
+					this.setState({
+						mealLocations: meals,
+						mealDataLoaded: true,
+					});
+				}).catch(err => console.log(err));
+			}
+		}
 	}
 
 	createHomebasePopup(homebase) {
 		return (
 			<Marker position={[homebase.lat,homebase.lng]} key={homebase.bin} 
-			onClick={() => this.selectLocation(`/homebase/${homebase.id}`)}>
+			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='homebase'>
 					<div>
 					<h5>Homebase</h5>
 					<p>{homebase.address}</p>
-					<p>rating: {homebase}</p>
 					</div>
 				</Popup>
 			</Marker>
@@ -111,24 +120,39 @@ class MyMap extends Component {
 	createDropinPopup(dropin) {
 		return (
 			<Marker position={[dropin.lat,dropin.lng]} key={dropin.id}
-			onClick={() => this.selectLocation(`/dropins/${dropin.id}`)}>
+			onClick={() => this.props.selectLocation(`/dropins/${dropin.id}`)}>
 				<Popup className='dropin'>
 					<div>
 					<h5>Drop-in Center</h5>
 					<p>{dropin.name}</p>
 					<p>{dropin.address}</p>
-					<p>rating: {dropin.avgRating}</p>
 					</div>
 				</Popup>
 			</Marker>
 		)
 	} 
 
+	createMealPopup(meal) {
+		return (
+			<Marker position={[meal.lat,meal.lng]} key={meal.id}
+			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
+				<Popup className='meal'>
+					<div>
+					<h5>Free Meal</h5>
+					<p>{meal.name}</p>
+					<p>{meal.address}</p>
+					</div>
+				</Popup>
+			</Marker>
+		)
+	}
+
 	render() {
 		return(
 			<div>
 				<div id='map-filters'>
-					<button>Free Meals</button>
+					<button onClick={this.getMeals} 
+					className={this.state.mealDataLoaded ? 'selected' : ''}>Free Meals</button>
 					<button onClick={this.getHomebaseCenters} 
 					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Homebases</button>
 					<button onClick={this.getDropInCenters}
@@ -139,9 +163,8 @@ class MyMap extends Component {
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
+					{this.state.mealDataLoaded ? this.state.mealLocations.map(this.createMealPopup) : ''}
 				</Map>
-				<Details currentLocation={this.state.currentLocation}/>
-				<Comments currentLocation={this.state.currentLocation} rating={this.state.rating}/>
 			</div>
 		)
 	}
