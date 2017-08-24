@@ -74,9 +74,12 @@ class Home extends Component {
   render() {
     return (
         <div className="Home">
-            <Navigation />
             <MapHolder selectLocation={this.selectLocation} />
             {this.renderBody()}
+            <Main />
+            <Details />
+            <Comments />
+            <Navigation />
         </div>
     );
   }
