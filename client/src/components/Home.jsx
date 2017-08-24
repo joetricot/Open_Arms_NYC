@@ -11,12 +11,10 @@ class Home extends Component {
   render() {
     return (
         <div className="Home">
-            <Navigation />
             <MapHolder />
             <Main />
             <Details />
             <Comments />
-            <Footer />
         </div>
     );
   }
