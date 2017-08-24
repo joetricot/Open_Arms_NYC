@@ -3,7 +3,6 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 class Main extends Component {
-  
   constructor() {
     super();
   }
@@ -11,7 +10,6 @@ class Main extends Component {
   componentDidMount() {
     console.log('main did mount') 
   }
-
 
   render() { 
     return (
@@ -21,10 +19,10 @@ class Main extends Component {
             <Col className="mainLeft" xs={12} md={8}>
               <Row>
                 <Col xs={9}>
-                  <h4>Grand Central Food Program</h4>
+                  <h4>{this.props.data.name}</h4>
                 </Col>
                 <Col xs={3}>
-                  <h2>Col 2</h2>
+                  <h2></h2>
                 </Col>
               </Row>
             </Col>

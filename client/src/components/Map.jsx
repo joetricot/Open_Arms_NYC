@@ -90,7 +90,7 @@ class MyMap extends Component {
 			});
 		} else {
 			let meals = [];
-			for (let i=0;i<112;i++) {
+			for (let i=1;i<112;i++) {
 				axios.get('/meals/' + i)
 				.then(res => {
 					meals.push(res.data.data);
@@ -100,6 +100,7 @@ class MyMap extends Component {
 					});
 				}).catch(err => console.log(err));
 			}
+			
 		}
 	}
 
@@ -163,7 +164,7 @@ class MyMap extends Component {
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
 					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
-					{this.state.mealDataLoaded ? this.state.mealLocations.map(this.createMealPopup) : ''}
+					{this.state.mealDataLoaded && this.state.mealLocations.length > 100 ? this.state.mealLocations.map(this.createMealPopup) : ''}
 				</Map>
 			</div>
 		)
