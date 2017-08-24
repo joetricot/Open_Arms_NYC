@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Main from './Main'
-// import Footer from './Footer';
+import Footer from './Footer';
 import Comments from './Comments';
 import Details from './Details';
 import Navigation from './Navigation';
@@ -33,19 +33,8 @@ class Home extends Component {
     //get location data
     axios.get(location)
     .then(res => {
-      console.log("**** GET LOCATION DATA ****",res.data)
-      let category;
-      /*set category
-      if (location.includes('meals')) {
-        category = 'meal';
-      } else if (location.includes('dropins')) {
-        category = 'dropin';
-      } else {
-        category = 'homebase';
-      }*/
       this.setState({
         data: res.data.data,
-        //category: category,
         locationDataLoaded: true,
       });
     })
@@ -64,7 +53,7 @@ class Home extends Component {
       return (
         <div>
         <Details data={this.state.data} />
-        <Comments data={this.state.data} rating={this.state.rating} 
+        <Comments data={this.state.data} rating={this.state.rating}
         locationUrl={this.state.locationUrl} />
         </div>
       );
@@ -74,10 +63,10 @@ class Home extends Component {
   render() {
     return (
         <div className="Home">
-            {/* <Main /> 
+            {/* <Main />
             <Details />
             <Comments /> */}
-            <Navigation />
+            // <Navigation />
             <MapHolder selectLocation={this.selectLocation} />
             {this.renderBody()}
         </div>

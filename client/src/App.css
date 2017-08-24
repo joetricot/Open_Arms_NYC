@@ -1,30 +1,13 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+body {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: .1em;
 }
 
 .details {
   overflow: hidden;
+  overflow-y: scroll;
   height: 60vh;
 }
 
@@ -36,8 +19,8 @@
 
 .details_img {
   object-fit: contain;
-  width: 100vw;
-  height: 20vh;
+  width: 20px;
+  height: 20px;
   clear: both;
 }
 
@@ -63,44 +46,37 @@
 
   #map-filters {
     position: absolute;
-    top: 12vh;
+    top: 20px;
     z-index: 1000;
     margin-left: 50px;
   }
 
-  #filter {
-    background-color: #444444;
+  #map-filters span {
+    position: absolute;
+    left: 30px;
+    height: 32px;
+    background-color: #3B3B3B;
     color: white;
-    border-radius: 3px;
-    font-size: 14px;
-    padding: 10px;
+    font-size: 14;
+    padding: 6px 10px;
+    z-index: 3000;
+  }
+
+  #map-filters select {
+    position: absolute;
+    left: 100px;
+    width: 150px;
+    height: 32px;
+    background-color: white;
+    border-radius: 0;
   }
 
   option {
     padding: 10px;
-
-  }
-
-  .selected {
-    background-color: gray;
-    color: white;
-  }
-
-  button {
-    font-size: 14px;
-    margin: 5px;
-    background-color: white;
-    color: black;
-    border-radius: 4px;
-    border: 2px solid rgba(0,0,0,.5);
   }
 
   #rating-form {
     text-align: left;
-
-  }
-  label {
-    font-weight: normal;
   }
 
   #rating-form input {
@@ -148,11 +124,6 @@
   margin-top: 3.5em;
 }
 
-.footer {
-  margin-top: 1em;
-  padding: 2em;
-}
-
 .circle {
   height: 30vh;
   width: 30vw;
@@ -178,12 +149,6 @@
   color: rgba(0, 191, 255, 1)
 }
 
-.nav {
-  height: 8vh;
-  width: 100vw;
-  background-color: black;
-  color: white;
-}
 
 .linky{
   background-color: blue;
@@ -191,8 +156,155 @@
 }
 
 .contactPage {
-  height: 100vh;
+  height: 143vh;
   width: 100vw;
   margin: 0;
   padding: 10vh;
+  background-color: rgba(173, 216, 230, 1);
+  color: white;
+}
+
+.highlight::selection {
+  background-color: purple;
+  color: white;
+}
+
+textarea {
+  resize: none;
+}
+
+.navBar:hover {
+  background-color: RGB(30, 144, 255);
+  color: white;
+  text-decoration: none;
+  -webkit-transition: background-color 1s ease-out;
+}
+
+.jobs {
+  height: 100vh;
+  width: 100vw;
+  padding: 10vh;
+  background-color: RGB(30, 144, 255);
+}
+#rating-form input[type='submit'] {
+  margin: 10px;
+  float: center;
+}
+
+#loading {
+  position: absolute;
+  z-index: 2000;
+  left: 50%;
+  top: 200px;
+}
+
+#loading h1 {
+  font-size: 36px;
+}
+#loading h5 {
+  font-size: 18px;
+
+}
+
+.s-text {
+  font-style: italic;
+  font-size: .6em;
+  margin: 0 0 0 .5em;
+  color: #dcd7d7;
+}
+
+.blockquotes {
+  margin: 0 auto;
+}
+
+.blockquote {
+  position: relative;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 1.5em;
+  border-left-width: 0;
+  width: 380px;
+}
+
+.blockquote:before {
+  position: absolute;
+  content: "\201C";
+  display: block;
+  left: -.1em;
+  font-size: 3em;
+}
+
+.quotes {
+  background-color: rgb(255, 255, 250);
+  height: 250px;
+}
+
+.slider {
+  background: none;
+  background-image: none;
+}
+
+.carousel-control.right,
+.carousel-control.left {
+  background-image: none;
+  display: none;
+  border: none;
+}
+
+.carousel-top {
+  margin: 0 auto;
+  margin-top: 4em;
+}
+
+.about-content {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 2em;
+  height: 2em;
+  margin: -8px .5em 0 0;
+}
+
+.logo-nyc {
+  font-weight: lighter;
+  font-size: 1em;
+}
+
+.title {
+  font-weight: bolder;
+  text-align: center;
+}
+
+.title-base {
+  text-align: center;
+  font-weight: lighter;
+  font-size: 1.5em;
+  margin: 0;
+  margin-top: -.5em;
+}
+
+.center {
+  margin: 0 auto;
+  margin-top: 1em;
+  display: flex;
+}
+
+.footer {
+  background-color: rgb(255, 255, 250);
+  text-align: center;
+  font-weight: lighter;
+  font-size: .8em;
+}
+
+.props {
+  margin: 6em 0;
+  padding: 3em 0;
+}
+
+.copyright {
+  background-color: black;
+  padding: 1.5em 0;
+  color: rgb(255, 255, 255);
 }
