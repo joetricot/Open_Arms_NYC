@@ -41,6 +41,7 @@ class MyMap extends Component {
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
 		this.getMeals = this.getMeals.bind(this);
+		this.getShelter = this.getShelter.bind(this);
 	}
 
 	componentDidMount() {
@@ -89,6 +90,11 @@ class MyMap extends Component {
 				}).catch(err => console.log(err));
 			}
 		}
+	}
+
+	getShelter() {
+		this.getDropInCenters();
+		this.getHomebaseCenters();
 	}
 
 	getMeals() {
@@ -163,10 +169,8 @@ class MyMap extends Component {
 				<div id='map-filters'>
 					<button onClick={this.getMeals} 
 					className={this.state.mealDataLoaded ? 'selected' : ''}>Free Meals</button>
-					<button onClick={this.getHomebaseCenters} 
-					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Homebases</button>
-					<button onClick={this.getDropInCenters}
-					className={this.state.dropinDataLoaded ? 'selected' : ''}>Dropin Centers</button>
+					<button onClick={this.getShelter} 
+					className={this.state.homebaseDataLoaded ? 'selected' : ''}>Shelter</button>
 				</div>
 				<Map center={this.state.position} zoom={13} id='map'>
 					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' 

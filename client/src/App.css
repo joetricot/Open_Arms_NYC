@@ -63,13 +63,24 @@
 
   #map-filters {
     position: absolute;
-    top: 12vh;
+    top: 20px;
     z-index: 1000;
     margin-left: 50px;
   }
 
+  #map-filters button{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px;
+  }
+
+  #map-filters .selected {
+    color: rgba(0, 191, 255, 1);
+  }
+
   #filter {
-    background-color: #444444;
+    background-color: black;
     color: white;
     border-radius: 3px;
     font-size: 14px;
@@ -81,10 +92,7 @@
 
   }
 
-  .selected {
-    background-color: gray;
-    color: white;
-  }
+  
 
   button {
     font-size: 14px;
@@ -92,7 +100,6 @@
     background-color: white;
     color: black;
     border-radius: 4px;
-    border: 2px solid rgba(0,0,0,.5);
   }
 
   #rating-form {
