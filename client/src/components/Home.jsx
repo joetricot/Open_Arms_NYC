@@ -33,19 +33,8 @@ class Home extends Component {
     //get location data
     axios.get(location)
     .then(res => {
-      console.log("**** GET LOCATION DATA ****",res.data)
-      let category;
-      /*set category
-      if (location.includes('meals')) {
-        category = 'meal';
-      } else if (location.includes('dropins')) {
-        category = 'dropin';
-      } else {
-        category = 'homebase';
-      }*/
       this.setState({
         data: res.data.data,
-        //category: category,
         locationDataLoaded: true,
       });
     })

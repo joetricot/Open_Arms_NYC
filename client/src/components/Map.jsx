@@ -3,10 +3,21 @@ import {
 	Map, 
 	Marker, 
 	Popup, 
-	TileLayer 
+	TileLayer,
 } from 'react-leaflet';
 
 import axios from 'axios';
+import { Icon } from 'leaflet';
+
+import foodPin from '../food-pin.svg';
+
+const foodIcon = new Icon({
+	iconUrl: foodPin,
+	iconSize: [35,95],
+	iconAnchor: [22,94],
+	popupAnchor: [-3,-76],
+});
+
 
 class MyMap extends Component {
 	constructor() {
@@ -133,7 +144,7 @@ class MyMap extends Component {
 
 	createMealPopup(meal) {
 		return (
-			<Marker position={[meal.lat,meal.lng]} key={meal.id}
+			<Marker position={[meal.lat,meal.lng]} icon={foodIcon} key={meal.id}
 			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
 				<Popup className='meal'>
 					<div>
