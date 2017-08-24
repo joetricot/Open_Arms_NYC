@@ -22,9 +22,6 @@ class App extends Component {
             <Navbar fixedTop>
               <Navbar.Header>
                 <Navbar.Brand>
-
-                  <Link to="/" className="navBar">Open Arms - NYC</Link>
-
                   <Link to="/"><span><img src="/images/no-logo.png" className="logo" />Open Arms - <span className="logo-nyc">NYC</span></span></Link>
 
                 </Navbar.Brand>

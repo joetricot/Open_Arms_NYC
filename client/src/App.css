@@ -186,6 +186,7 @@ textarea {
   width: 100vw;
   padding: 10vh;
   background-color: RGB(30, 144, 255);
+}
 
 #rating-form input[type='submit'] {
   margin: 10px;
