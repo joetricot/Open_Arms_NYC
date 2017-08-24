@@ -5,36 +5,37 @@ class Jobs extends Component {
         return (
             <div className="jobs">
 
-            <h1>Joes awesome job info that will get anyone a job in one week or your money back.</h1>
+            <h1>Everyone Deserves a Fair Shot</h1>
+            <h3>Connecting people in need with effective placement programs is important for long-term stability and success.</h3>
         <div className="container">
         <div className="row">
             <div className="panel panel-default col-lg-12 col-lg-6">
             <div className="panel-body">
                 <div className="media">
                 <div className="media-left">
-                <a href="#">
-                <img className="media-object " src="favicon.ico" alt="..."/>
+                <a target="_blank" href="https://www.doe.org/programs/ready-willing-able">
+                <img className="media-object " src="/images/doefund.jpg" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
-                <h4 className="media-heading">Media heading 1</h4>
-                ...
+                <h4 className="media-heading">The Doe Fund</h4>
+
                 </div>
                 </div>
             </div>
             </div>
-        </div> 
-        <div className="row">   
+        </div>
+        <div className="row">
             <div className="panel panel-default col-lg-12 col-lg-6 pull-right">
             <div className="panel-body">
                 <div className="media">
                 <div className="media-right">
-                <a href="#">
-                <img className="media-object" src="favicon.ico" alt="..."/>
+                <a target="_blank" href="http://www.coalitionforthehomeless.org/our-programs/first-step-job-training/first-step/">
+                <img className="media-object" src="images/firststeps.jpg" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
-                <h4 className="media-heading">Media heading 2</h4>
+                <h4 className="media-heading">First Step Job Training Program</h4>
                 ...
                 </div>
                 </div>
@@ -46,29 +47,12 @@ class Jobs extends Component {
             <div className="panel-body">
                 <div className="media">
                 <div className="media-left">
-                <a href="#">
-                <img className="media-object" src="favicon.ico" alt="..."/>
+                <a target="_blank" href="http://www.acenewyork.org/our-programs/">
+                <img className="media-object" src="/images/ace.jpg" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
-                <h4 className="media-heading">Media heading 3</h4>
-                ...
-                </div>
-                </div>
-            </div>
-            </div>
-        </div> 
-        <div className="row">   
-            <div className="panel panel-default col-lg-12 col-lg-6 pull-right">
-            <div className="panel-body">
-                <div className="media">
-                <div className="media-right">
-                <a href="#">
-                <img className="media-object" src="favicon.ico" alt="..."/>
-                </a>
-                </div>
-                <div className="media-body">
-                <h4 className="media-heading">Media heading 4</h4>
+                <h4 className="media-heading">Ace: Empowering the Homeless. Improving Communities.</h4>
                 ...
                 </div>
                 </div>
@@ -76,10 +60,9 @@ class Jobs extends Component {
             </div>
         </div>
 
+        </div>
+        </div>
 
-        </div>    
-        </div>    
-            
 
         )
     }
