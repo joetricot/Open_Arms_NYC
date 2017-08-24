@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-//import Main from './Main'
-//import Footer from './Footer';
+import Main from './Main'
+// import Footer from './Footer';
 import Comments from './Comments';
 import Details from './Details';
 import Navigation from './Navigation';
@@ -74,6 +74,9 @@ class Home extends Component {
   render() {
     return (
         <div className="Home">
+            {/* <Main /> 
+            <Details />
+            <Comments /> */}
             <Navigation />
             <MapHolder selectLocation={this.selectLocation} />
             {this.renderBody()}
