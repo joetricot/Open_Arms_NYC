@@ -136,6 +136,10 @@ body {
   color: rgba(0, 191, 255, 1)
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8241f85cd8cefc0dcea607d399557535e917622a
 .linky{
   background-color: blue;
   height: 6vh;
@@ -172,7 +176,6 @@ textarea {
   padding: 10vh;
   background-color: RGB(30, 144, 255);
 }
-
 #rating-form input[type='submit'] {
   margin: 10px;
   float: center;
@@ -398,7 +401,6 @@ textarea {
 
 .hours {
   background: thistle;
-<<<<<<< HEAD
   padding-bottom: 10px;
 }
 
@@ -419,12 +421,29 @@ textarea {
   margin-top: 10px;
   padding: 10px;
 }
-=======
-}
 
 .media-object {
 height: 20vh;
 width: 20vw;  
 }
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
->>>>>>> 5e3723bc6fa300a4728651ae0c91af254ce34a28
+.panel {
+  text-align: center;
+}
+
+.spinner {
+  -webkit-animation: rotateY 3s infinite linear;
+  animation: rotateY 3s infinite linear;
+}
+@-webkit-keyframes rotateY {
+  to { -webkit-transform: rotateY(360deg); }
+}
+@keyframes rotateY {
+  to { transform: rotateY(360deg); }
+}
