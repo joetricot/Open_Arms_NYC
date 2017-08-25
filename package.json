@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "debugger": "DEBUG=*:* yarn dev"
+    "debugger": "DEBUG=*:* yarn dev",
+    "deploy": "cd client && yarn build && cp -a ./build/ ../public/"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -26,7 +27,6 @@
     "passport-local": "^1.0.0",
     "pg-promise": "^6.5.0",
     "react-bootstrap": "^0.31.2",
-    "react-leaflet": "^1.6.3",
-    "deploy": "cd client && yarn build && cp -a ./build/ ../public/"
+    "react-leaflet": "^1.6.3"
   }
 }
