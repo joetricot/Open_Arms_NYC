@@ -388,3 +388,9 @@ textarea {
 .hours {
   background: thistle;
 }
+
+.media-object {
+height: 20vh;
+width: 20vw;  
+}
+

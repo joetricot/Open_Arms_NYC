@@ -14,7 +14,7 @@ class Details extends Component {
         {this.props.data.hours ? <h4>hours: {this.props.data.hours}</h4> : ''}
         <p className="col-sm-12">{this.props.data.description || ""}</p>
         {this.props.data.phone_number ? <h5>phone: {this.props.data.phone_number}</h5> : ''}
-        {this.props.data.website ? <a href={this.props.data.website}>website</a> : ''}
+        {this.props.data.website ? <a target="_blank" href={this.props.data.website}>{this.props.data.name}'s Website</a> : ''}
       </div>
 
         )

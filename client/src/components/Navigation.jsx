@@ -19,7 +19,7 @@ class Navigation extends Component {
               <NavItem eventKey={1} className="navBar"><Link to="/" className="navBar">Home</Link></NavItem>
               <NavItem eventKey={2} className="navBar"><Link to="/About" className="navBar">About</Link></NavItem>
               <NavItem eventKey={3} className="navBar"><Link to="/Contact" className="navBar">Contact Us</Link></NavItem>
-              <NavItem eventKey={4} className="navBar"><Link to="/Jobs" className="navBar">Job Opportunites</Link></NavItem>
+              <NavItem eventKey={4} className="navBar"><Link to="/Jobs" className="navBar">Employment Opportunites</Link></NavItem>
             </Nav>
           </Navbar.Collapse>
       </Navbar>
