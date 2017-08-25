@@ -136,6 +136,10 @@ body {
   color: rgba(0, 191, 255, 1)
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8241f85cd8cefc0dcea607d399557535e917622a
 .linky{
   background-color: blue;
   height: 6vh;
@@ -172,7 +176,6 @@ textarea {
   padding: 10vh;
   background-color: RGB(30, 144, 255);
 }
-
 #rating-form input[type='submit'] {
   margin: 10px;
   float: center;

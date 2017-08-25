@@ -16,10 +16,10 @@ class Navigation extends Component {
 
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem eventKey={1} className="navBar"><Link to="/" className="navBar">Home</Link></NavItem>
-              <NavItem eventKey={2} className="navBar"><Link to="/About" className="navBar">About</Link></NavItem>
-              <NavItem eventKey={3} className="navBar"><Link to="/Contact" className="navBar">Contact Us</Link></NavItem>
-              <NavItem eventKey={4} className="navBar"><Link to="/Jobs" className="navBar">Employment Opportunites</Link></NavItem>
+              <NavItem eventKey={1} ><Link to="/" className="navBar">Home</Link></NavItem>
+              <NavItem eventKey={2} ><Link to="/About" className="navBar">About</Link></NavItem>
+              <NavItem eventKey={3} ><Link to="/Contact" className="navBar">Contact Us</Link></NavItem>
+              <NavItem eventKey={4} ><Link to="/Jobs" className="navBar">Employment Opportunites</Link></NavItem>
             </Nav>
           </Navbar.Collapse>
       </Navbar>
