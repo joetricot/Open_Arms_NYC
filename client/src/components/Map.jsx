@@ -30,7 +30,7 @@ class MyMap extends Component {
 			dropinDataLoaded: false,
 			mealLocations: null,
 			mealDataLoaded: false,
-			currentFilter: 'meals',
+			currentFilter: 'shelter',
 			allDataLoaded: false,
 		}
 
@@ -47,7 +47,8 @@ class MyMap extends Component {
 		
 		this.renderLoading = this.renderLoading.bind(this);
 		this.renderMeals = this.renderMeals.bind(this);
-		this.renderShelters = this.renderShelters.bind(this);
+		this.renderHomebaseShelters = this.renderHomebaseShelters.bind(this);
+		this.renderDropInShelters = this.renderDropInShelters.bind(this); 
 		
 		this.isDataLoaded = this.isDataLoaded.bind(this);
 	}
@@ -62,7 +63,7 @@ class MyMap extends Component {
 	isDataLoaded() {
 		if (this.state.mealLocations && this.state.dropinLocations && this.state.homebaseLocations) {
 			//only checks meals because it takes longest
-			console.log(this.state.mealLocations.length)
+			//console.log(this.state.mealLocations.length)
 			if (this.state.mealLocations.length === 111) {
 				console.log('data loaded')
 				return true;
@@ -136,6 +137,7 @@ class MyMap extends Component {
 	}
 
 	createDropinPopup(dropin) {
+		console.log(dropin);
 		return (
 			<Marker position={[dropin.lat,dropin.lng]} key={dropin.id}
 			onClick={() => this.props.selectLocation(`/dropins/${dropin.id}`)}>
@@ -151,25 +153,22 @@ class MyMap extends Component {
 	} 
 
 	createMealPopup(meal) {
-		if (meal) {
-			//console.log(meal.id)
-				return (
-					<Marker position={[meal.lat,meal.lng]} icon={foodIcon} key={meal.id}
-					onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
-						<Popup className='meal'>
-							<div>
-							<h5>Free Meal</h5>
-							<p>{meal.name}</p>
-							<p>{meal.address}</p>
-							</div>
-						</Popup>
-					</Marker>
-				)
-			}
+		return (
+			<Marker position={[meal.lat,meal.lng]} icon={foodIcon} key={meal.id}
+			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
+				<Popup className='meal'>
+					<div>
+					<h5>Free Meal</h5>
+					<p>{meal.name}</p>
+					<p>{meal.address}</p>
+					</div>
+				</Popup>
+			</Marker>
+		);
 	}
 
 	handleFilterChange(e) {
-		alert(e.target.value)
+		//alert(e.target.value)
 		this.setState({
 			currentFilter: e.target.value,
 		});
@@ -183,8 +182,7 @@ class MyMap extends Component {
 					<h5>loading meals {this.state.mealLocations ? this.state.mealLocations.length.toString() : 'hi'}</h5>
 					<h5>loading shelters {this.state.homebaseDataLoaded.toString()}</h5>
 				</div>
-			) 
-		} 
+		)} 
 		return;
 	}
 
@@ -192,17 +190,22 @@ class MyMap extends Component {
 		if (this.state.currentFilter === 'meals' && this.isDataLoaded()) {
 			console.log('render meals')
 			return this.state.mealLocations.map(this.createMealPopup);
-		}		
-	}
-
-	renderShelters() {
-		if (this.dropinDataLoaded && this.homebaseDataLoaded) {
-			if (this.currentFilter === 'shelter') {
-				this.state.dropinLocations.map(this.createDropinPopup);
-				this.state.homebaseLocations.map(this.createHomebasePopup);
-			}
 		}
 	}
+
+	renderHomebaseShelters() {
+		if (this.state.currentFilter === 'shelter' && this.isDataLoaded()) {
+			return this.state.homebaseLocations.map(this.createHomebasePopup);
+		} 
+	}
+
+	renderDropInShelters() {
+		if (this.state.currentFilter === 'shelter' && this.isDataLoaded()) {
+			console.log('render shelters');
+			return this.state.dropinLocations.map(this.createDropinPopup);
+		} 
+	}
+
 
 	render() {
 		return(
@@ -220,6 +223,8 @@ class MyMap extends Component {
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
 					{this.renderLoading()}
 					{this.renderMeals()}
+					{this.renderDropInShelters()}
+					{this.renderHomebaseShelters()}
 				</Map>
 			</div>
 		)
