@@ -13,8 +13,8 @@ import foodPin from '../food-pin.svg';
 
 const foodIcon = new Icon({
 	iconUrl: foodPin,
-	iconSize: [35,95],
-	iconAnchor: [22,94],
+	iconSize: [40,48],
+	iconAnchor: [20,48],
 	popupAnchor: [-3,-76],
 });
 
@@ -125,7 +125,7 @@ class MyMap extends Component {
 		return (
 			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id} 
 			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
-				<Popup className='homebase'>
+				<Popup className='popup'>
 					<div>
 					<h5>Homebase</h5>
 					<p>{homebase.address}</p>
@@ -140,7 +140,7 @@ class MyMap extends Component {
 		return (
 			<Marker position={[dropin.lat,dropin.lng]} key={dropin.id}
 			onClick={() => this.props.selectLocation(`/dropins/${dropin.id}`)}>
-				<Popup className='dropin'>
+				<Popup className='popup'>
 					<div>
 					<h5>Drop-in Center</h5>
 					<p>{dropin.name}</p>
@@ -156,10 +156,9 @@ class MyMap extends Component {
 			return (
 			<Marker position={[meal.lat,meal.lng]} icon={foodIcon} key={meal.id}
 			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
-				<Popup className='meal'>
+				<Popup className='popup'>
 					<div>
-					<h5>Free Meal</h5>
-					<p>{meal.name}</p>
+					<h5>{meal.name}</h5>
 					<p>{meal.address}</p>
 					</div>
 				</Popup>
@@ -180,8 +179,7 @@ class MyMap extends Component {
 			return (
 				<div id='loading'>
 					<h1><i className="fa fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i></h1>
-					<h5>loading meals {this.state.mealLocations ? this.state.mealLocations.length.toString() : 'hi'}</h5>
-					<h5>loading shelters {this.state.homebaseDataLoaded.toString()}</h5>
+					<h5>loading</h5>
 				</div>
 		)} 
 		return;
@@ -226,6 +224,7 @@ class MyMap extends Component {
 					{this.renderMeals()}
 					{this.renderDropInShelters()}
 					{this.renderHomebaseShelters()}
+					{this.renderDropInShelters()}
 				</Map>
 			</div>
 		)
