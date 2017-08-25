@@ -22,7 +22,7 @@ class App extends Component {
             <Navbar fixedTop>
               <Navbar.Header>
                 <Navbar.Brand>
-                  <Link to="/"><span><img src="/images/no-logo.png" className="logo" />Open Arms - <span className="logo-nyc">NYC</span></span></Link>
+                  <Link to="/"><span><img src="/images/no-logo.png" className="logo spinner" />Open Arms - <span className="logo-nyc">NYC</span></span></Link>
 
                 </Navbar.Brand>
                 <Navbar.Toggle />
@@ -39,7 +39,6 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact}/>
-
             <Route exact path="/jobs" component={Jobs}/>
 
             <Footer />

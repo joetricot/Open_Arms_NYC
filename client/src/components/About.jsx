@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { Grid, Row, Col, Carousel, Image } from 'react-bootstrap';
 
 class About extends Component {
+    constructor() {
+        super();
+
+        this.state = {};
+    }
     render() {
         return(
             <div className="m-top-three">
@@ -10,7 +15,7 @@ class About extends Component {
                         <Col xs={12} md={7}>
                             <br />
                             <div className="about-content">
-                            <img src="/images/no-logo.png" className="center"/>
+                            <img src="/images/no-logo.png" className="center spinner"/>
                             <h1 className="title">OPEN ARMS</h1>
                             <h2 className="title-base">NEW YORK CITY</h2>
                             <br/>

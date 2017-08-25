@@ -320,3 +320,18 @@ width: 20vw;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.panel {
+  text-align: center;
+}
+
+.spinner {
+  -webkit-animation: rotateY 3s infinite linear;
+  animation: rotateY 3s infinite linear;
+}
+@-webkit-keyframes rotateY {
+  to { -webkit-transform: rotateY(360deg); }
+}
+@keyframes rotateY {
+  to { transform: rotateY(360deg); }
+}

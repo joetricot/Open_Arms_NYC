@@ -9,18 +9,18 @@ class Jobs extends Component {
             <h3>Connecting people in need with effective placement programs is important for long-term stability and success.</h3>
         <div className="container">
         <div className="row">
-            <div className="panel panel-default col-lg-12 col-lg-6">
+            <div className="panel panel-default col-lg-12 col-lg-6 col-lg-offset-3">
             <div className="panel-body">
                 <div className="media">
-                <div className="media-left">
+                <div className="media center-block">
                 <a target="_blank" href="https://www.doe.org/programs/ready-willing-able">
-                <img className="media-object " src="/images/doefund.jpg" alt="..."/>
+                <img className="media-object center-block" src="/images/doefund.jpg" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
                 <h4 className="media-heading"><a target="_blank" href="https://www.doe.org/programs/ready-willing-able">The Doe Fund</a></h4>
-                <h4>Affordable Housing, Education and Career Training</h4>
-                <p className="truncate">Ready, Willing & Able is the most comprehensive transitional work program in the country. Since 1990 the program has 
+                <h4>Affordable Housing, Education and Career Training</h4>                
+                <p>Ready, Willing & Able is the most comprehensive transitional work program in the country. Since 1990 the program has 
                 transitioned more than 22,000 men back to mainstream society after incarceration and homelessness. At the heart of Ready,
                 Willing & Able is paid transitional work—the opportunity to go to work and earn money from a participant’s first day in 
                 the program—complemented by transitional housing, education, career development and training, and personalized case 
@@ -39,18 +39,18 @@ class Jobs extends Component {
             </div>
         </div>
         <div className="row">
-            <div className="panel panel-default col-lg-12 col-lg-6 pull-right">
+            <div className="panel panel-default col-lg-12 col-lg-6 col-lg-offset-3">
             <div className="panel-body">
                 <div className="media">
-                <div className="media-right">
+                <div className="media center-block">
                 <a target="_blank" href="http://www.coalitionforthehomeless.org/our-programs/first-step-job-training/first-step/">
-                <img className="media-object" src="images/firststeps.jpg" alt="..."/>
+                <img className="media-object center-block" src="images/firststeps.jpg" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
                 <h4 className="media-heading"><a target="_blank" href="http://www.coalitionforthehomeless.org/our-programs/first-step-job-training/first-step/">First Step Job Training Program</a></h4> 
                 <h4>First Step helps homeless and low-income <b>women</b> gain the skills, experience and confidence needed to find living-wage jobs.</h4>
-                <p className="collapse">The Coalition’s First Step Job Training Program was launched in 1991 to give homeless and low-income women the training, social support, 
+                <p >The Coalition’s First Step Job Training Program was launched in 1991 to give homeless and low-income women the training, social support, 
                 education and work experience they need to overcome those obstacles, empowering them to build a better life for themselves and their families.
 
                 First Step offers six 14-week classes serving roughly 140 women per year. Our innovative curriculum includes over 100 hours of computer 
@@ -63,19 +63,17 @@ class Jobs extends Component {
             </div>
         </div>
         <div className="row">
-            <div className="panel panel-default col-lg-12 col-lg-6">
+            <div className="panel panel-default col-lg-12 col-lg-6 col-lg-offset-3">
             <div className="panel-body">
                 <div className="media">
-                <div className="media-left">
+                <div className="media center-block">
                 <a target="_blank" href="http://www.acenewyork.org/our-programs/">
-                <img className="media-object" src="/images/ace.jpg" alt="..."/>
+                <img className="media-object center-block" src="/images/ace.jpg" alt="..."/>
                 </a>
                 </div>
-                <div className="media-body">
+                <div className="media-center">
                 <h4 className="media-heading"><a target="_blank" href="http://www.acenewyork.org/our-programs/">ACE Programs for the Homeless</a></h4>
-                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#jobInfo">Simple collapsible</button>
-
-                <p className="collapse" id="jobInfo">
+                <p>
                 Our 4-6 month vocational rehabilitation program, Project Comeback, provides recovering homeless individuals with the skills, support 
                 services and motivation they need to obtain and sustain full-time employment and economic independence. Participants receive job-readiness 
                 training, supported work experience (providing maintenance services to New York City streets and parks), Adult Basic Education, supplemental 
@@ -96,12 +94,12 @@ class Jobs extends Component {
 
 
         <div className="row">
-            <div className="panel panel-default col-lg-12 col-lg-6 pull-right">
+            <div className="panel panel-default col-lg-12 col-lg-6 col-lg-offset-3">
             <div className="panel-body">
                 <div className="media">
-                <div className="media-right">
+                <div className="media center-block">
                 <a href="#">
-                <img className="media-object" src="/images/henryStreet.png" alt="..."/>
+                <img className="media-object center-block" src="/images/henryStreet.png" alt="..."/>
                 </a>
                 </div>
                 <div className="media-body">
@@ -126,7 +124,6 @@ class Jobs extends Component {
             </div>
             </div>
         </div>
-
 
         </div>
         </div>
