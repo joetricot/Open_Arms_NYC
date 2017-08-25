@@ -7,7 +7,7 @@ class Footer extends Component {
             <footer className="footer">
                 <section className="props">
                     <h3>Sharing is caring!</h3>
-                    <button>Facebook</button>
+                    <button href="">Facebook</button>
                     <button>Twitter</button>
                 </section>
 

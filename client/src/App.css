@@ -237,7 +237,7 @@ textarea {
 }
 
 .quotes {
-  background-color: rgb(255, 255, 250);
+  background-color: rgb(242, 247, 249);
   height: 250px;
 }
 
@@ -294,7 +294,6 @@ textarea {
 }
 
 .footer {
-  background-color: rgb(255, 255, 250);
   text-align: center;
   font-weight: lighter;
   font-size: .8em;
@@ -311,7 +310,87 @@ textarea {
   color: rgb(255, 255, 255);
 }
 
+.center-tagline {
+  margin-top: 2em;  
+  text-align: center;
+  font-weight: bolder;
+}
+
+.contact-page {
+  background-color: rgb(242, 247, 249);
+}
+
+.contact-header {
+  text-align: center;
+  color: rgb(21, 68, 84);
+}
+
+.contact-form {
+  max-width: 320px;
+  background: rgb(55, 155, 188);
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 40px;
+  padding-top: 10px;
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+  font-weight: lighter;
+}
+
+.btn {
+  border:none;
+  background-image:none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: 0;
+  border-radius: 6px;
+  background-color: rgb(249, 210, 67);
+}
+
+.thumb-box{
+  border: 1px solid rgb(33, 118, 146);
+  text-align: center;
+
+}
+
+.thumb-header {
+  background-color: rgb(33, 118, 146);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+}
+
+.thumb-body {
+  padding: 10px;
+}
+
+.add-info {
+  background-color: rgb(238, 242, 243);
+  color: rgb(21, 68, 84);
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+}
+
+.add-info-2 {
+  margin-top: 30px;
+}
+
+.info-wrapper {
+  background-color: tomato;
+}
+
+.description {
+  background: teal;
+}
+
+.hours {
+  background: thistle;
+}
+
 .media-object {
 height: 20vh;
 width: 20vw;  
 }
+
