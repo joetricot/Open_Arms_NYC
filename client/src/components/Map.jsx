@@ -30,25 +30,45 @@ class MyMap extends Component {
 			dropinDataLoaded: false,
 			mealLocations: null,
 			mealDataLoaded: false,
-			currentLocation: null,
-			currentRating: null,
+			currentFilter: 'meals',
+			allDataLoaded: false,
 		}
 
 		this.createHomebasePopup = this.createHomebasePopup.bind(this);
 		this.createDropinPopup = this.createDropinPopup.bind(this);
 		this.createMealPopup = this.createMealPopup.bind(this);
+		
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
 		this.getMeals = this.getMeals.bind(this);
 		this.getShelter = this.getShelter.bind(this);
+		
 		this.handleFilterChange = this.handleFilterChange.bind(this);
+		
 		this.renderLoading = this.renderLoading.bind(this);
 		this.renderMeals = this.renderMeals.bind(this);
+		this.renderShelters = this.renderShelters.bind(this);
+		
+		this.isDataLoaded = this.isDataLoaded.bind(this);
 	}
 
 	componentDidMount() {
 		console.log('map did mount');
+		this.getShelter();
 		this.getMeals();
+	}
+
+	//checks if all data is loaded
+	isDataLoaded() {
+		if (this.state.mealLocations && this.state.dropinLocations && this.state.homebaseLocations) {
+			//only checks meals because it takes longest
+			console.log(this.state.mealLocations.length)
+			if (this.state.mealLocations.length === 111) {
+				console.log('data loaded')
+				return true;
+			}
+		}
+		return false;
 	}
 
 	getHomebaseCenters() {
@@ -80,18 +100,11 @@ class MyMap extends Component {
 	}
 
 	getShelter() {
-		this.setState({
-			mealDataLoaded: false,
-		});
 		this.getDropInCenters();
 		this.getHomebaseCenters();
 	}
 
 	getMeals() {
-		this.setState({
-				homebaseDataLoaded: false,
-				dropinDataLoaded: false,
-			});
 		let meals = [];
 		for (let i=1;i<112;i++) {
 			axios.get('/meals/' + i)
@@ -101,7 +114,10 @@ class MyMap extends Component {
 					mealLocations: meals,
 					mealDataLoaded: true,
 				});
-			}).catch(err => console.log(err));
+			}).catch(err => {
+				console.log('/meals/' + i)
+				console.log(err)
+			});
 		}
 	}
 
@@ -135,44 +151,57 @@ class MyMap extends Component {
 	} 
 
 	createMealPopup(meal) {
-		return (
-			<Marker position={[meal.lat,meal.lng]} icon={foodIcon} key={meal.id}
-			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
-				<Popup className='meal'>
-					<div>
-					<h5>Free Meal</h5>
-					<p>{meal.name}</p>
-					<p>{meal.address}</p>
-					</div>
-				</Popup>
-			</Marker>
-		)
+		if (meal) {
+			//console.log(meal.id)
+				return (
+					<Marker position={[meal.lat,meal.lng]} icon={foodIcon} key={meal.id}
+					onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
+						<Popup className='meal'>
+							<div>
+							<h5>Free Meal</h5>
+							<p>{meal.name}</p>
+							<p>{meal.address}</p>
+							</div>
+						</Popup>
+					</Marker>
+				)
+			}
 	}
 
 	handleFilterChange(e) {
-		if (e.target.value === 'shelter') {
-			this.getShelter();
-		} else if (e.target.value === 'meals') {
-			this.getMeals();
-		}
+		alert(e.target.value)
+		this.setState({
+			currentFilter: e.target.value,
+		});
 	}
 
 	renderLoading() {
-		return(
-			<div id='loading'>
-				<h1><i className="fa fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i></h1>
-				<h5>loading data</h5>
-			</div>
-		)
+		if (!this.isDataLoaded()) {
+			return (
+				<div id='loading'>
+					<h1><i className="fa fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i></h1>
+					<h5>loading meals {this.state.mealLocations ? this.state.mealLocations.length.toString() : 'hi'}</h5>
+					<h5>loading shelters {this.state.homebaseDataLoaded.toString()}</h5>
+				</div>
+			) 
+		} 
+		return;
 	}
 
 	renderMeals() {
-		if (this.state.mealLocations.length < 100) {
-			console.log('loading')
-			return this.renderLoading();
-		} else {
+		if (this.state.currentFilter === 'meals' && this.isDataLoaded()) {
+			console.log('render meals')
 			return this.state.mealLocations.map(this.createMealPopup);
 		}		
+	}
+
+	renderShelters() {
+		if (this.dropinDataLoaded && this.homebaseDataLoaded) {
+			if (this.currentFilter === 'shelter') {
+				this.state.dropinLocations.map(this.createDropinPopup);
+				this.state.homebaseLocations.map(this.createHomebasePopup);
+			}
+		}
 	}
 
 	render() {
@@ -189,9 +218,8 @@ class MyMap extends Component {
 				<Map center={this.state.position} zoom={14} id='map'>
 					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' 
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
-					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
-					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
-					{this.state.mealDataLoaded ? this.renderMeals() : ''}
+					{this.renderLoading()}
+					{this.renderMeals()}
 				</Map>
 			</div>
 		)
