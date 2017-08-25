@@ -44,13 +44,14 @@ class Comments extends Component {
 
   render() {
     return (
-      <div className="comments bg-warning col-sm-4 col-sm-12">
+      <div className="col-xs-12 col-md-4">
+        <h3>Rate this place</h3> 
         <h3>{this.props.rating ? "★".repeat(this.props.rating) : 'no ratings yet'}</h3>
         <h3>Leave a rating:</h3>
         <form id='rating-form' onSubmit={this.submitRating}>
           <div className='rating-input'>
           <input name='rating' type='radio' id='1' value={1} />
-          <label for='1'>I would not reccomend this place.</label>
+          <label for='1'>I would not recommend this place.</label>
           </div>
 
           <div className='rating-input'>

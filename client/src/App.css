@@ -104,17 +104,8 @@ body {
   }
 
   .popup h5 {
-   font-size: 11px; 
+   font-size: 11px;
   }
-
-
-.mainLeft {
-  background-color: Tomato;
-}
-
-.mainRight {
-  background-color: gold;
-}
 
 .m-top-three {
   margin-top: 3.5em;
@@ -145,8 +136,10 @@ body {
   color: rgba(0, 191, 255, 1)
 }
 
+<<<<<<< HEAD
 
-
+=======
+>>>>>>> 8241f85cd8cefc0dcea607d399557535e917622a
 .linky{
   background-color: blue;
   height: 6vh;
@@ -183,7 +176,6 @@ textarea {
   padding: 10vh;
   background-color: RGB(30, 144, 255);
 }
-
 #rating-form input[type='submit'] {
   margin: 10px;
   float: center;
@@ -307,7 +299,7 @@ textarea {
 }
 
 .center-tagline {
-  margin-top: 2em;  
+  margin-top: 2em;
   text-align: center;
   font-weight: bolder;
 }
@@ -348,7 +340,6 @@ textarea {
 .thumb-box{
   border: 1px solid rgb(33, 118, 146);
   text-align: center;
-
 }
 
 .thumb-header {
@@ -374,19 +365,79 @@ textarea {
 }
 
 .info-wrapper {
-  background-color: tomato;
+  padding: 0 20px 20px;
 }
 
-.description {
-  background: teal;
+.name {
+  background-color: rgb(238, 242, 243);
+  color: rgb(21, 68, 84);
+  padding: 10px;
+}
+
+.neigh {
+  background-color: rgb(41, 144, 178);
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.meal-time {
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.meal-tag {
+  background-color: rgb(238, 198, 56);
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.meal-hours {
+  background-color: rgb(251, 224, 125);
+  color: rgb(41, 144, 178);
+  padding-top: 10px;
 }
 
 .hours {
   background: thistle;
+  padding-bottom: 10px;
+}
+
+.phone {
+  padding-bottom: 10px;
+}
+
+.description {
+  font-size: 2em;
+}
+
+.desc-text {
+  padding-bottom: 10px;
+}
+
+.website-link {
+  background-color: rgb(238, 198, 56);
+  margin-top: 10px;
+  padding: 10px;
 }
 
 .media-object {
 height: 20vh;
-width: 20vw;  
+width: 20vw;
 }
 
+.panel {
+  text-align: center;
+}
+
+.spinner {
+  -webkit-animation: rotateY 3s infinite linear;
+  animation: rotateY 3s infinite linear;
+}
+@-webkit-keyframes rotateY {
+  to { -webkit-transform: rotateY(360deg); }
+}
+@keyframes rotateY {
+  to { transform: rotateY(360deg); }
+}
