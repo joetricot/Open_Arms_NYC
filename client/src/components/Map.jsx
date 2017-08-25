@@ -9,7 +9,7 @@ import {
 import axios from 'axios';
 import { Icon } from 'leaflet';
 
-import foodPin from '../meal-pin.svg'; 
+import foodPin from '../meal-pin.svg';
 
 import shelterPin from '../shelter-pin.svg';
 
@@ -47,18 +47,18 @@ class MyMap extends Component {
 		this.createHomebasePopup = this.createHomebasePopup.bind(this);
 		this.createDropinPopup = this.createDropinPopup.bind(this);
 		this.createMealPopup = this.createMealPopup.bind(this);
-		
+
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
 		this.getMeals = this.getMeals.bind(this);
-		
+
 		this.handleFilterChange = this.handleFilterChange.bind(this);
-		
+
 		this.renderLoading = this.renderLoading.bind(this);
 		this.renderMeals = this.renderMeals.bind(this);
 		this.renderHomebaseShelters = this.renderHomebaseShelters.bind(this);
-		this.renderDropInShelters = this.renderDropInShelters.bind(this); 
-		
+		this.renderDropInShelters = this.renderDropInShelters.bind(this);
+
 		this.isDataLoaded = this.isDataLoaded.bind(this);
 	}
 
@@ -127,7 +127,7 @@ class MyMap extends Component {
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.lat,homebase.lng]} icon={shelterIcon} key={homebase.id} 
+			<Marker position={[homebase.lat,homebase.lng]} icon={shelterIcon} key={homebase.id}
 			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='popup'>
 					<div>
@@ -169,7 +169,7 @@ class MyMap extends Component {
 			</Marker>
 		);
 		}
-		
+
 	}
 
 	handleFilterChange(e) {
@@ -185,7 +185,7 @@ class MyMap extends Component {
 					<h1><i className="fa fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i></h1>
 					<h5>loading</h5>
 				</div>
-		)} 
+		)}
 		return;
 	}
 
@@ -199,14 +199,14 @@ class MyMap extends Component {
 	renderHomebaseShelters() {
 		if (this.state.currentFilter === 'shelter' && this.state.homebaseDataLoaded) {
 			return this.state.homebaseLocations.map(this.createHomebasePopup);
-		} 
+		}
 	}
 
 	renderDropInShelters() {
 		if (this.state.currentFilter === 'shelter' && this.dropinDataLoaded) {
 			console.log('render dropin shelters');
 			return this.state.dropinLocations.map(this.createDropinPopup);
-		} 
+		}
 	}
 
 

@@ -104,7 +104,7 @@ body {
   }
 
   .popup h5 {
-   font-size: 11px; 
+   font-size: 11px;
   }
 
 .m-top-three {
@@ -296,7 +296,7 @@ textarea {
 }
 
 .center-tagline {
-  margin-top: 2em;  
+  margin-top: 2em;
   text-align: center;
   font-weight: bolder;
 }
@@ -373,7 +373,7 @@ textarea {
 
 .neigh {
   background-color: rgb(41, 144, 178);
-  margin-top: 20px; 
+  margin-top: 20px;
   padding: 10px;
   text-align: center;
   color: rgb(255, 255, 255);
@@ -398,7 +398,6 @@ textarea {
 
 .hours {
   background: thistle;
-<<<<<<< HEAD
   padding-bottom: 10px;
 }
 
@@ -419,12 +418,8 @@ textarea {
   margin-top: 10px;
   padding: 10px;
 }
-=======
-}
 
 .media-object {
 height: 20vh;
-width: 20vw;  
+width: 20vw;
 }
-
->>>>>>> 5e3723bc6fa300a4728651ae0c91af254ce34a28
