@@ -6,17 +6,17 @@ class Footer extends Component {
 
     render() {
         return (
-            <footer>
-                <div className="container">
-                <nav className="navbar text-white">
-                        <div className="copyright">
-                            &copy; 2017 Open Arms - NYC
-                        </div>
-                        <div>
-                            <a className="btn btn-outline-warning btn-sm" href="#">DONATE</a>
-                        </div>
-                </nav>      
-                </div>
+            <footer className="footer">
+                <section className="props">
+                    <h3>Sharing is caring!</h3>
+                    <button href="">Facebook</button>
+                    <button>Twitter</button>
+                </section>
+
+                <section className="copyright">
+                    <div>&copy; 2017 Open Arms - NYC</div>
+                    <div>made with ❤️ by Julia, Rana, Joe & Mark</div>
+                </section>
             </footer>
         )
     }

@@ -63,7 +63,8 @@ class About extends Component {
 
                         <Row>
                             <Col xs={12}>
-                            <br />
+                            <br/>
+                            <h2 className="title">MEET THE TEAM</h2>
                             <Image src="/images/group-cat.jpg" responsive />
                             </Col>
                         </Row>

@@ -1,100 +1,115 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import {
+  Form,
+  FormGroup,
+  ControlLabel,
+  Button,
+  FormControl,
+  Grid,
+  Row,
+  Col
+} from "react-bootstrap";
 
 class Contact extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: '',
-            email: ''
-    };
-        this.handleEmail = this.handleEmail.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleEmail(event) {
-        this.setState({email: event.target.value});
-    }
-    
-    handleSubmit(event) {
-        console.log(this.state.value)
-    }
-
-
-    render() {
-        return(
-            <div className="contactPage">
-                <div>
-                <h3 className="">Contact</h3><hr/>
-                <h5>Do you have questions, comments, or concerns?<br/>
-                <br/>
-                Please send us your thoughts!</h5>
+  render() {
+    return (
+      <div className="contact-page m-top-three">
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={12} md={6}>
+              <div className="contact-form">
+                <div className="contact-header">
+                  <h3>Contact</h3>
+                  <small>Do you have questions or concerns?</small>
+                  <br />
+                  <small>Please send us your thoughts!</small>
+                  <br />
                 </div>
-                <div className="inputBox">
-            <p>E-Mail:<input type="email" placeholder="email" onChange={this.handleEmail}></input></p>
-            <textarea className="form-control commentsBox" rows="10"  onChange={this.handleChange} placeholder="Ideas, Comments, Questions, or Suggestions Welcomed!"></textarea>
-            <button type="submit" class="btn btn-default" onClick={this.handleSubmit}>Submit</button>
-                <hr/>
-                <div>
-                <h3>Additional Resources</h3>
-                <div className="row">
-                
-                    <div className="panel panel-primary col-lg-4">
-                        <div className="panel-heading">
-                            <h3 class="panel-title">Food Stamps / SNAP</h3>
-                        </div>
-                        <div className="panel-body">
-                            <a href="tel:855-692-4322" title="Call Hunger Free Communities Consortium">855-692-4322</a>
-                        </div>
-                    </div>
-  
-                    <div className="panel panel-primary col-lg-4">
-                        <div className="panel-heading">
-                            <h3 class="panel-title">WIC Hotline</h3>
-                        </div>
-                        <div className="panel-body">
-                            <a href="tel:800-522-5006"  title="Call Women Infants Children Program">800-522-5006</a>
-                        </div>
-                    </div>
+                <Form horizontal>
+                  <FormGroup controlId="formHorizontalEmail">
+                    <ControlLabel>Email</ControlLabel>
+                    <FormControl type="email" placeholder="Email" />
+                  </FormGroup>
 
-                    <div className="panel panel-primary col-lg-4">
-                        <div className="panel-heading">
-                            <h3 class="panel-title">Food Pantries</h3>
-                        </div>
-                        <div className="panel-body">
-                            <a href="tel:866-888-8777" title="Call NYC Emergency Foodline">866-888-8777</a>
-                        </div>
-                    </div>
-                </div>
-                
-                    <div className="panel panel-primary col-lg-12">
-                    
-                    <div className="panel-heading">
-                        <h3 className="panel-title">Homebound Delivered Senior Meals</h3>
-                        </div>
-                        <div className="panel-body col-lg-6">
-                            <a href="tel:212-222-2552" title="Call Charles Walburg">Washington Heights, Harlem: 212-222-2552</a>
-                        <hr/>
-                            <a href="tel:212-338-4333" title="Call Stanley Issacs">East Harlem, Upper East Side: 212-338-4333</a>
+                  <FormGroup controlId="formControlsTextarea">
+                    <ControlLabel>Message</ControlLabel>
+                    <FormControl
+                      componentClass="textarea"
+                      placeholder="Type message here"
+                      rows="10"
+                    />
+                  </FormGroup>
 
+                  <FormGroup>
+                    <Button type="submit" className="btn">
+                      Submit
+                    </Button>
+                  </FormGroup>
+                </Form>
+              </div>
+            </Col>
+            <Col xs={12} md={6}>
+                <Row>
+                    <h3 className="add-info">Additional Resources</h3>
+                    <Col sm={12} md={4}>
+                    <div className="thumb-box">
+                        <div className="thumb-header"><h4>Food Stamps</h4></div>
+                        <div className="thumb-body">
+                        <small>HOTLINE</small>
+                        <p><a href="tel:855-692-4322" title="Call Hunger Free Communities Consortium"> 855-692-4322</a></p>
+                        </div>
                     </div>
-
-                    <div className="panel-body col-lg-6">
-                        <a href="tel:212-281-2910" title=" Call Encore">Upper West Side, Midtown West: 212-281-2910</a>
-                    <hr/>
-                        <a href="tel:212-349-2770" title="Call Henry Street Settlement">Midtown East, Chelsea, Village, Downtown: 212-349-2770</a>
+                    </Col>
+                    <Col sm={12} md={4}>
+                    <div className="thumb-box">
+                        <div className="thumb-header"><h4>WIC</h4></div>
+                        <div className="thumb-body">
+                        <small>HOTLINE</small>
+                        <p><a href="tel:800-522-5006"  title="Call Women Infants Children Program">800-522-5006</a></p>
+                        </div>
                     </div>
+                    </Col>
+                    <Col sm={12} md={4}>
+                    <div className="thumb-box">
+                        <div className="thumb-header"><h4>Food Pantries</h4></div>
+                        <div className="thumb-body">
+                        <small>HOTLINE</small>
+                        <p><a href="tel:866-888-8777" title="Call NYC Emergency Foodline">866-888-8777</a></p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        )
-    }
+                    </Col>
+                </Row>
+                <h3 className="add-info add-info-2">Homebound Delivered Senior Meals</h3>
+                <Row>
+                        <Col xs={12} md={6}>
+                            <p>Washington Heights, Harlem: </p>
+                            <p><a href="tel:212-222-2552" title="Call Charles Walburg">212-222-2552</a></p>
+                            <hr/>
+                        </Col>
+                        <Col md={6}>
+                            <p>East Harlem, Upper East Side: </p>
+                            <p><a href="tel:212-338-4333" title="Call Stanley Issacs">212-338-4333</a></p>
+                            <hr/>
+                        </Col>
+                </Row>
+                <Row>
+                        <Col xs={12} md={6}>
+                            <p>Upper West Side, Midtown West: </p>
+                            <p><a href="tel:212-281-2910" title=" Call Encore">212-281-2910</a></p><p></p>
+                            <hr/>
+                        </Col>
+                        <Col md={6}>
+                            <p>Midtown East, Chelsea, Village, Downtown:</p>
+                            <p><a href="tel:212-349-2770" title="Call Henry Street Settlement">212-349-2770</a></p>
+                            <hr/>
+                        </Col>
+                </Row>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    );
+  }
 }
 
 export default Contact;
-
