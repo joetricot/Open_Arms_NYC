@@ -9,12 +9,22 @@ import {
 import axios from 'axios';
 import { Icon } from 'leaflet';
 
-import foodPin from '../food-pin.svg';
+import foodPin from '../meal-pin.svg'; 
+
+import shelterPin from '../shelter-pin.svg';
+
 
 const foodIcon = new Icon({
 	iconUrl: foodPin,
-	iconSize: [35,95],
-	iconAnchor: [22,94],
+	iconSize: [40,48],
+	iconAnchor: [20,48],
+	popupAnchor: [-3,-76],
+});
+
+const shelterIcon = new Icon({
+	iconUrl: shelterPin,
+	iconSize: [40,48],
+	iconAnchor: [20,48],
 	popupAnchor: [-3,-76],
 });
 
@@ -30,25 +40,44 @@ class MyMap extends Component {
 			dropinDataLoaded: false,
 			mealLocations: null,
 			mealDataLoaded: false,
-			currentLocation: null,
-			currentRating: null,
+			currentFilter: 'meals',
+			allDataLoaded: false,
 		}
 
 		this.createHomebasePopup = this.createHomebasePopup.bind(this);
 		this.createDropinPopup = this.createDropinPopup.bind(this);
 		this.createMealPopup = this.createMealPopup.bind(this);
+		
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
 		this.getMeals = this.getMeals.bind(this);
-		this.getShelter = this.getShelter.bind(this);
+		
 		this.handleFilterChange = this.handleFilterChange.bind(this);
+		
 		this.renderLoading = this.renderLoading.bind(this);
 		this.renderMeals = this.renderMeals.bind(this);
+		this.renderHomebaseShelters = this.renderHomebaseShelters.bind(this);
+		this.renderDropInShelters = this.renderDropInShelters.bind(this); 
+		
+		this.isDataLoaded = this.isDataLoaded.bind(this);
 	}
 
 	componentDidMount() {
 		console.log('map did mount');
+		this.getHomebaseCenters();
+		this.getDropInCenters();
 		this.getMeals();
+	}
+
+	//checks if all data is loaded
+	isDataLoaded() {
+		if (this.state.mealLocations && this.state.dropinLocations && this.state.homebaseLocations) {
+			//only checks meals because it takes longest
+			if (this.state.mealLocations.length === 111) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	getHomebaseCenters() {
@@ -79,19 +108,7 @@ class MyMap extends Component {
 		}
 	}
 
-	getShelter() {
-		this.setState({
-			mealDataLoaded: false,
-		});
-		this.getDropInCenters();
-		this.getHomebaseCenters();
-	}
-
 	getMeals() {
-		this.setState({
-				homebaseDataLoaded: false,
-				dropinDataLoaded: false,
-			});
 		let meals = [];
 		for (let i=1;i<112;i++) {
 			axios.get('/meals/' + i)
@@ -101,15 +118,18 @@ class MyMap extends Component {
 					mealLocations: meals,
 					mealDataLoaded: true,
 				});
-			}).catch(err => console.log(err));
+			}).catch(err => {
+				console.log('/meals/' + i)
+				console.log(err)
+			});
 		}
 	}
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id}
+			<Marker position={[homebase.lat,homebase.lng]} icon={shelterIcon} key={homebase.id} 
 			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
-				<Popup className='homebase'>
+				<Popup className='popup'>
 					<div>
 					<h5>Homebase</h5>
 					<p>{homebase.address}</p>
@@ -120,10 +140,11 @@ class MyMap extends Component {
 	}
 
 	createDropinPopup(dropin) {
+		console.log(dropin);
 		return (
-			<Marker position={[dropin.lat,dropin.lng]} key={dropin.id}
+			<Marker position={[dropin.lat,dropin.lng]} icon={shelterIcon} key={dropin.id}
 			onClick={() => this.props.selectLocation(`/dropins/${dropin.id}`)}>
-				<Popup className='dropin'>
+				<Popup className='popup'>
 					<div>
 					<h5>Drop-in Center</h5>
 					<p>{dropin.name}</p>
@@ -135,45 +156,59 @@ class MyMap extends Component {
 	}
 
 	createMealPopup(meal) {
-		return (
+		if (meal) {
+			return (
 			<Marker position={[meal.lat,meal.lng]} icon={foodIcon} key={meal.id}
 			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
-				<Popup className='meal'>
+				<Popup className='popup'>
 					<div>
-					<h5>Free Meal</h5>
-					<p>{meal.name}</p>
+					<h5>{meal.name}</h5>
 					<p>{meal.address}</p>
 					</div>
 				</Popup>
 			</Marker>
-		)
+		);
+		}
+		
 	}
 
 	handleFilterChange(e) {
-		if (e.target.value === 'shelter') {
-			this.getShelter();
-		} else if (e.target.value === 'meals') {
-			this.getMeals();
-		}
+		this.setState({
+			currentFilter: e.target.value,
+		});
 	}
 
 	renderLoading() {
-		return(
-			<div id='loading'>
-				<h1><i className="fa fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i></h1>
-				<h5>loading data</h5>
-			</div>
-		)
+		if (!this.isDataLoaded()) {
+			return (
+				<div id='loading'>
+					<h1><i className="fa fa fa-circle-o-notch fa-spin fa-3x" aria-hidden="true"></i></h1>
+					<h5>loading</h5>
+				</div>
+		)} 
+		return;
 	}
 
 	renderMeals() {
-		if (this.state.mealLocations.length < 100) {
-			console.log('loading')
-			return this.renderLoading();
-		} else {
+		if (this.state.currentFilter === 'meals' && this.state.mealDataLoaded) {
+			console.log('render meals')
 			return this.state.mealLocations.map(this.createMealPopup);
 		}
 	}
+
+	renderHomebaseShelters() {
+		if (this.state.currentFilter === 'shelter' && this.state.homebaseDataLoaded) {
+			return this.state.homebaseLocations.map(this.createHomebasePopup);
+		} 
+	}
+
+	renderDropInShelters() {
+		if (this.state.currentFilter === 'shelter' && this.dropinDataLoaded) {
+			console.log('render dropin shelters');
+			return this.state.dropinLocations.map(this.createDropinPopup);
+		} 
+	}
+
 
 	render() {
 		return(
@@ -189,9 +224,10 @@ class MyMap extends Component {
 				<Map center={this.state.position} zoom={14} id='map'>
 					<TileLayer  url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
-					{this.state.homebaseDataLoaded ? this.state.homebaseLocations.map(this.createHomebasePopup) : ''}
-					{this.state.dropinDataLoaded ? this.state.dropinLocations.map(this.createDropinPopup) : ''}
-					{this.state.mealDataLoaded ? this.renderMeals() : ''}
+					{this.renderLoading()}
+					{this.renderMeals()}
+					{this.renderDropInShelters()}
+					{this.renderHomebaseShelters()}
 				</Map>
 			</div>
 		)
