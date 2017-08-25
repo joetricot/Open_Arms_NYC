@@ -30,7 +30,7 @@ class MyMap extends Component {
 			dropinDataLoaded: false,
 			mealLocations: null,
 			mealDataLoaded: false,
-			currentFilter: 'shelter',
+			currentFilter: 'meals',
 			allDataLoaded: false,
 		}
 
@@ -63,7 +63,6 @@ class MyMap extends Component {
 	isDataLoaded() {
 		if (this.state.mealLocations && this.state.dropinLocations && this.state.homebaseLocations) {
 			//only checks meals because it takes longest
-			//console.log(this.state.mealLocations.length)
 			if (this.state.mealLocations.length === 111) {
 				console.log('data loaded')
 				return true;
@@ -153,7 +152,8 @@ class MyMap extends Component {
 	} 
 
 	createMealPopup(meal) {
-		return (
+		if (meal) {
+			return (
 			<Marker position={[meal.lat,meal.lng]} icon={foodIcon} key={meal.id}
 			onClick={() => this.props.selectLocation(`/meals/${meal.id}`)}>
 				<Popup className='meal'>
@@ -165,10 +165,11 @@ class MyMap extends Component {
 				</Popup>
 			</Marker>
 		);
+		}
+		
 	}
 
 	handleFilterChange(e) {
-		//alert(e.target.value)
 		this.setState({
 			currentFilter: e.target.value,
 		});
@@ -194,13 +195,13 @@ class MyMap extends Component {
 	}
 
 	renderHomebaseShelters() {
-		if (this.state.currentFilter === 'shelter' && this.isDataLoaded()) {
+		if (this.state.currentFilter === 'shelter' && this.state.homebaseDataLoaded) {
 			return this.state.homebaseLocations.map(this.createHomebasePopup);
 		} 
 	}
 
 	renderDropInShelters() {
-		if (this.state.currentFilter === 'shelter' && this.isDataLoaded()) {
+		if (this.state.currentFilter === 'shelter' && this.dropinDataLoaded) {
 			console.log('render shelters');
 			return this.state.dropinLocations.map(this.createDropinPopup);
 		} 
