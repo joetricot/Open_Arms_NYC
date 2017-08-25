@@ -18,6 +18,7 @@ class Details extends Component {
         {this.props.data.hours ? <h4>hours: {this.props.data.hours}</h4> : ''}
         <p className="col-sm-12">{this.props.data.description || ""}</p>
       </div>
+
         )
     }
 }

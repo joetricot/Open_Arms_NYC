@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row } from 'react-bootstrap';
 import Main from './Main'
 import Footer from './Footer';
 import Comments from './Comments';
@@ -51,27 +52,32 @@ class Home extends Component {
   renderBody() {
     if (this.state.locationDataLoaded) {
       return (
-        <div>
-        <Details data={this.state.data} />
-        <Comments data={this.state.data} rating={this.state.rating}
-        locationUrl={this.state.locationUrl} />
-        </div>
+          <Row className="info-wrapper">
+            <Details data={this.state.data} />
+            <Comments data={this.state.data} rating={this.state.rating}
+            locationUrl={this.state.locationUrl} />
+          </Row>
       );
     }
   }
 
   render() {
     return (
-        <div className="Home">
+        <div>
             {/* <Main />
             <Details />
             <Comments /> */}
-            // <Navigation />
+             {/* <Navigation /> */}
             <MapHolder selectLocation={this.selectLocation} />
             {this.renderBody()}
+            <section className="center-tagline">
+                    <div className="center-tagline">
+                       <h1>CLICK PIN TO FIND MORE INFORMATION</h1>
+                    </div>
+            </section>
         </div>
     );
   }
-}
+} 
 
 export default Home;

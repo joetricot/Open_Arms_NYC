@@ -26,7 +26,7 @@ class Comments extends Component {
     axios.post(`${this.props.locationUrl}/rating`, {
       rating: userRating,
     }).then(() => {
-       
+
     }).catch(err => console.log(err));
   }
 
