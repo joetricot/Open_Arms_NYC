@@ -402,6 +402,7 @@ textarea {
 
 .hours {
   background: thistle;
+<<<<<<< HEAD
   padding-bottom: 10px;
 }
 
@@ -422,3 +423,12 @@ textarea {
   margin-top: 10px;
   padding: 10px;
 }
+=======
+}
+
+.media-object {
+height: 20vh;
+width: 20vw;  
+}
+
+>>>>>>> 5e3723bc6fa300a4728651ae0c91af254ce34a28

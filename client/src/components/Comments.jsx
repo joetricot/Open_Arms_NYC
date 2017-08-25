@@ -26,7 +26,7 @@ class Comments extends Component {
     axios.post(`${this.props.locationUrl}/rating`, {
       rating: userRating,
     }).then(() => {
-       
+
     }).catch(err => console.log(err));
   }
 
@@ -46,7 +46,7 @@ class Comments extends Component {
     return (
       <div className="col-xs-12 col-md-4">
         <h3>Rate this place</h3>
-        <h4>{this.props.locationUrl}</h4>
+        <h4>{this.props.data.name}</h4>
         <h4>{this.props.rating ? "★".repeat(this.props.rating) : 'no ratings yet'}</h4>
 
         <form id='rating-form' onSubmit={this.submitRating}>
