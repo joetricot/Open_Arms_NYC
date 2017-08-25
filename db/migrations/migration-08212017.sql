@@ -1,4 +1,4 @@
-\c open_arms_dev
+-- \c open_arms_dev
 
 CREATE TABLE free_meals (
     Id INT,
