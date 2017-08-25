@@ -9,10 +9,20 @@ import {
 import axios from 'axios';
 import { Icon } from 'leaflet';
 
-import foodPin from '../food-pin.svg';
+import foodPin from '../meal-pin.svg'; 
+
+import shelterPin from '../shelter-pin.svg';
+
 
 const foodIcon = new Icon({
 	iconUrl: foodPin,
+	iconSize: [40,48],
+	iconAnchor: [20,48],
+	popupAnchor: [-3,-76],
+});
+
+const shelterIcon = new Icon({
+	iconUrl: shelterPin,
 	iconSize: [40,48],
 	iconAnchor: [20,48],
 	popupAnchor: [-3,-76],
@@ -41,7 +51,6 @@ class MyMap extends Component {
 		this.getDropInCenters = this.getDropInCenters.bind(this);
 		this.getHomebaseCenters = this.getHomebaseCenters.bind(this);
 		this.getMeals = this.getMeals.bind(this);
-		this.getShelter = this.getShelter.bind(this);
 		
 		this.handleFilterChange = this.handleFilterChange.bind(this);
 		
@@ -55,7 +64,8 @@ class MyMap extends Component {
 
 	componentDidMount() {
 		console.log('map did mount');
-		this.getShelter();
+		this.getHomebaseCenters();
+		this.getDropInCenters();
 		this.getMeals();
 	}
 
@@ -64,7 +74,6 @@ class MyMap extends Component {
 		if (this.state.mealLocations && this.state.dropinLocations && this.state.homebaseLocations) {
 			//only checks meals because it takes longest
 			if (this.state.mealLocations.length === 111) {
-				console.log('data loaded')
 				return true;
 			}
 		}
@@ -99,11 +108,6 @@ class MyMap extends Component {
 		}
 	}
 
-	getShelter() {
-		this.getDropInCenters();
-		this.getHomebaseCenters();
-	}
-
 	getMeals() {
 		let meals = [];
 		for (let i=1;i<112;i++) {
@@ -123,7 +127,7 @@ class MyMap extends Component {
 
 	createHomebasePopup(homebase) {
 		return (
-			<Marker position={[homebase.lat,homebase.lng]} key={homebase.id} 
+			<Marker position={[homebase.lat,homebase.lng]} icon={shelterIcon} key={homebase.id} 
 			onClick={() => this.props.selectLocation(`/homebase/${homebase.id}`)}>
 				<Popup className='popup'>
 					<div>
@@ -138,7 +142,7 @@ class MyMap extends Component {
 	createDropinPopup(dropin) {
 		console.log(dropin);
 		return (
-			<Marker position={[dropin.lat,dropin.lng]} key={dropin.id}
+			<Marker position={[dropin.lat,dropin.lng]} icon={shelterIcon} key={dropin.id}
 			onClick={() => this.props.selectLocation(`/dropins/${dropin.id}`)}>
 				<Popup className='popup'>
 					<div>
@@ -186,7 +190,7 @@ class MyMap extends Component {
 	}
 
 	renderMeals() {
-		if (this.state.currentFilter === 'meals' && this.isDataLoaded()) {
+		if (this.state.currentFilter === 'meals' && this.state.mealDataLoaded) {
 			console.log('render meals')
 			return this.state.mealLocations.map(this.createMealPopup);
 		}
@@ -200,7 +204,7 @@ class MyMap extends Component {
 
 	renderDropInShelters() {
 		if (this.state.currentFilter === 'shelter' && this.dropinDataLoaded) {
-			console.log('render shelters');
+			console.log('render dropin shelters');
 			return this.state.dropinLocations.map(this.createDropinPopup);
 		} 
 	}
@@ -224,7 +228,6 @@ class MyMap extends Component {
 					{this.renderMeals()}
 					{this.renderDropInShelters()}
 					{this.renderHomebaseShelters()}
-					{this.renderDropInShelters()}
 				</Map>
 			</div>
 		)
