@@ -11,7 +11,7 @@ class Main extends Component {
     console.log('main did mount')
   }
 
-  render() { 
+  render() {
     return (
       <div>
         <Grid>
