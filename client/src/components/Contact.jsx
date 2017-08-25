@@ -1,6 +1,30 @@
 import React, { Component } from 'react';
 
 class Contact extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: '',
+            email: ''
+    };
+        this.handleEmail = this.handleEmail.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+
+    handleEmail(event) {
+        this.setState({email: event.target.value});
+    }
+    
+    handleSubmit(event) {
+        console.log(this.state.value)
+    }
+
+
     render() {
         return(
             <div className="contactPage">
@@ -11,9 +35,9 @@ class Contact extends Component {
                 Please send us your thoughts!</h5>
                 </div>
                 <div className="inputBox">
-            <p>E-Mail:<input type="email" placeholder="email"></input></p>
-            <textarea className="form-control commentsBox" rows="10"  placeholder="Ideas, Comments, Questions, or Suggestions Welcomed!"></textarea>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <p>E-Mail:<input type="email" placeholder="email" onChange={this.handleEmail}></input></p>
+            <textarea className="form-control commentsBox" rows="10"  onChange={this.handleChange} placeholder="Ideas, Comments, Questions, or Suggestions Welcomed!"></textarea>
+            <button type="submit" class="btn btn-default" onClick={this.handleSubmit}>Submit</button>
                 <hr/>
                 <div>
                 <h3>Additional Resources</h3>
