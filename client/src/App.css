@@ -104,7 +104,7 @@ body {
   }
 
   .popup h5 {
-   font-size: 11px; 
+   font-size: 11px;
   }
 
 .m-top-three {
@@ -299,7 +299,7 @@ textarea {
 }
 
 .center-tagline {
-  margin-top: 2em;  
+  margin-top: 2em;
   text-align: center;
   font-weight: bolder;
 }
@@ -376,7 +376,7 @@ textarea {
 
 .neigh {
   background-color: rgb(41, 144, 178);
-  margin-top: 20px; 
+  margin-top: 20px;
   padding: 10px;
   text-align: center;
   color: rgb(255, 255, 255);
@@ -424,13 +424,7 @@ textarea {
 
 .media-object {
 height: 20vh;
-width: 20vw;  
-}
-.truncate {
-  width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+width: 20vw;
 }
 
 .panel {
