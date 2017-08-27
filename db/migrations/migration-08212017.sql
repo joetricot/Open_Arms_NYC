@@ -1,5 +1,3 @@
--- \c open_arms_dev
-
 CREATE TABLE free_meals (
     Id INT,
     Name VARCHAR(255),
