@@ -41,4 +41,3 @@ dropinRoutes.get('/:id/rating', shelterController.getDropInRating);
 dropinRoutes.post('/:id/rating', shelterController.addDropInRating);
 
 module.exports = dropinRoutes;
-
