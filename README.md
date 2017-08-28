@@ -1,7 +1,7 @@
 # Open Arms NYC
 
-![alt landing page](/images/screenshots/home.png)
-![alt contact page](/images/screenshots/contact.png)
+![alt home](/images/home.png)
+![alt contact](/images/contact.png)
 
 Open Arms NYC is a resource for people struggling with homelessness or poverty in New York City. Our clean & simple application provides the information of all food pantries and shelters in NYC, as well as other resources, such as job opportunities and more.
 
