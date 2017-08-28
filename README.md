@@ -1,10 +1,20 @@
-# Open_Arms_NYC
+# Open Arms NYC
 
-Open Arms NYC is a resource for people struggling with homelessness or poverty in New York City. Our clean & simple application provides the information of all food pantries and shelters in NYC, as well as other resources, such as public bathrooms, job opportunities and more.
+![alt landing page](/images/screenshots/home.png)
+![alt contact page](/images/screenshots/contact.png)
+
+Open Arms NYC is a resource for people struggling with homelessness or poverty in New York City. Our clean & simple application provides the information of all food pantries and shelters in NYC, as well as other resources, such as job opportunities and more.
 
 Open Arms NYC is a project started by students at General Assembly's Web Development Immersive course in NYC.
 
 This application is an educational and not-for-profit service.
+
+## Team
+
+- Rana Bhattacharyya
+- Mark Delos-Reyes
+- Julia Graves
+- Joe Tricot
 
 ## User Stories
 
@@ -12,9 +22,19 @@ As someone who struggles with homelessness or poverty, I would like an easy to u
 
 As a public official or civic nonprofit, I would like a resource to assist NYC's homeless population, which is the largest its ever been since the Great Depression. Open Arms NYC will help the homeless population sustain and uplift itself while prevention & housing-based solutions are being continuously worked out.
 
+## Technologies and Packages Discussion
 
+- Express JS
+- React JS
+- Geocoder
+- React-leaflet
+- React-bootstrap
 
-## Beta Version Mock-up
+## Opportunities
+
+In the coming weeks and months we plan to improve this application so that it can be used by people in need around New York City. This would include adding photos of the soup kitchens, adding more details about food pantries, limiting the zoom on the map, having a button on the marker to take you to bottom of the page for more info, adding a page for people who want to volunteer, etc.
+
+## Wireframes
 ### The Landing Page
 > This shows a short information about Open Arms in slideshow. Has the option to sign up using google account or locally.
 
