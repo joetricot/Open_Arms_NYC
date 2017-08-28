@@ -64,18 +64,8 @@ class Comments extends Component {
 
           <form id="rating-form" onSubmit={this.submitRating}>
             <div className="rating-input">
-              <input name="rating" type="radio" id="1" value={1} />
-              <label for="1">I would not recommend this place.</label>
-            </div>
-
-            <div className="rating-input">
-              <input name="rating" type="radio" id="2" value={2} />
-              <label for="2">This place was so-so.</label>
-            </div>
-
-            <div className="rating-input">
-              <input name="rating" type="radio" id="3" value={3} />
-              <label for="3">This place was decent.</label>
+              <input name="rating" type="radio" id="5" value={5} />
+              <label for="5">This was the best place Ive been to.</label>
             </div>
 
             <div className="rating-input">
@@ -84,8 +74,18 @@ class Comments extends Component {
             </div>
 
             <div className="rating-input">
-              <input name="rating" type="radio" id="5" value={5} />
-              <label for="5">This was the best place Ive been to.</label>
+              <input name="rating" type="radio" id="3" value={3} />
+              <label for="3">This place was decent.</label>
+            </div>
+
+            <div className="rating-input">
+              <input name="rating" type="radio" id="2" value={2} />
+              <label for="2">This place was so-so.</label>
+            </div>
+
+            <div className="rating-input">
+              <input name="rating" type="radio" id="1" value={1} />
+              <label for="1">I would not recommend this place.</label>
             </div>
 
             <input
