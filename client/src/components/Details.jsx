@@ -21,14 +21,13 @@ class Details extends Component {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row desc-body">
           <div className="col-xs-12 col-sm-10">
             <p className="description">DESCRIPTION</p>
             <p className="desc-text">{this.props.data.description || ""}</p>
             {this.props.data.website ? <a className="website-link" href={this.props.data.website}>WEBSITE</a> : ''}
           </div>
         </div>
-        <hr />
       </div>
 
         )
