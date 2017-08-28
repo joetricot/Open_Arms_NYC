@@ -22,7 +22,7 @@ class App extends Component {
             <Navbar fixedTop>
               <Navbar.Header>
                 <Navbar.Brand>
-                  <Link to="/"><span><img src="/images/no-logo.png" className="logo spinner" />Open Arms - <span className="logo-nyc">NYC</span></span></Link>
+                  <Link to="/"><span><img src="/images/logo.svg" className="logo" />Open Arms - <span className="logo-nyc">NYC</span></span></Link>
 
                 </Navbar.Brand>
                 <Navbar.Toggle />

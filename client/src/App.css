@@ -24,7 +24,7 @@ body {
   clear: both;
 }
 
-.btn{
+.btn {
   height: 5vh;
   position: absolute;
 }
@@ -37,75 +37,79 @@ body {
   height: 100%;
   z-index: 9998;
   background: rgba(0, 0, 0, 0.3);
-  }
+}
 
-  #map {
-    height: 500px;
-    width: 100%;
-  }
+#map {
+  height: 500px;
+  width: 100%;
+}
 
-  #map-filters {
-    position: absolute;
-    top: 20px;
-    z-index: 1000;
-    margin-left: 50px;
-  }
+#map-filters {
+  position: absolute;
+  top: 20px;
+  z-index: 1000;
+  margin-left: 50px;
+}
 
-  #map-filters span {
-    position: absolute;
-    left: 30px;
-    height: 32px;
-    background-color: #3B3B3B;
-    color: white;
-    font-size: 14;
-    padding: 6px 10px;
-    z-index: 3000;
-  }
+#map-filters span {
+  position: absolute;
+  left: 30px;
+  height: 32px;
+  background-color: #3b3b3b;
+  color: white;
+  font-size: 14;
+  padding: 6px 10px;
+  z-index: 3000;
+}
 
-  #map-filters select {
-    position: absolute;
-    left: 100px;
-    width: 150px;
-    height: 32px;
-    background-color: white;
-    border-radius: 0;
-  }
+#map-filters select {
+  position: absolute;
+  left: 100px;
+  width: 150px;
+  height: 32px;
+  background-color: white;
+  border-radius: 0;
+  margin-left: 10px;
+}
 
-  option {
-    padding: 10px;
-  }
+option {
+  padding: 10px;
+}
 
-  #rating-form {
-    text-align: left;
-  }
+#rating-form {
+  text-align: left;
+}
 
-  #rating-form input {
-    margin-right: 10px;
+#rating-form input {
+  margin-right: 10px;
+}
+.leaflet-popup-content {
+  margin: 0;
+  padding: 10px;
+  width: 150px;
+}
 
-  }
-  .leaflet-popup-content {
-    margin: 0;
-    padding: 10px;
-    width: 200px;
-  }
+.leaflet-popup-content h5 {
+  font-size: 14px;
+  text-transform: uppercase;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  padding: 5px;
+}
 
- .leaflet-popup-content h5 {
-    font-size: 14px;
-    text-transform: uppercase;
-    width: 100%;
-    margin: 0;
-    text-align: center;
-    padding: 5px;
-  }
+.leaflet-popup-content p {
+  color: black;
+  margin: 2px;
+}
 
-  .leaflet-popup-content p {
-    color: black;
-    margin: 2px;
-  }
+.dropin h5 {
+  color: blue;
+}
 
-  .popup h5 {
-   font-size: 11px;
-  }
+.homebase h5 {
+  color: red;
+}
 
 .m-top-three {
   margin-top: 3.5em;
@@ -120,9 +124,9 @@ body {
   display: block;
 }
 
-.about{
-  height:100vh;
-  width:100vw;
+.about {
+  height: 100vh;
+  width: 100vw;
 }
 
 .aboutInfo {
@@ -132,11 +136,16 @@ body {
   text-align: center;
 }
 
-.blue{
-  color: rgba(0, 191, 255, 1)
+.about-logo {
+  width: 200px;
+  height: 200px;
 }
 
-.linky{
+.blue {
+  color: rgba(0, 191, 255, 1);
+}
+
+.linky {
   background-color: blue;
   height: 6vh;
 }
@@ -189,7 +198,6 @@ textarea {
 }
 #loading h5 {
   font-size: 18px;
-
 }
 
 .s-text {
@@ -283,6 +291,26 @@ textarea {
   font-size: .8em;
 }
 
+.social {
+  padding: 10px;
+  margin: 10px;
+  border-style: none;
+  border-radius: 30px;
+  border: 2px solid rgb(33, 118, 146);
+  width: 160px;
+  display: inline-block;
+}
+
+.social:hover {
+  background-color: rgb(148, 215, 237);
+  border: 2px solid rgb(148, 215, 237);
+  padding: 10px;
+  margin: 10px;
+  border-style: none;
+  border-radius: 30px;
+  width: 160px;
+}
+
 .props {
   margin: 6em 0;
   padding: 3em 0;
@@ -323,8 +351,8 @@ textarea {
 }
 
 .btn {
-  border:none;
-  background-image:none;
+  border: none;
+  background-image: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -333,7 +361,7 @@ textarea {
   background-color: rgb(249, 210, 67);
 }
 
-.thumb-box{
+.thumb-box {
   border: 1px solid rgb(33, 118, 146);
   text-align: center;
 }
@@ -404,6 +432,10 @@ textarea {
   padding-bottom: 10px;
 }
 
+.desc-body {
+  margin-bottom: 20px;
+}
+
 .description {
   font-size: 2em;
 }
@@ -413,8 +445,8 @@ textarea {
 }
 
 .website-link {
-  background-color: rgb(238, 198, 56);
-  margin-top: 10px;
+  background-color: rgb(249, 210, 67);
+  margin: 10px 0;
   padding: 10px;
 }
 
@@ -436,4 +468,22 @@ width: 20vw;
 }
 @keyframes rotateY {
   to { transform: rotateY(360deg); }
+}
+
+.comments {
+  background-color: rgb(251, 252, 253);
+  padding: 0 10px;
+  font-weight: lighter;
+}
+
+.comment-header {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.comments-body {
+  padding: 0 10px;
+  margin: 0 auto;
+  margin: 10px;
+  max-width: 400px;
 }
